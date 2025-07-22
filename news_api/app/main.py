@@ -3,6 +3,11 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from typing import List, Optional
 import feedparser
+import re
+import time
+import hashlib
+from functools import lru_cache
+from threading import Lock
 
 # -------- CONFIG --------
 RSS_BASE = "https://news.google.com/rss"
@@ -10,18 +15,17 @@ LANGUAGE = "en"
 COUNTRY = "IN"
 CEID = f"{COUNTRY}:{LANGUAGE}"
 
-# -------- MODEL --------
-class NewsItem(BaseModel):
-    category: str
-    title: str
-    link: str
-    published: str
-    summary: str
+# Cache settings
+CACHE_EXPIRY_SECONDS = 300  # 5 minutes
+MAX_CACHE_SIZE = 100  # Maximum cached items
 
-# -------- CATEGORY ANALYSIS --------
-def categorize_content(title: str, summary: str) -> str:
-    text = f"{title} {summary}".lower()
-    categories = {
+# -------- CACHE SETUP --------
+# Time-based cache for API responses
+api_cache = {}
+cache_lock = Lock()
+
+# -------- CATEGORIES --------
+categories = {
     # POLITICS & GOVERNANCE
     "Politics": [
         "government", "election", "parliament", "assembly", "senate", "democracy", "policies", "law", "minister",
@@ -292,10 +296,98 @@ def categorize_content(title: str, summary: str) -> str:
     ]
 }
 
+# -------- MODEL --------
+class NewsItem(BaseModel):
+    category: str
+    label: str
+    title: str
+    link: str
+    published: str
+    summary: str
+
+# -------- LRU CACHED FUNCTIONS --------
+@lru_cache(maxsize=1000)  # Cache for category analysis
+def categorize_content_cached(title: str, summary: str) -> str:
+    """LRU cached version of category analysis"""
+    text = f"{title} {summary}".lower()
     for category, keywords in categories.items():
         if any(keyword in text for keyword in keywords):
             return category
     return "General"
+
+@lru_cache(maxsize=500)   # Cache for label generation
+def generate_label_cached(title: str) -> str:
+    """LRU cached version of label generation"""
+    # Remove common stop words but keep important ones
+    stop_words = {
+        'a', 'an', 'and', 'are', 'as', 'at', 'be', 'by', 'for', 'from', 
+        'has', 'he', 'in', 'is', 'it', 'its', 'of', 'on', 'that', 'the',
+        'to', 'was', 'were', 'will', 'with', 'says', 'said', 'after'
+    }
+    
+    # Clean and split title
+    title_clean = re.sub(r'[^\w\s]', '', title.lower())
+    words = title_clean.split()
+    
+    # Remove stop words and keep important words
+    important_words = [word for word in words if word not in stop_words and len(word) > 2]
+    
+    # Take first 4-5 most important words
+    label_words = important_words[:5]
+    
+    # If we have less than 3 words, include some stop words back
+    if len(label_words) < 3:
+        all_words = [word for word in words if len(word) > 2]
+        label_words = all_words[:4]
+    
+    # Create label
+    label = ' '.join(label_words).title()
+    
+    # If still empty, use first few words of original title
+    if not label.strip():
+        label = ' '.join(title.split()[:4]).title()
+    
+    return label
+
+# -------- CACHE UTILITIES --------
+def generate_cache_key(query: Optional[str] = None) -> str:
+    """Generate a cache key based on query parameters"""
+    key_string = f"query:{query or 'today'}"
+    return hashlib.md5(key_string.encode()).hexdigest()
+
+def get_from_cache(cache_key: str):
+    """Get data from time-based cache if not expired"""
+    with cache_lock:
+        cached_data = api_cache.get(cache_key)
+        if cached_data:
+            timestamp, data = cached_data
+            if time.time() - timestamp < CACHE_EXPIRY_SECONDS:
+                return data
+            else:
+                # Remove expired data
+                del api_cache[cache_key]
+    return None
+
+def store_in_cache(cache_key: str, data):
+    """Store data in time-based cache with cleanup"""
+    with cache_lock:
+        # Clean up old entries if cache is getting too large
+        if len(api_cache) >= MAX_CACHE_SIZE:
+            current_time = time.time()
+            expired_keys = [
+                key for key, (timestamp, _) in api_cache.items()
+                if current_time - timestamp >= CACHE_EXPIRY_SECONDS
+            ]
+            for key in expired_keys:
+                del api_cache[key]
+            
+            # If still too large, remove oldest entries
+            if len(api_cache) >= MAX_CACHE_SIZE:
+                sorted_items = sorted(api_cache.items(), key=lambda x: x[1][0])
+                for key, _ in sorted_items[:MAX_CACHE_SIZE // 4]:  # Remove 25%
+                    del api_cache[key]
+        
+        api_cache[cache_key] = (time.time(), data)
 
 # -------- SERVICES --------
 def build_url(query: Optional[str] = None) -> str:
@@ -305,36 +397,120 @@ def build_url(query: Optional[str] = None) -> str:
     else:
         return f"{RSS_BASE}?hl={LANGUAGE}-{COUNTRY}&gl={COUNTRY}&ceid={CEID}"
 
-def fetch_news(query: Optional[str] = None):
+def fetch_news_from_rss(query: Optional[str] = None):
+    """Fetch fresh news from RSS feed"""
     url = build_url(query)
     feed = feedparser.parse(url)
     items = []
+    
     for entry in feed.entries:
-        category = categorize_content(entry.title, entry.summary)
+        # Use LRU cached functions
+        category = categorize_content_cached(entry.title, entry.summary)
+        label = generate_label_cached(entry.title)
+        
         items.append({
             "category": category,
+            "label": label,
             "title": entry.title,
             "link": entry.link,
             "published": entry.published,
             "summary": entry.summary
         })
+    
     return items
 
+def fetch_news(query: Optional[str] = None):
+    """Main function with time-based caching"""
+    cache_key = generate_cache_key(query)
+    
+    # Try to get from cache first
+    cached_data = get_from_cache(cache_key)
+    if cached_data:
+        return cached_data
+    
+    try:
+        # Fetch fresh data
+        fresh_data = fetch_news_from_rss(query)
+        
+        # Store in cache
+        store_in_cache(cache_key, fresh_data)
+        
+        return fresh_data
+    
+    except Exception as e:
+        # If fresh fetch fails, try to return stale cache data
+        with cache_lock:
+            cached_data = api_cache.get(cache_key)
+            if cached_data:
+                return cached_data[1]  # Return data even if expired
+        
+        # If no cache available, return empty list
+        return []
+
+# -------- CACHE MANAGEMENT ENDPOINTS --------
+@lru_cache(maxsize=1)
+def get_cache_stats():
+    """Get cache statistics"""
+    with cache_lock:
+        current_time = time.time()
+        active_entries = sum(1 for timestamp, _ in api_cache.values() 
+                           if current_time - timestamp < CACHE_EXPIRY_SECONDS)
+        return {
+            "total_entries": len(api_cache),
+            "active_entries": active_entries,
+            "expired_entries": len(api_cache) - active_entries,
+            "lru_categorize_info": categorize_content_cached.cache_info()._asdict(),
+            "lru_label_info": generate_label_cached.cache_info()._asdict()
+        }
+
 # -------- APP --------
-app = FastAPI(title="Simple Google News API (No Cache, Auto-Category)")
+app = FastAPI(title="News API with Cache & LRU")
 
 @app.get("/", response_class=JSONResponse)
 def home():
     return {
-        "service": "Google News RSS FastAPI (Simple)",
-        "status": "OK"
+        "service": "Google News RSS FastAPI with Cache & LRU",
+        "status": "OK",
+        "features": [
+            "Auto-categorization", 
+            "Label generation", 
+            "Time-based caching", 
+            "LRU caching",
+            "Search", 
+            "Today's news"
+        ],
+        "cache_expiry_seconds": CACHE_EXPIRY_SECONDS,
+        "max_cache_size": MAX_CACHE_SIZE
     }
 
 @app.get("/today", response_model=List[NewsItem])
 def get_today_news():
-
+    """Get today's news (cached for 5 minutes)"""
     return fetch_news()
 
 @app.get("/search", response_model=List[NewsItem])
 def search_news(q: str = Query(..., description="Search topic")):
+    """Search news (cached for 5 minutes per query)"""
     return fetch_news(query=q)
+
+@app.get("/cache/stats", response_class=JSONResponse)
+def get_cache_statistics():
+    """Get cache performance statistics"""
+    # Clear the cache for this function to get fresh stats
+    get_cache_stats.cache_clear()
+    return get_cache_stats()
+
+@app.post("/cache/clear", response_class=JSONResponse)
+def clear_cache():
+    """Clear all caches"""
+    with cache_lock:
+        api_cache.clear()
+    
+    categorize_content_cached.cache_clear()
+    generate_label_cached.cache_clear()
+    get_cache_stats.cache_clear()
+    
+    return {
+        "message": "All caches cleared successfully",
+        "timestamp": time.time()
+    }
