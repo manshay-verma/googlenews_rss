@@ -1,0 +1,51 @@
+const categoryColors = {
+  Politics: {
+    category: "Politics",
+    className: "bg-red-500/20 text-red-600",
+  },
+  Business: {
+    category: "Business",
+    className: "bg-blue-500/20 text-blue-600",
+  },
+  Technology: {
+    category: "Technology",
+    className: "bg-indigo-500/20 text-indigo-600",
+  },
+  Sports: {
+    category: "Sports",
+    className: "bg-green-500/20 text-green-600",
+  },
+  Entertainment: {
+    category: "Entertainment",
+    className: "bg-yellow-500/20 text-yellow-600",
+  },
+  Health: {
+    category: "Health",
+    className: "bg-pink-500/20 text-pink-600",
+  },
+  Education: {
+    category: "Education",
+    className: "bg-purple-500/20 text-purple-600",
+  },
+  Environment: {
+    category: "Environment",
+    className: "bg-emerald-500/20 text-emerald-600",
+  },
+  Crime: {
+    category: "Crime",
+    className: "bg-orange-500/20 text-orange-600",
+  },
+  International: {
+    category: "International",
+    className: "bg-cyan-500/20 text-cyan-600",
+  },
+  default: {
+    category: "General",
+    className: "bg-gray-500/20 text-gray-500",
+  },
+};
+
+
+<span className={categoryColors[category]?.className || categoryColors.default.className}>
+  {categoryColors[category]?.category || categoryColors.default.category}
+</span>
