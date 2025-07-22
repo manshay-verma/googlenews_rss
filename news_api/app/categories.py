@@ -1,27 +1,4 @@
-from fastapi import FastAPI, Query
-from fastapi.responses import JSONResponse
-from pydantic import BaseModel
-from typing import List, Optional
-import feedparser
-
-# -------- CONFIG --------
-RSS_BASE = "https://news.google.com/rss"
-LANGUAGE = "en"
-COUNTRY = "IN"
-CEID = f"{COUNTRY}:{LANGUAGE}"
-
-# -------- MODEL --------
-class NewsItem(BaseModel):
-    category: str
-    title: str
-    link: str
-    published: str
-    summary: str
-
-# -------- CATEGORY ANALYSIS --------
-def categorize_content(title: str, summary: str) -> str:
-    text = f"{title} {summary}".lower()
-    categories = {
+categories = {
     # POLITICS & GOVERNANCE
     "Politics": [
         "government", "election", "parliament", "assembly", "senate", "democracy", "policies", "law", "minister",
@@ -291,50 +268,3 @@ def categorize_content(title: str, summary: str) -> str:
         "management", "system", "technology", "automation", "robot", "drone", "truck", "rail", "air", "sea"
     ]
 }
-
-    for category, keywords in categories.items():
-        if any(keyword in text for keyword in keywords):
-            return category
-    return "General"
-
-# -------- SERVICES --------
-def build_url(query: Optional[str] = None) -> str:
-    if query:
-        query = query.replace(" ", "+")
-        return f"{RSS_BASE}/search?q={query}&hl={LANGUAGE}-{COUNTRY}&gl={COUNTRY}&ceid={CEID}"
-    else:
-        return f"{RSS_BASE}?hl={LANGUAGE}-{COUNTRY}&gl={COUNTRY}&ceid={CEID}"
-
-def fetch_news(query: Optional[str] = None):
-    url = build_url(query)
-    feed = feedparser.parse(url)
-    items = []
-    for entry in feed.entries:
-        category = categorize_content(entry.title, entry.summary)
-        items.append({
-            "category": category,
-            "title": entry.title,
-            "link": entry.link,
-            "published": entry.published,
-            "summary": entry.summary
-        })
-    return items
-
-# -------- APP --------
-app = FastAPI(title="Simple Google News API (No Cache, Auto-Category)")
-
-@app.get("/", response_class=JSONResponse)
-def home():
-    return {
-        "service": "Google News RSS FastAPI (Simple)",
-        "status": "OK"
-    }
-
-@app.get("/today", response_model=List[NewsItem])
-def get_today_news():
-
-    return fetch_news()
-
-@app.get("/search", response_model=List[NewsItem])
-def search_news(q: str = Query(..., description="Search topic")):
-    return fetch_news(query=q)
