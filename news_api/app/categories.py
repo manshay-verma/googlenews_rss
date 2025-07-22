@@ -1,270 +1,542 @@
+# categories.py
+
+import re
+from typing import Dict, List, Tuple
+from functools import lru_cache
+
+# Enhanced categories dictionary with maximum accuracy
 categories = {
-    # POLITICS & GOVERNANCE
+    # POLITICS & GOVERNANCE - Maximum accuracy with specific political terminology
     "Politics": [
-        "government", "election", "parliament", "assembly", "senate", "democracy", "policies", "law", "minister",
-        "policy", "constitution", "bill", "cabinet", "diplomacy", "campaign", "politician", "leader", "reform",
-        "legislation", "referendum", "coalition", "opposition", "protest", "embassy", "diplomat", "ministry",
-        "vote", "voting", "ballot", "candidate", "political", "governance", "administration", "bureaucracy",
-        "congress", "legislature", "judicial", "executive", "federal", "state", "local", "municipal", "civic"
+        # Core Political Terms
+        "government", "governance", "political", "politics", "policy", "policies", 
+        "minister", "prime minister", "president", "vice president", "chief minister",
+        "governor", "lieutenant governor", "mayor", "deputy", "secretary", "cabinet",
+        
+        # Elections & Democracy
+        "election", "electoral", "vote", "voting", "voter", "ballot", "polling", "poll",
+        "campaign", "candidate", "nomination", "primary", "general election", "by-election",
+        "referendum", "plebiscite", "constituency", "electorate", "swing vote", "exit poll",
+        
+        # Legislative Bodies
+        "parliament", "parliamentary", "congress", "senate", "house", "assembly", 
+        "legislature", "lok sabha", "rajya sabha", "state assembly", "municipal corporation",
+        "council", "committee", "subcommittee", "caucus", "faction",
+        
+        # Political Processes
+        "legislation", "bill", "act", "amendment", "resolution", "motion", "debate",
+        "hearing", "session", "sitting", "adjournment", "prorogation", "dissolution",
+        "impeachment", "no confidence", "censure", "veto", "override",
+        
+        # Political Ideologies & Parties
+        "bjp", "congress", "aap", "tmc", "dmk", "aiadmk", "left", "right", "center",
+        "coalition", "alliance", "opposition", "ruling party", "majority", "minority",
+        "liberal", "conservative", "progressive", "socialist", "communist", "capitalist",
+        
+        # Governance & Administration
+        "bureaucracy", "civil service", "ias", "ips", "administration", "executive",
+        "judicial", "judiciary", "supreme court", "high court", "district court",
+        "magistrate", "tribunal", "commission", "authority", "board",
+        
+        # Diplomatic & International
+        "diplomacy", "diplomatic", "embassy", "consulate", "ambassador", "envoy",
+        "foreign policy", "international relations", "bilateral", "multilateral",
+        "treaty", "agreement", "mou", "summit", "delegation", "protocol"
     ],
-    
-    # BUSINESS & ECONOMY
+
+    # BUSINESS & ECONOMY - Comprehensive financial and business terminology
     "Business": [
-        "stock", "market", "shares", "bond", "exchange", "economy", "finance", "bank", "investment", "profit",
-        "loss", "company", "merger", "acquisition", "startup", "corporation", "trade", "commerce", "export",
-        "import", "industry", "revenue", "tax", "dividend", "capital", "funding", "valuation", "earnings",
-        "business", "financial", "economic", "commercial", "corporate", "enterprise", "venture", "firm",
-        "manufacturing", "retail", "wholesale", "banking", "insurance", "real estate", "equity", "debt"
+        # Core Business Terms
+        "business", "company", "corporation", "enterprise", "firm", "organization",
+        "startup", "unicorn", "sme", "msme", "mnc", "conglomerate", "subsidiary",
+        "headquarters", "branch", "office", "factory", "plant", "facility",
+        
+        # Financial Markets
+        "stock", "share", "equity", "bond", "debenture", "mutual fund", "etf",
+        "nse", "bse", "sensex", "nifty", "nasdaq", "dow jones", "s&p 500",
+        "market", "trading", "investor", "investment", "portfolio", "asset",
+        
+        # Economic Indicators
+        "economy", "economic", "gdp", "inflation", "recession", "growth", "development",
+        "fiscal", "monetary", "budget", "deficit", "surplus", "debt", "credit",
+        "interest rate", "repo rate", "crr", "slr", "base rate", "prime rate",
+        
+        # Corporate Actions
+        "merger", "acquisition", "takeover", "ipo", "fpo", "rights issue", "bonus",
+        "dividend", "split", "buyback", "delisting", "restructuring", "divestment",
+        
+        # Financial Performance
+        "revenue", "turnover", "profit", "loss", "ebitda", "pat", "eps", "pe ratio",
+        "market cap", "valuation", "earnings", "quarterly results", "annual report",
+        "balance sheet", "cash flow", "assets", "liabilities", "equity",
+        
+        # Banking & Finance
+        "bank", "banking", "loan", "credit", "deposit", "savings", "current account",
+        "fixed deposit", "recurring deposit", "npa", "bad loan", "recovery",
+        "rbi", "sebi", "irdai", "nabard", "sidbi", "exim bank",
+        
+        # Trade & Commerce
+        "trade", "export", "import", "commerce", "retail", "wholesale", "e-commerce",
+        "supply chain", "logistics", "distribution", "inventory", "procurement",
+        "vendor", "supplier", "customer", "consumer", "market share"
     ],
-    
-    # TECHNOLOGY
+
+    # TECHNOLOGY - Latest tech trends with precision matching
     "Technology": [
-        "software", "hardware", "app", "application", "device", "computer", "artificial intelligence", "machine learning", "cloud",
-        "data", "robot", "algorithm", "chip", "processor", "cyber", "security", "startup", "api", "blockchain",
-        "internet", "gadget", "innovation", "digital", "virtual reality", "augmented reality", "virtual", "augmented", "network",
-        "technology", "tech", "programming", "coding", "development", "smartphone", "tablet", "laptop", "server",
-        "database", "platform", "automation", "innovation", "breakthrough", "patent", "research", "scientific"
+        # Artificial Intelligence & Machine Learning
+        "artificial intelligence", "ai", "machine learning", "ml", "deep learning",
+        "neural network", "algorithm", "chatgpt", "openai", "generative ai",
+        "large language model", "llm", "natural language processing", "nlp",
+        "computer vision", "robotics", "automation", "cognitive computing",
+        
+        # Data & Analytics
+        "big data", "data science", "data analytics", "business intelligence",
+        "predictive analytics", "data mining", "database", "sql", "nosql",
+        "cloud computing", "aws", "azure", "google cloud", "saas", "paas", "iaas",
+        
+        # Programming & Development
+        "software", "programming", "coding", "development", "developer", "programmer",
+        "python", "java", "javascript", "react", "angular", "node.js", "php",
+        "mobile app", "web app", "api", "microservices", "devops", "agile",
+        
+        # Emerging Technologies
+        "blockchain", "cryptocurrency", "bitcoin", "ethereum", "nft", "defi", "web3",
+        "metaverse", "virtual reality", "vr", "augmented reality", "ar", "mixed reality",
+        "quantum computing", "edge computing", "5g", "6g", "iot", "internet of things",
+        
+        # Cybersecurity
+        "cybersecurity", "security", "hacking", "cyber attack", "data breach",
+        "malware", "ransomware", "phishing", "firewall", "encryption", "privacy",
+        
+        # Tech Companies & Products
+        "google", "microsoft", "apple", "amazon", "meta", "facebook", "tesla",
+        "nvidia", "intel", "amd", "qualcomm", "samsung", "huawei", "xiaomi",
+        "tcs", "infosys", "wipro", "hcl", "tech mahindra", "cognizant",
+        
+        # Hardware & Devices
+        "smartphone", "tablet", "laptop", "computer", "server", "chip", "processor",
+        "semiconductor", "hardware", "device", "gadget", "wearable", "smartwatch"
     ],
-    
-    # SPORTS
+
+    # SPORTS - Comprehensive sports coverage with Indian focus
     "Sports": [
-        "match", "game", "tournament", "league", "team", "player", "coach", "goal", "score", "athlete",
-        "competition", "championship", "finals", "quarterfinal", "semifinal", "medal", "victory", "defeat",
-        "stadium", "cricket", "football", "basketball", "olympics", "marathon", "race", "referee",
-        "sports", "athletic", "training", "fitness", "exercise", "gym", "workout", "tournament", "trophy",
-        "soccer", "tennis", "golf", "baseball", "swimming", "boxing", "wrestling", "hockey", "volleyball"
+        # Cricket (Major focus for Indian audience)
+        "cricket", "ipl", "bcci", "icc", "test match", "odi", "t20", "world cup",
+        "champions trophy", "asia cup", "ranji trophy", "ipl auction", "mega auction",
+        "wicket", "century", "half century", "six", "four", "boundary", "over",
+        "innings", "declaration", "follow on", "drs", "powerplay", "death overs",
+        
+        # Cricket Players & Teams
+        "virat kohli", "rohit sharma", "ms dhoni", "hardik pandya", "jasprit bumrah",
+        "kl rahul", "rishabh pant", "ravindra jadeja", "mohammed siraj", "shubman gill",
+        "csk", "mi", "rcb", "dc", "kkr", "pbks", "rr", "srh", "gt", "lsg",
+        "india cricket", "team india", "men in blue", "captain", "vice captain",
+        
+        # Football/Soccer
+        "football", "soccer", "fifa", "world cup", "uefa", "champions league",
+        "premier league", "la liga", "serie a", "bundesliga", "epl",
+        "manchester united", "liverpool", "arsenal", "chelsea", "manchester city",
+        "real madrid", "barcelona", "psg", "bayern munich", "juventus",
+        "messi", "ronaldo", "mbappe", "haaland", "neymar", "benzema",
+        
+        # Other Sports
+        "olympics", "commonwealth games", "asian games", "paralympics",
+        "tennis", "wimbledon", "us open", "french open", "australian open",
+        "badminton", "all england", "thomas cup", "uber cup", "bwf",
+        "hockey", "fih", "world cup hockey", "pro league",
+        "basketball", "nba", "volleyball", "kabaddi", "pro kabaddi league",
+        
+        # General Sports Terms
+        "match", "game", "tournament", "championship", "league", "season",
+        "player", "athlete", "team", "coach", "captain", "manager", "referee",
+        "score", "goal", "point", "win", "loss", "draw", "victory", "defeat",
+        "medal", "trophy", "award", "record", "performance", "fitness", "training"
     ],
-    
-    # ENTERTAINMENT
+
+    # ENTERTAINMENT - Bollywood, Hollywood, OTT focus
     "Entertainment": [
-        "movie", "film", "actor", "actress", "director", "drama", "comedy", "trailer", "theater", "musician",
-        "music", "concert", "album", "artist", "show", "series", "song", "performance", "celebrity", "stage",
-        "festival", "premiere", "blockbuster", "animation", "award", "screenplay", "entertainment", "cinema",
-        "television", "tv", "streaming", "netflix", "disney", "hollywood", "bollywood", "dance", "musical"
+        # Bollywood & Indian Cinema
+        "bollywood", "hindi cinema", "film", "movie", "cinema", "box office",
+        "actor", "actress", "director", "producer", "music director", "choreographer",
+        "shah rukh khan", "salman khan", "aamir khan", "akshay kumar", "hrithik roshan",
+        "deepika padukone", "priyanka chopra", "katrina kaif", "alia bhatt", "kareena kapoor",
+        "amitabh bachchan", "rajinikanth", "kamal hassan", "vijay", "ajith",
+        
+        # Film Industry Terms
+        "release", "trailer", "teaser", "poster", "casting", "shooting", "filming",
+        "premiere", "screening", "multiplex", "theatre", "production house",
+        "yash raj films", "dharma productions", "balaji telefilms", "eros", "t-series",
+        
+        # Music & Entertainment
+        "music", "song", "album", "singer", "musician", "composer", "lyricist",
+        "concert", "live performance", "tour", "festival", "award show",
+        "filmfare", "iifa", "screen awards", "zee cine awards", "star screen awards",
+        
+        # Television & OTT
+        "television", "tv", "serial", "show", "reality show", "talent show",
+        "netflix", "amazon prime", "disney+ hotstar", "zee5", "sony liv", "voot",
+        "alt balaji", "mx player", "jio cinema", "ott", "streaming", "web series",
+        
+        # International Entertainment
+        "hollywood", "oscar", "academy awards", "golden globe", "emmy", "grammy",
+        "marvel", "dc", "disney", "warner bros", "universal", "paramount",
+        "avengers", "batman", "superman", "spider-man", "star wars", "game of thrones"
     ],
-    
-    # HEALTH & MEDICINE
+
+    # HEALTH & MEDICINE - Medical accuracy with COVID focus
     "Health": [
-        "health", "medical", "medicine", "doctor", "hospital", "patient", "treatment", "therapy", "surgery",
-        "disease", "illness", "virus", "bacteria", "infection", "vaccine", "vaccination", "pandemic", "epidemic",
-        "healthcare", "pharmaceutical", "drug", "medication", "prescription", "diagnosis", "symptom", "clinic",
-        "nurse", "physician", "specialist", "surgeon", "mental health", "psychology", "psychiatry", "wellness",
-        "fitness", "nutrition", "diet", "exercise", "obesity", "diabetes", "cancer", "heart", "brain"
+        # General Health Terms
+        "health", "healthcare", "medical", "medicine", "hospital", "clinic", "dispensary",
+        "doctor", "physician", "surgeon", "specialist", "consultant", "nurse",
+        "patient", "treatment", "therapy", "diagnosis", "symptom", "disease", "illness",
+        
+        # COVID-19 & Pandemic
+        "covid", "covid-19", "coronavirus", "pandemic", "epidemic", "outbreak",
+        "vaccine", "vaccination", "pfizer", "moderna", "covishield", "covaxin",
+        "booster", "booster dose", "omicron", "delta", "variant", "mutation",
+        "lockdown", "quarantine", "isolation", "social distancing", "mask", "sanitizer",
+        
+        # Medical Specialties
+        "cardiology", "neurology", "oncology", "orthopedics", "pediatrics", "gynecology",
+        "dermatology", "ophthalmology", "ent", "psychiatry", "psychology", "radiology",
+        "pathology", "anesthesia", "emergency medicine", "family medicine",
+        
+        # Medical Procedures & Tests
+        "surgery", "operation", "biopsy", "scan", "mri", "ct scan", "x-ray",
+        "blood test", "urine test", "ecg", "echo", "endoscopy", "colonoscopy",
+        "chemotherapy", "radiotherapy", "dialysis", "transplant", "organ donation",
+        
+        # Health Conditions
+        "diabetes", "hypertension", "cancer", "heart disease", "stroke", "asthma",
+        "arthritis", "depression", "anxiety", "alzheimer", "parkinson", "epilepsy",
+        "obesity", "malnutrition", "anemia", "tuberculosis", "hepatitis", "hiv aids",
+        
+        # Healthcare System
+        "aiims", "pgimer", "apollo", "fortis", "max healthcare", "manipal",
+        "medical college", "nursing college", "mbbs", "md", "ms", "dm", "mch",
+        "neet", "medical council", "who", "ministry of health", "health insurance"
     ],
-    
-    # EDUCATION
+
+    # EDUCATION - Indian education system focus
     "Education": [
-        "education", "school", "university", "college", "student", "teacher", "professor", "academic", "study",
-        "research", "learning", "curriculum", "degree", "graduation", "exam", "test", "assessment", "scholarship",
-        "tuition", "campus", "classroom", "online learning", "distance education", "e-learning", "training",
-        "skill", "knowledge", "literacy", "mathematics", "science", "history", "literature", "language", "arts"
+        # Educational Institutions
+        "school", "college", "university", "institute", "academy", "coaching center",
+        "iit", "iim", "nit", "iiit", "aiims", "nlu", "isi", "tiss", "jnu", "du",
+        "bits pilani", "manipal", "vit", "srm", "amity", "lovely professional university",
+        
+        # Academic Programs
+        "education", "degree", "diploma", "certificate", "course", "program",
+        "undergraduate", "graduate", "postgraduate", "phd", "doctorate", "research",
+        "btech", "be", "mtech", "me", "mba", "mca", "bca", "bcom", "mcom",
+        "ba", "ma", "bsc", "msc", "llb", "llm", "mbbs", "md", "ms",
+        
+        # Examinations
+        "exam", "examination", "test", "assessment", "evaluation", "board exam",
+        "jee", "neet", "cat", "gate", "upsc", "ssc", "banking exam", "railway exam",
+        "cbse", "icse", "state board", "ncert", "syllabus", "curriculum", "marking scheme",
+        
+        # Academic Terms
+        "student", "teacher", "professor", "principal", "dean", "faculty", "staff",
+        "admission", "enrollment", "semester", "academic year", "session",
+        "attendance", "assignment", "project", "thesis", "dissertation", "research paper",
+        "scholarship", "fellowship", "stipend", "fees", "tuition", "hostel", "campus",
+        
+        # Online Education
+        "online education", "e-learning", "digital learning", "mooc", "coursera",
+        "edx", "udemy", "byju's", "unacademy", "vedantu", "khan academy",
+        "zoom classes", "google classroom", "microsoft teams", "webinar"
     ],
-    
-    # ENVIRONMENT & CLIMATE
+
+    # ENVIRONMENT & CLIMATE - Climate change focus
     "Environment": [
-        "environment", "climate", "weather", "global warming", "climate change", "pollution", "carbon", "emission",
-        "renewable", "solar", "wind", "hydroelectric", "nuclear", "fossil fuel", "oil", "gas", "coal",
-        "recycling", "waste", "conservation", "biodiversity", "ecosystem", "forest", "deforestation", "ocean",
-        "wildlife", "endangered", "species", "extinction", "sustainable", "sustainability", "green", "eco"
+        # Climate Change
+        "climate change", "global warming", "greenhouse effect", "carbon footprint",
+        "carbon emission", "co2", "methane", "greenhouse gas", "fossil fuel",
+        "renewable energy", "clean energy", "sustainable development", "sustainability",
+        
+        # Environmental Issues
+        "pollution", "air pollution", "water pollution", "noise pollution", "soil pollution",
+        "plastic pollution", "marine pollution", "smog", "acid rain", "ozone depletion",
+        "deforestation", "desertification", "soil erosion", "biodiversity loss",
+        
+        # Natural Disasters
+        "natural disaster", "earthquake", "tsunami", "cyclone", "hurricane", "tornado",
+        "flood", "drought", "wildfire", "forest fire", "landslide", "avalanche",
+        "volcanic eruption", "heat wave", "cold wave", "monsoon", "extreme weather",
+        
+        # Conservation & Ecology
+        "environment", "ecology", "ecosystem", "biodiversity", "conservation",
+        "wildlife", "endangered species", "extinction", "habitat", "forest",
+        "national park", "wildlife sanctuary", "biosphere reserve", "tiger reserve",
+        "coral reef", "wetland", "mangrove", "rainforest", "marine life",
+        
+        # Green Technology
+        "solar energy", "wind energy", "hydroelectric", "nuclear energy", "biofuel",
+        "electric vehicle", "ev", "tesla", "hybrid car", "solar panel", "wind turbine",
+        "recycling", "waste management", "composting", "organic farming", "green building",
+        
+        # International Agreements
+        "paris agreement", "kyoto protocol", "cop summit", "unfccc", "ipcc report",
+        "net zero", "carbon neutral", "emission target", "climate action", "green fund"
     ],
-    
-    # SCIENCE & RESEARCH
-    "Science": [
-        "science", "research", "study", "experiment", "laboratory", "scientist", "discovery", "breakthrough",
-        "physics", "chemistry", "biology", "astronomy", "geology", "mathematics", "engineering", "medicine",
-        "technology", "innovation", "theory", "hypothesis", "data", "analysis", "publication", "journal",
-        "academic", "university", "institute", "nasa", "space", "mars", "moon", "satellite", "rocket"
-    ],
-    
-    # TRANSPORTATION
-    "Transportation": [
-        "transport", "transportation", "vehicle", "car", "automobile", "truck", "bus", "train", "railway",
-        "airport", "airline", "flight", "plane", "aircraft", "ship", "boat", "metro", "subway", "taxi",
-        "uber", "lyft", "ride", "traffic", "road", "highway", "bridge", "tunnel", "parking", "fuel",
-        "electric vehicle", "autonomous", "self-driving", "aviation", "maritime", "logistics", "delivery"
-    ],
-    
-    # FOOD & AGRICULTURE
-    "Food": [
-        "food", "agriculture", "farming", "farmer", "crop", "harvest", "livestock", "cattle", "chicken",
-        "restaurant", "chef", "cooking", "recipe", "cuisine", "dish", "meal", "nutrition", "organic",
-        "processed", "fast food", "healthy", "diet", "vegetarian", "vegan", "meat", "vegetable", "fruit",
-        "grain", "dairy", "milk", "cheese", "bread", "wine", "beer", "beverage", "drink", "coffee", "tea"
-    ],
-    
-    # CRIME & LAW
+
+    # CRIME & LAW - Legal system with Indian context
     "Crime": [
-        "crime", "criminal", "police", "arrest", "investigation", "detective", "court", "judge", "lawyer",
-        "attorney", "trial", "verdict", "sentence", "prison", "jail", "theft", "robbery", "murder", "assault",
-        "fraud", "corruption", "bribery", "law enforcement", "justice", "legal", "lawsuit", "litigation",
-        "evidence", "witness", "testimony", "prosecutor", "defense", "guilty", "innocent", "conviction"
+        # Criminal Activities
+        "crime", "criminal", "murder", "homicide", "assault", "robbery", "theft",
+        "burglary", "fraud", "scam", "corruption", "bribery", "embezzlement",
+        "money laundering", "tax evasion", "cybercrime", "hacking", "phishing",
+        "identity theft", "drug trafficking", "smuggling", "human trafficking",
+        "terrorism", "rape", "sexual assault", "domestic violence", "kidnapping",
+        
+        # Law Enforcement
+        "police", "cop", "officer", "inspector", "superintendent", "commissioner",
+        "cbi", "ed", "ncb", "nia", "raw", "ib", "crpf", "bsf", "itbp", "cisf",
+        "investigation", "inquiry", "raid", "search", "arrest", "custody", "bail",
+        "remand", "interrogation", "charge sheet", "fir", "complaint", "case",
+        
+        # Legal System
+        "court", "judge", "magistrate", "justice", "chief justice", "lawyer",
+        "advocate", "attorney", "prosecutor", "public prosecutor", "defense counsel",
+        "supreme court", "high court", "district court", "sessions court", "family court",
+        "trial", "hearing", "judgment", "verdict", "sentence", "conviction", "acquittal",
+        
+        # Legal Processes
+        "law", "legal", "act", "section", "ipc", "crpc", "evidence act", "constitution",
+        "fundamental rights", "directive principles", "amendment", "ordinance",
+        "petition", "writ", "habeas corpus", "mandamus", "certiorari", "prohibition",
+        "bail", "anticipatory bail", "parole", "probation", "fine", "imprisonment",
+        "life sentence", "death penalty", "capital punishment", "appeal", "revision"
     ],
-    
-    # MILITARY & DEFENSE
-    "Military": [
-        "military", "army", "navy", "air force", "soldier", "officer", "general", "colonel", "captain",
-        "war", "battle", "combat", "weapon", "missile", "bomb", "tank", "aircraft", "ship", "submarine",
-        "defense", "security", "national security", "terrorism", "terrorist", "conflict", "peace", "treaty",
-        "alliance", "nato", "united nations", "peacekeeping", "veteran", "service", "deployment", "base"
-    ],
-    
-    # REAL ESTATE & CONSTRUCTION
-    "Real Estate": [
-        "real estate", "property", "house", "home", "apartment", "building", "construction", "developer",
-        "architect", "contractor", "mortgage", "loan", "rent", "lease", "tenant", "landlord", "investment",
-        "market", "price", "value", "assessment", "inspection", "renovation", "repair", "maintenance",
-        "commercial", "residential", "office", "retail", "industrial", "zoning", "permit", "planning"
-    ],
-    
-    # ENERGY & UTILITIES
-    "Energy": [
-        "energy", "electricity", "power", "utility", "grid", "solar", "wind", "nuclear", "hydroelectric",
-        "coal", "oil", "gas", "renewable", "fossil fuel", "carbon", "emission", "green", "sustainable",
-        "battery", "storage", "generator", "plant", "station", "transmission", "distribution", "consumption",
-        "efficiency", "conservation", "alternative", "biofuel", "geothermal", "tidal", "wave", "hydrogen"
-    ],
-    
-    # FASHION & LIFESTYLE
-    "Fashion": [
-        "fashion", "style", "clothing", "apparel", "designer", "brand", "luxury", "trend", "collection",
-        "runway", "model", "magazine", "beauty", "cosmetics", "makeup", "skincare", "lifestyle", "shopping",
-        "retail", "store", "boutique", "mall", "online", "e-commerce", "textile", "fabric", "garment",
-        "accessory", "jewelry", "watch", "bag", "shoes", "dress", "suit", "casual", "formal", "seasonal"
-    ],
-    
-    # TRAVEL & TOURISM
-    "Travel": [
-        "travel", "tourism", "tourist", "vacation", "holiday", "trip", "journey", "destination", "hotel",
-        "resort", "accommodation", "booking", "airline", "flight", "airport", "passport", "visa", "cruise",
-        "adventure", "sightseeing", "culture", "heritage", "museum", "attraction", "guide", "package",
-        "itinerary", "backpacking", "camping", "hiking", "beach", "mountain", "city", "country", "international"
-    ],
-    
-    # RELIGION & SPIRITUALITY
-    "Religion": [
-        "religion", "religious", "spiritual", "faith", "belief", "worship", "prayer", "church", "temple",
-        "mosque", "synagogue", "cathedral", "priest", "pastor", "imam", "rabbi", "monk", "nun", "clergy",
-        "christian", "islam", "hindu", "buddhist", "jewish", "sikh", "scripture", "bible", "quran", "holy",
-        "sacred", "divine", "god", "allah", "ceremony", "ritual", "pilgrimage", "festival", "celebration"
-    ],
-    
-    # ARTS & CULTURE
-    "Arts": [
-        "art", "artist", "painting", "sculpture", "gallery", "museum", "exhibition", "culture", "cultural",
-        "heritage", "tradition", "literature", "poetry", "novel", "book", "author", "writer", "publisher",
-        "theater", "drama", "opera", "dance", "ballet", "photography", "craft", "design", "creative",
-        "aesthetic", "masterpiece", "collection", "antique", "artifact", "history", "historical", "archive"
-    ],
-    
-    # SOCIAL ISSUES
-    "Social Issues": [
-        "social", "society", "community", "activist", "protest", "demonstration", "rights", "human rights",
-        "civil rights", "equality", "discrimination", "racism", "sexism", "gender", "minority", "majority",
-        "poverty", "homeless", "unemployment", "welfare", "charity", "nonprofit", "volunteer", "donation",
-        "justice", "injustice", "reform", "change", "movement", "campaign", "advocacy", "awareness", "support"
-    ],
-    
-    # INTERNATIONAL RELATIONS
+
+    # INTERNATIONAL NEWS - Global affairs with precision
     "International": [
-        "international", "global", "world", "diplomatic", "embassy", "ambassador", "foreign", "relations",
-        "treaty", "agreement", "alliance", "partnership", "cooperation", "conflict", "resolution", "peace",
-        "war", "sanctions", "trade", "export", "import", "summit", "conference", "organization", "united nations",
-        "european union", "nato", "g7", "g20", "bilateral", "multilateral", "regional", "continental", "border"
-    ],
-    
-    # WEATHER & DISASTERS
-    "Weather": [
-        "weather", "climate", "temperature", "rain", "snow", "storm", "hurricane", "tornado", "cyclone",
-        "flood", "drought", "earthquake", "tsunami", "volcano", "wildfire", "disaster", "natural disaster",
-        "emergency", "evacuation", "rescue", "relief", "damage", "destruction", "recovery", "rebuild",
-        "forecast", "prediction", "warning", "alert", "meteorology", "atmospheric", "seasonal", "extreme"
-    ],
-    
-    # FAMILY & RELATIONSHIPS
-    "Family": [
-        "family", "parent", "mother", "father", "child", "baby", "pregnancy", "birth", "adoption", "marriage",
-        "wedding", "divorce", "relationship", "couple", "partner", "dating", "love", "romance", "friendship",
-        "community", "neighborhood", "home", "household", "domestic", "parenting", "childcare", "education",
-        "support", "care", "elderly", "senior", "retirement", "generation", "tradition", "culture", "values"
-    ],
-    
-    # COMMUNICATION & MEDIA
-    "Media": [
-        "media", "news", "newspaper", "magazine", "television", "radio", "broadcast", "journalism", "reporter",
-        "journalist", "editor", "publisher", "communication", "social media", "facebook", "twitter", "instagram",
-        "youtube", "linkedin", "internet", "website", "blog", "podcast", "streaming", "digital", "online",
-        "platform", "content", "information", "data", "privacy", "freedom", "press", "censorship", "publication"
-    ],
-    
-    # AEROSPACE & AVIATION
-    "Aerospace": [
-        "aerospace", "aviation", "aircraft", "airplane", "helicopter", "drone", "pilot", "flight", "airport",
-        "airline", "aviation", "space", "spacecraft", "satellite", "rocket", "launch", "mission", "nasa",
-        "astronaut", "space station", "mars", "moon", "planet", "universe", "galaxy", "telescope", "observatory",
-        "exploration", "discovery", "research", "technology", "engineering", "manufacturing", "commercial", "military"
-    ],
-    
-    # MANUFACTURING & INDUSTRY
-    "Manufacturing": [
-        "manufacturing", "industry", "industrial", "factory", "plant", "production", "assembly", "automation",
-        "machinery", "equipment", "supply chain", "logistics", "quality", "safety", "worker", "labor",
-        "union", "employment", "job", "career", "skill", "training", "certification", "standard", "regulation",
-        "compliance", "inspection", "maintenance", "repair", "upgrade", "innovation", "efficiency", "productivity"
-    ],
-    
-    # RETAIL & CONSUMER
-    "Retail": [
-        "retail", "shopping", "store", "mall", "supermarket", "grocery", "consumer", "customer", "service",
-        "sale", "discount", "promotion", "brand", "product", "merchandise", "inventory", "supply", "demand",
-        "market", "competition", "price", "value", "quality", "satisfaction", "loyalty", "experience",
-        "e-commerce", "online", "delivery", "shipping", "return", "exchange", "warranty", "guarantee"
-    ],
-    
-    # AGRICULTURE & FARMING
-    "Agriculture": [
-        "agriculture", "farming", "farm", "farmer", "crop", "harvest", "planting", "seed", "soil", "irrigation",
-        "livestock", "cattle", "dairy", "poultry", "organic", "pesticide", "fertilizer", "sustainable",
-        "greenhouse", "hydroponics", "biotechnology", "genetic", "modification", "food security", "nutrition",
-        "export", "import", "market", "price", "subsidy", "policy", "regulation", "cooperative", "rural"
-    ],
-    
-    # AUTOMOTIVE
-    "Automotive": [
-        "automotive", "car", "vehicle", "automobile", "truck", "motorcycle", "electric", "hybrid", "fuel",
-        "engine", "manufacturing", "dealer", "sales", "repair", "maintenance", "parts", "accessory",
-        "driving", "license", "insurance", "accident", "safety", "crash", "test", "regulation", "emission",
-        "pollution", "technology", "innovation", "autonomous", "self-driving", "smart", "connected", "mobility"
-    ],
-    
-    # TELECOMMUNICATIONS
-    "Telecommunications": [
-        "telecommunications", "telecom", "phone", "mobile", "smartphone", "cellular", "network", "internet",
-        "broadband", "wireless", "cable", "satellite", "fiber", "5g", "4g", "data", "service", "provider",
-        "operator", "communication", "technology", "infrastructure", "tower", "antenna", "signal", "coverage",
-        "roaming", "plan", "subscription", "billing", "customer", "support", "repair", "upgrade", "innovation"
-    ],
-    
-    # HOSPITALITY & TOURISM
-    "Hospitality": [
-        "hospitality", "hotel", "resort", "accommodation", "guest", "service", "restaurant", "food", "beverage",
-        "tourism", "travel", "vacation", "holiday", "booking", "reservation", "check-in", "check-out",
-        "staff", "management", "quality", "rating", "review", "experience", "luxury", "budget", "amenity",
-        "facility", "room", "suite", "conference", "event", "wedding", "catering", "entertainment", "recreation"
-    ],
-    
-    # FINANCE & BANKING
-    "Finance": [
-        "finance", "financial", "bank", "banking", "loan", "credit", "debt", "investment", "savings", "account",
-        "interest", "rate", "mortgage", "insurance", "pension", "retirement", "fund", "portfolio", "stock",
-        "bond", "mutual fund", "exchange", "market", "trading", "broker", "advisor", "planning", "budget",
-        "tax", "audit", "accounting", "payroll", "transaction", "payment", "currency", "exchange", "inflation"
-    ],
-    
-    # LOGISTICS & SUPPLY CHAIN
-    "Logistics": [
-        "logistics", "supply chain", "transportation", "shipping", "delivery", "freight", "cargo", "warehouse",
-        "distribution", "inventory", "storage", "packaging", "handling", "loading", "unloading", "tracking",
-        "route", "optimization", "efficiency", "cost", "time", "schedule", "planning", "coordination",
-        "management", "system", "technology", "automation", "robot", "drone", "truck", "rail", "air", "sea"
+        # Major Countries & Regions
+        "usa", "united states", "america", "china", "russia", "japan", "germany",
+        "france", "uk", "united kingdom", "italy", "canada", "australia", "brazil",
+        "south korea", "north korea", "iran", "israel", "palestine", "saudi arabia",
+        "turkey", "pakistan", "bangladesh", "sri lanka", "nepal", "bhutan", "myanmar",
+        
+        # International Organizations
+        "united nations", "un", "unesco", "unicef", "who", "imf", "world bank",
+        "nato", "european union", "eu", "asean", "saarc", "g7", "g20", "brics",
+        "wto", "icc", "international court of justice", "security council",
+        
+        # Diplomatic Relations
+        "diplomacy", "diplomatic", "foreign policy", "international relations",
+        "embassy", "consulate", "ambassador", "envoy", "summit", "bilateral",
+        "multilateral", "treaty", "agreement", "mou", "pact", "alliance",
+        "sanctions", "embargo", "trade war", "tariff", "quota", "export ban",
+        
+        # Global Issues
+        "global", "international", "worldwide", "cross-border", "transnational",
+        "refugee", "asylum", "immigration", "visa", "border", "customs",
+        "humanitarian crisis", "peacekeeping", "conflict resolution", "ceasefire",
+        "arms control", "nuclear proliferation", "terrorism", "cyber warfare",
+        
+        # Current Global Events
+        "ukraine war", "russia ukraine", "taiwan strait", "south china sea",
+        "middle east", "afghan crisis", "israel palestine", "iran nuclear deal",
+        "brexit", "climate summit", "covid pandemic", "global recession"
     ]
 }
+
+
+# Helper function to preprocess text
+def preprocess_text(text: str) -> str:
+    """Clean and preprocess text for better matching"""
+    # Convert to lowercase
+    text = text.lower()
+    
+    # Remove special characters but keep spaces and alphanumeric
+    text = re.sub(r'[^\w\s]', ' ', text)
+    
+    # Replace multiple spaces with single space
+    text = re.sub(r'\s+', ' ', text)
+    
+    # Strip leading/trailing spaces
+    return text.strip()
+
+
+# Advanced categorization function with scoring
+@lru_cache(maxsize=2000)
+def categorize_content(title: str, summary: str) -> str:
+    """
+    Advanced categorization function with weighted scoring and phrase matching.
+    
+    Args:
+        title (str): News article title
+        summary (str): News article summary/description
+        
+    Returns:
+        str: Best matching category or "General" if no good match
+    """
+    # Combine and preprocess text
+    full_text = f"{title} {summary}"
+    clean_text = preprocess_text(full_text)
+    
+    # Create word set for faster lookup
+    words = set(clean_text.split())
+    
+    category_scores = {}
+    
+    for category, keywords in categories.items():
+        score = 0
+        matched_keywords = []
+        
+        for keyword in keywords:
+            keyword_lower = keyword.lower()
+            
+            # Handle multi-word keywords (phrases)
+            if ' ' in keyword_lower:
+                # Check for exact phrase match
+                if keyword_lower in clean_text:
+                    # Higher weight for phrase matches
+                    phrase_weight = len(keyword_lower.split()) * 2
+                    score += phrase_weight
+                    matched_keywords.append(keyword_lower)
+            else:
+                # Single word matching
+                if keyword_lower in words:
+                    score += 1
+                    matched_keywords.append(keyword_lower)
+        
+        # Store results if any matches found
+        if score > 0:
+            category_scores[category] = {
+                'score': score,
+                'keywords': matched_keywords,
+                'keyword_count': len(matched_keywords)
+            }
+    
+    # Return best match if score is significant enough
+    if category_scores:
+        # Sort by score, then by number of matched keywords
+        best_match = max(
+            category_scores.items(),
+            key=lambda x: (x[1]['score'], x[1]['keyword_count'])
+        )
+        
+        # Set minimum threshold to avoid weak matches
+        if best_match[1]['score'] >= 1:
+            return best_match[0]
+    
+    return "General"
+
+
+# Function to get category with confidence score
+@lru_cache(maxsize=1000)
+def categorize_with_confidence(title: str, summary: str) -> Tuple[str, float, List[str]]:
+    """
+    Categorize content and return confidence score with matched keywords.
+    
+    Args:
+        title (str): News article title
+        summary (str): News article summary
+        
+    Returns:
+        Tuple[str, float, List[str]]: (category, confidence_score, matched_keywords)
+    """
+    full_text = f"{title} {summary}"
+    clean_text = preprocess_text(full_text)
+    words = set(clean_text.split())
+    total_words = len(words)
+    
+    category_scores = {}
+    
+    for category, keywords in categories.items():
+        score = 0
+        matched_keywords = []
+        
+        for keyword in keywords:
+            keyword_lower = keyword.lower()
+            
+            if ' ' in keyword_lower:
+                if keyword_lower in clean_text:
+                    phrase_weight = len(keyword_lower.split()) * 2
+                    score += phrase_weight
+                    matched_keywords.append(keyword_lower)
+            else:
+                if keyword_lower in words:
+                    score += 1
+                    matched_keywords.append(keyword_lower)
+        
+        if score > 0:
+            # Calculate confidence based on score and text length
+            confidence = min((score / max(total_words * 0.1, 1)) * 100, 100)
+            category_scores[category] = {
+                'score': score,
+                'confidence': confidence,
+                'keywords': matched_keywords
+            }
+    
+    if category_scores:
+        best_match = max(category_scores.items(), key=lambda x: x[1]['score'])
+        if best_match[1]['score'] >= 1:
+            return (
+                best_match[0],
+                best_match[1]['confidence'],
+                best_match[1]['keywords']
+            )
+    
+    return ("General", 0.0, [])
+
+
+# Function to get all matching categories (for debugging)
+def get_all_matches(title: str, summary: str) -> Dict[str, Dict]:
+    """
+    Get all matching categories with their scores for debugging.
+    
+    Args:
+        title (str): News article title
+        summary (str): News article summary
+        
+    Returns:
+        Dict[str, Dict]: All categories with their match information
+    """
+    full_text = f"{title} {summary}"
+    clean_text = preprocess_text(full_text)
+    words = set(clean_text.split())
+    
+    all_matches = {}
+    
+    for category, keywords in categories.items():
+        score = 0
+        matched_keywords = []
+        
+        for keyword in keywords:
+            keyword_lower = keyword.lower()
+            
+            if ' ' in keyword_lower:
+                if keyword_lower in clean_text:
+                    phrase_weight = len(keyword_lower.split()) * 2
+                    score += phrase_weight
+                    matched_keywords.append(keyword_lower)
+            else:
+                if keyword_lower in words:
+                    score += 1
+                    matched_keywords.append(keyword_lower)
+        
+        all_matches[category] = {
+            'score': score,
+            'matched_keywords': matched_keywords,
+            'keyword_count': len(matched_keywords)
+        }
+    
+    # Sort by score
+    return dict(sorted(all_matches.items(), key=lambda x: x[1]['score'], reverse=True))
+
+
+# Cache management functions
+def clear_categorization_cache():
+    """Clear the LRU cache for categorization functions"""
+    categorize_content.cache_clear()
+    categorize_with_confidence.cache_clear()
+
+
+def get_categorization_cache_info():
+    """Get cache statistics for categorization functions"""
+    return {
+        'categorize_content': categorize_content.cache_info()._asdict(),
+        'categorize_with_confidence': categorize_with_confidence.cache_info()._asdict()
+    }
