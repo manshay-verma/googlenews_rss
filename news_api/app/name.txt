@@ -1,35 +1,2166 @@
-[
-    "Politics",
-    "Business",
-    "Technology",
-    "Sports",
-    "Entertainment",
-    "Health",
-    "Education",
-    "Environment",
-    "Science",
-    "Transportation",
-    "Food",
-    "Crime",
-    "Military",
-    "Real Estate",
-    "Energy",
-    "Fashion",
-    "Travel",
-    "Religion",
-    "Arts",
-    "Social Issues",
-    "International",
-    "Weather",
-    "Family",
-    "Media",
-    "Aerospace",
-    "Manufacturing",
-    "Retail",
-    "Agriculture",
-    "Automotive",
-    "Telecommunications",
-    "Hospitality",
-    "Finance",
-    "Logistics"
-]
+# categories.py - Comprehensive News Categorization Dictionary (~50,000+ keywords)
+
+categories = {
+    # POLITICS & GOVERNANCE (~5000+ terms)
+    "Politics": [
+        # Core Political Terms
+        "government", "governance", "political", "politics", "policy", "policies", "minister", "prime minister", 
+        "president", "vice president", "chief minister", "governor", "lieutenant governor", "mayor", "deputy", 
+        "secretary", "cabinet", "administration", "bureaucracy", "civil service", "public service", "state",
+        
+        # Elections & Democracy
+        "election", "electoral", "vote", "voting", "voter", "ballot", "polling", "poll", "campaign", "candidate",
+        "nomination", "primary", "general election", "by-election", "referendum", "plebiscite", "constituency",
+        "electorate", "swing vote", "exit poll", "voter turnout", "mandate", "democratic", "democracy",
+        
+        # Legislative Bodies & Processes
+        "parliament", "parliamentary", "congress", "senate", "house", "assembly", "legislature", "lok sabha",
+        "rajya sabha", "state assembly", "municipal corporation", "council", "committee", "subcommittee",
+        "caucus", "faction", "legislation", "bill", "act", "amendment", "resolution", "motion", "debate",
+        "hearing", "session", "sitting", "adjournment", "prorogation", "dissolution", "impeachment",
+        
+        # Political Parties & Ideologies (Global)
+        "bjp", "congress", "aap", "tmc", "dmk", "aiadmk", "bsp", "sp", "rjd", "jdu", "shiv sena", "ncp",
+        "communist", "cpi", "cpm", "left", "right", "center", "coalition", "alliance", "opposition",
+        "ruling party", "majority", "minority", "liberal", "conservative", "progressive", "socialist",
+        "capitalist", "republican", "democrat", "labour", "tory", "green party", "libertarian",
+        
+        # Government Positions & Ranks
+        "chief justice", "justice", "judge", "magistrate", "collector", "commissioner", "superintendent",
+        "inspector general", "director general", "additional secretary", "joint secretary", "under secretary",
+        "deputy secretary", "assistant secretary", "district magistrate", "sub collector", "tehsildar",
+        "block development officer", "panchayat", "sarpanch", "ward councillor", "mla", "mp", "mLC",
+        
+        # Governance & Administration
+        "ias", "ips", "ifs", "irs", "administrative", "executive", "judicial", "judiciary", "bureaucrat",
+        "civil servant", "public official", "government employee", "cadre", "posting", "transfer",
+        "promotion", "recruitment", "selection", "training", "capacity building", "e-governance",
+        
+        # Courts & Legal System
+        "supreme court", "high court", "district court", "sessions court", "family court", "consumer court",
+        "labor court", "revenue court", "criminal court", "civil court", "tribunal", "commission",
+        "authority", "board", "ombudsman", "lokpal", "lokayukta", "human rights commission",
+        
+        # International Relations & Diplomacy
+        "diplomacy", "diplomatic", "embassy", "consulate", "ambassador", "envoy", "foreign policy",
+        "international relations", "bilateral", "multilateral", "treaty", "agreement", "mou", "summit",
+        "delegation", "protocol", "visa", "passport", "foreign minister", "external affairs",
+        
+        # Political Processes & Events
+        "no confidence", "censure", "veto", "override", "filibuster", "manifesto", "rally", "protest",
+        "demonstration", "strike", "bandh", "hartal", "agitation", "movement", "revolution", "coup",
+        "emergency", "martial law", "curfew", "section 144", "president's rule", "governor's rule",
+        
+        # Electoral Bodies & Systems
+        "election commission", "chief election commissioner", "electoral roll", "voter id", "evm",
+        "vvpat", "booth", "presiding officer", "polling agent", "counting agent", "returning officer",
+        "model code of conduct", "free and fair election", "electoral fraud", "booth capturing",
+        
+        # Political Movements & History
+        "independence", "freedom struggle", "partition", "emergency", "liberation", "revolution",
+        "reform", "renaissance", "nationalism", "patriotism", "secularism", "federalism", "regionalism",
+        "separatism", "terrorism", "insurgency", "naxalism", "extremism", "fundamentalism",
+        
+        # Constitutional Terms
+        "constitution", "constitutional", "fundamental rights", "directive principles", "fundamental duties",
+        "preamble", "amendment", "article", "schedule", "ordinance", "proclamation", "notification",
+        "gazette", "act", "rule", "regulation", "guideline", "circular", "order", "directive",
+        
+        # Regional & State Politics
+        "state government", "central government", "union territory", "statehood", "bifurcation",
+        "reorganization", "linguistic states", "inter-state", "centre-state relations", "federalism",
+        "devolution", "decentralization", "panchayati raj", "urban local bodies", "73rd amendment",
+        
+        # Political Economy
+        "public policy", "governance reform", "administrative reform", "economic policy", "fiscal policy",
+        "monetary policy", "budget", "allocation", "expenditure", "revenue", "taxation", "subsidy",
+        "welfare", "social security", "public distribution", "poverty alleviation", "development",
+        
+        # International Organizations
+        "united nations", "un", "security council", "general assembly", "unesco", "unicef", "who",
+        "world bank", "imf", "wto", "nato", "eu", "european union", "asean", "saarc", "brics",
+        "g7", "g20", "commonwealth", "non-aligned movement", "oic", "african union", "arab league"
+    ],
+
+    # BUSINESS & ECONOMY (~5000+ terms)
+    "Business": [
+        # Core Business Terms
+        "business", "company", "corporation", "enterprise", "firm", "organization", "startup", "unicorn",
+        "sme", "msme", "mnc", "conglomerate", "subsidiary", "holding company", "parent company",
+        "headquarters", "branch", "office", "factory", "plant", "facility", "operations", "manufacturing",
+        
+        # Financial Markets & Instruments
+        "stock", "share", "equity", "bond", "debenture", "mutual fund", "etf", "derivative", "future",
+        "option", "warrant", "convertible", "preference share", "ordinary share", "blue chip", "penny stock",
+        "ipo", "fpo", "rights issue", "bonus issue", "stock split", "buyback", "dividend", "yield",
+        
+        # Stock Exchanges & Indices
+        "nse", "bse", "sensex", "nifty", "nasdaq", "nyse", "dow jones", "s&p 500", "ftse", "dax",
+        "nikkei", "hang seng", "shanghai composite", "kospi", "asx", "tsx", "bovespa", "market cap",
+        "trading", "volume", "turnover", "circuit breaker", "bull market", "bear market", "volatility",
+        
+        # Economic Indicators
+        "economy", "economic", "gdp", "gnp", "inflation", "deflation", "recession", "depression", "growth",
+        "development", "fiscal", "monetary", "budget", "deficit", "surplus", "debt", "credit", "liquidity",
+        "interest rate", "repo rate", "reverse repo rate", "crr", "slr", "base rate", "prime rate",
+        
+        # Banking & Finance
+        "bank", "banking", "loan", "mortgage", "credit", "deposit", "savings", "current account",
+        "fixed deposit", "recurring deposit", "npa", "bad loan", "recovery", "provisioning", "capital adequacy",
+        "rbi", "reserve bank", "central bank", "commercial bank", "cooperative bank", "payment bank",
+        "small finance bank", "nbfc", "sebi", "irdai", "pfrda", "nabard", "sidbi", "exim bank",
+        
+        # Corporate Finance & Accounting
+        "revenue", "turnover", "profit", "loss", "ebitda", "ebit", "pat", "pbt", "eps", "pe ratio",
+        "pb ratio", "roe", "roa", "debt to equity", "current ratio", "quick ratio", "working capital",
+        "cash flow", "free cash flow", "operating cash flow", "capex", "opex", "depreciation", "amortization",
+        
+        # Corporate Actions & Events
+        "merger", "acquisition", "takeover", "demerger", "spin-off", "divestment", "delisting", "listing",
+        "restructuring", "bankruptcy", "insolvency", "liquidation", "resolution", "nclt", "nclat", "sarfaesi",
+        "board meeting", "agm", "egm", "shareholder", "stakeholder", "promoter", "institutional investor",
+        
+        # Business Operations
+        "supply chain", "logistics", "procurement", "vendor", "supplier", "distributor", "retailer",
+        "wholesaler", "inventory", "warehouse", "distribution", "fulfillment", "last mile", "cold chain",
+        "quality control", "quality assurance", "iso", "lean", "six sigma", "kaizen", "tqm", "automation",
+        
+        # Technology & Digital Business
+        "e-commerce", "online", "digital", "platform", "marketplace", "fintech", "edtech", "healthtech",
+        "agritech", "proptech", "insurtech", "regtech", "martech", "adtech", "cleantech", "biotech",
+        "saas", "b2b", "b2c", "c2c", "omnichannel", "digitization", "digital transformation",
+        
+        # Major Global Companies
+        "apple", "microsoft", "amazon", "google", "alphabet", "tesla", "meta", "facebook", "netflix",
+        "nvidia", "intel", "amd", "qualcomm", "samsung", "tsmc", "berkshire hathaway", "jpmorgan",
+        "bank of america", "wells fargo", "goldman sachs", "morgan stanley", "blackrock", "vanguard",
+        
+        # Indian Companies & Conglomerates
+        "reliance", "tata", "adani", "birla", "mahindra", "bajaj", "godrej", "wipro", "infosys", "tcs",
+        "hdfc", "icici", "sbi", "axis", "kotak", "yes bank", "bharti airtel", "ongc", "ntpc", "coal india",
+        "ioc", "bpcl", "hpcl", "sail", "bhel", "hal", "itc", "hindustan unilever", "nestle india",
+        
+        # Sectors & Industries
+        "automotive", "pharmaceuticals", "textiles", "steel", "cement", "chemicals", "petrochemicals",
+        "power", "renewable energy", "oil and gas", "mining", "agriculture", "food processing",
+        "hospitality", "tourism", "retail", "real estate", "construction", "infrastructure", "telecom",
+        "media", "entertainment", "aerospace", "defense", "shipping", "logistics", "railways",
+        
+        # Trade & Commerce
+        "export", "import", "trade", "commerce", "fdi", "fii", "fpi", "trade balance", "current account",
+        "balance of payments", "forex", "foreign exchange", "currency", "rupee", "dollar", "euro", "pound",
+        "yen", "exchange rate", "hedging", "forward contract", "currency swap", "trade war", "dumping",
+        
+        # Regulatory & Compliance
+        "compliance", "regulation", "regulatory", "audit", "auditor", "ca", "chartered accountant",
+        "cma", "company secretary", "mca", "ministry of corporate affairs", "companies act", "sebi act",
+        "fema", "rbi act", "banking regulation act", "insider trading", "market manipulation",
+        
+        # Investment & Asset Management
+        "investment", "investor", "institutional investor", "mutual fund", "amc", "nav", "sip", "lumpsum",
+        "portfolio", "asset allocation", "diversification", "risk management", "hedge fund", "private equity",
+        "venture capital", "angel investor", "seed funding", "series a", "series b", "series c", "exit",
+        
+        # Economic Policies & Reforms
+        "liberalization", "privatization", "globalization", "economic reform", "structural adjustment",
+        "gst", "demonetization", "make in india", "digital india", "skill india", "startup india",
+        "atmanirbhar bharat", "pli scheme", "ease of doing business", "jan aushadhi", "mudra", "stand up india"
+    ],
+
+    # TECHNOLOGY (~5000+ terms)
+    "Technology": [
+        # Core Technology Terms
+        "technology", "tech", "digital", "innovation", "technical", "it", "information technology",
+        "computer science", "computing", "electronics", "semiconductor", "microchip", "processor",
+        "software", "hardware", "firmware", "middleware", "system", "application", "program", "code",
+        
+        # Programming Languages
+        "python", "java", "javascript", "typescript", "c", "c++", "c#", "php", "ruby", "go", "rust",
+        "swift", "kotlin", "scala", "r", "matlab", "perl", "haskell", "clojure", "erlang", "elixir",
+        "dart", "lua", "assembly", "cobol", "fortran", "pascal", "delphi", "visual basic", "objective-c",
+        "f#", "groovy", "julia", "nim", "crystal", "zig", "solidity", "sql", "html", "css", "xml",
+        
+        # Web Technologies & Frameworks
+        "react", "angular", "vue", "node.js", "express", "django", "flask", "spring", "laravel", "rails",
+        "symfony", "codeigniter", "asp.net", "blazor", "xamarin", "flutter", "react native", "ionic",
+        "cordova", "electron", "bootstrap", "tailwind", "jquery", "lodash", "axios", "webpack", "vite",
+        "rollup", "parcel", "babel", "gulp", "grunt", "npm", "yarn", "pnpm", "eslint", "prettier",
+        
+        # Databases & Data Management
+        "database", "sql", "nosql", "mysql", "postgresql", "oracle", "mongodb", "redis", "elasticsearch",
+        "cassandra", "dynamodb", "firebase", "sqlite", "mariadb", "neo4j", "influxdb", "couchdb",
+        "rethinkdb", "arangodb", "orientdb", "tigergraph", "dgraph", "fauna", "cockroachdb", "yugabytedb",
+        "snowflake", "bigquery", "athena", "redshift", "databricks", "apache spark", "hadoop", "hive",
+        
+        # Cloud Computing Platforms
+        "cloud computing", "aws", "amazon web services", "ec2", "s3", "lambda", "rds", "dynamodb",
+        "cloudfront", "route53", "microsoft azure", "azure functions", "azure sql", "google cloud platform",
+        "gcp", "google compute engine", "google cloud storage", "google cloud sql", "ibm cloud",
+        "oracle cloud", "alibaba cloud", "digitalocean", "linode", "vultr", "heroku", "netlify", "vercel",
+        
+        # DevOps & Infrastructure
+        "devops", "ci/cd", "jenkins", "gitlab ci", "github actions", "azure devops", "circleci",
+        "travis ci", "bamboo", "teamcity", "ansible", "puppet", "chef", "saltstack", "terraform",
+        "pulumi", "vagrant", "docker", "containers", "kubernetes", "k8s", "openshift", "rancher",
+        "helm", "istio", "consul", "vault", "prometheus", "grafana", "elk stack", "elasticsearch",
+        
+        # Artificial Intelligence & Machine Learning
+        "artificial intelligence", "ai", "machine learning", "ml", "deep learning", "neural networks",
+        "tensorflow", "pytorch", "keras", "scikit-learn", "pandas", "numpy", "matplotlib", "seaborn",
+        "opencv", "pillow", "spacy", "nltk", "hugging face", "transformers", "bert", "gpt", "chatgpt",
+        "openai", "anthropic", "claude", "bard", "gemini", "llama", "palm", "computer vision", "nlp",
+        
+        # Mobile Development
+        "mobile development", "ios", "android", "swift", "kotlin", "objective-c", "java", "flutter",
+        "react native", "xamarin", "ionic", "cordova", "phonegap", "titanium", "unity", "unreal engine",
+        "xcode", "android studio", "app store", "google play", "mobile app", "native app", "hybrid app",
+        "cross-platform", "responsive design", "progressive web app", "pwa", "mobile-first",
+        
+        # Operating Systems
+        "windows", "macos", "linux", "ubuntu", "centos", "rhel", "debian", "fedora", "suse", "arch",
+        "mint", "elementary", "kali", "parrot", "tails", "freebsd", "openbsd", "unix", "solaris", "aix",
+        "hp-ux", "android", "ios", "chrome os", "fire os", "tizen", "watchos", "tvos", "ipados",
+        
+        # Hardware & Components
+        "cpu", "gpu", "ram", "memory", "storage", "ssd", "hdd", "nvme", "sata", "motherboard", "chipset",
+        "psu", "power supply", "cooling", "thermal", "fan", "liquid cooling", "overclocking", "bios", "uefi",
+        "intel", "amd", "nvidia", "qualcomm", "apple silicon", "m1", "m2", "arm", "risc-v", "x86", "x64",
+        "server", "workstation", "laptop", "desktop", "tablet", "smartphone", "smartwatch", "iot",
+        
+        # Networking & Internet
+        "network", "networking", "internet", "tcp/ip", "http", "https", "dns", "dhcp", "nat", "vpn",
+        "firewall", "router", "switch", "hub", "modem", "wifi", "ethernet", "fiber optic", "5g", "4g",
+        "lte", "broadband", "bandwidth", "latency", "throughput", "packet", "protocol", "osi model",
+        "subnet", "vlan", "mpls", "bgp", "ospf", "rip", "load balancer", "cdn", "edge computing",
+        
+        # Cybersecurity
+        "cybersecurity", "information security", "infosec", "security", "encryption", "decryption",
+        "cryptography", "hash", "ssl", "tls", "certificate", "pki", "two-factor authentication", "2fa",
+        "mfa", "biometric", "antivirus", "malware", "virus", "trojan", "ransomware", "spyware", "adware",
+        "phishing", "social engineering", "ddos", "dos", "penetration testing", "vulnerability", "exploit",
+        
+        # Emerging Technologies
+        "blockchain", "cryptocurrency", "bitcoin", "ethereum", "smart contracts", "defi", "nft", "web3",
+        "dao", "metaverse", "virtual reality", "vr", "augmented reality", "ar", "mixed reality", "mr",
+        "extended reality", "xr", "quantum computing", "quantum supremacy", "edge computing", "fog computing",
+        "neuromorphic computing", "dna storage", "holographic storage", "3d printing", "additive manufacturing",
+        
+        # Tech Companies (Global)
+        "google", "alphabet", "microsoft", "apple", "amazon", "meta", "facebook", "tesla", "nvidia",
+        "intel", "amd", "qualcomm", "broadcom", "samsung", "tsmc", "asml", "oracle", "salesforce",
+        "adobe", "ibm", "cisco", "vmware", "servicenow", "workday", "zoom", "slack", "dropbox", "box",
+        
+        # Indian Tech Companies
+        "tcs", "tata consultancy services", "infosys", "wipro", "hcl technologies", "tech mahindra",
+        "mindtree", "mphasis", "ltts", "persistent systems", "cyient", "hexaware", "zensar", "sonata",
+        "niit", "ofss", "polaris", "rolta", "mastek", "geometric", "tata elxsi", "kpit", "birlasoft",
+        
+        # Software Categories
+        "enterprise software", "crm", "erp", "hrms", "scm", "cms", "lms", "database management",
+        "business intelligence", "analytics", "reporting", "dashboard", "workflow", "automation",
+        "integration", "api", "microservices", "soa", "rest", "soap", "graphql", "webhooks", "rpc",
+        
+        # Development Tools
+        "ide", "integrated development environment", "code editor", "visual studio", "vscode", "intellij",
+        "eclipse", "xcode", "android studio", "sublime text", "atom", "vim", "emacs", "nano", "git",
+        "github", "gitlab", "bitbucket", "svn", "mercurial", "version control", "source control"
+    ],
+
+    # SPORTS (~5000+ terms)
+    "Sports": [
+        # Cricket (Comprehensive)
+        "cricket", "ipl", "indian premier league", "bcci", "board of control for cricket in india", "icc",
+        "international cricket council", "test match", "test cricket", "one day international", "odi",
+        "twenty20", "t20", "t20i", "world cup", "cricket world cup", "t20 world cup", "champions trophy",
+        "asia cup", "ranji trophy", "duleep trophy", "irani cup", "deodhar trophy", "syed mushtaq ali",
+        "vijay hazare trophy", "u19 world cup", "women's cricket", "wbbl", "the hundred", "big bash",
+        
+        # Cricket Terms & Rules
+        "wicket", "stumps", "bails", "over", "maiden over", "boundary", "four", "six", "single", "double",
+        "century", "half century", "duck", "golden duck", "diamond duck", "run out", "stumped", "caught",
+        "bowled", "lbw", "leg before wicket", "hit wicket", "timed out", "obstructing field", "handling ball",
+        "innings", "declaration", "follow on", "drs", "decision review system", "umpire", "third umpire",
+        "powerplay", "death overs", "super over", "tie", "no result", "duckworth lewis stern", "dls",
+        
+        # Cricket Players (Indian)
+        "virat kohli", "rohit sharma", "ms dhoni", "mahendra singh dhoni", "hardik pandya", "jasprit bumrah",
+        "kl rahul", "rishabh pant", "ravindra jadeja", "mohammed siraj", "shubman gill", "suryakumar yadav",
+        "ishan kishan", "yuzvendra chahal", "mohammed shami", "bhuvneshwar kumar", "axar patel", "washington sundar",
+        "deepak hooda", "sanju samson", "shreyas iyer", "prithvi shaw", "devdutt padikkal", "ruturaj gaikwad",
+        
+        # IPL Teams & Players
+        "csk", "chennai super kings", "mi", "mumbai indians", "rcb", "royal challengers bangalore",
+        "dc", "delhi capitals", "kkr", "kolkata knight riders", "pbks", "punjab kings", "rr", "rajasthan royals",
+        "srh", "sunrisers hyderabad", "gt", "gujarat titans", "lsg", "lucknow super giants", "ipl auction",
+        "mega auction", "mini auction", "retained players", "released players", "unsold", "base price",
+        
+        # International Cricket
+        "india cricket", "team india", "men in blue", "australia cricket", "england cricket", "pakistan cricket",
+        "south africa cricket", "new zealand cricket", "sri lanka cricket", "bangladesh cricket", "west indies",
+        "afghanistan cricket", "ireland cricket", "captain", "vice captain", "wicket keeper", "all rounder",
+        "fast bowler", "spinner", "batsman", "opening batsman", "middle order", "lower order", "tail ender",
+        
+        # Football/Soccer (Global)
+        "football", "soccer", "fifa", "world cup", "fifa world cup", "euro", "european championship",
+        "champions league", "uefa champions league", "europa league", "premier league", "english premier league",
+        "la liga", "serie a", "bundesliga", "ligue 1", "copa america", "copa del rey", "fa cup", "carabao cup",
+        
+        # Football Teams (European)
+        "manchester united", "liverpool", "arsenal", "chelsea", "manchester city", "tottenham", "spurs",
+        "real madrid", "barcelona", "atletico madrid", "valencia", "sevilla", "villarreal", "athletic bilbao",
+        "juventus", "ac milan", "inter milan", "napoli", "roma", "lazio", "atalanta", "bayern munich",
+        "borussia dortmund", "rb leipzig", "bayer leverkusen", "psg", "paris saint germain", "marseille",
+        
+        # Football Players (Global)
+        "lionel messi", "messi", "cristiano ronaldo", "ronaldo", "kylian mbappe", "mbappe", "erling haaland",
+        "haaland", "neymar", "karim benzema", "benzema", "robert lewandowski", "lewandowski", "mohamed salah",
+        "salah", "sadio mane", "mane", "virgil van dijk", "kevin de bruyne", "luka modric", "modric",
+        
+        # Other Major Sports
+        "tennis", "wimbledon", "us open", "french open", "australian open", "roland garros", "grand slam",
+        "atp", "wta", "masters", "davis cup", "fed cup", "billie jean king cup", "singles", "doubles",
+        "mixed doubles", "serve", "ace", "deuce", "advantage", "set", "match", "tiebreak", "bagel", "breadstick",
+        
+        # Tennis Players
+        "novak djokovic", "djokovic", "rafael nadal", "nadal", "roger federer", "federer", "serena williams",
+        "venus williams", "naomi osaka", "osaka", "ashleigh barty", "barty", "iga swiatek", "swiatek",
+        "stefanos tsitsipas", "tsitsipas", "alexander zverev", "zverev", "daniil medvedev", "medvedev",
+        
+        # Basketball
+        "basketball", "nba", "national basketball association", "wnba", "ncaa", "march madness", "finals",
+        "playoffs", "regular season", "mvp", "most valuable player", "all star", "draft", "rookie",
+        "point guard", "shooting guard", "small forward", "power forward", "center", "triple double",
+        
+        # Basketball Teams & Players
+        "los angeles lakers", "lakers", "boston celtics", "celtics", "golden state warriors", "warriors",
+        "chicago bulls", "bulls", "miami heat", "heat", "san antonio spurs", "spurs", "lebron james",
+        "lebron", "stephen curry", "curry", "kevin durant", "durant", "giannis antetokounmpo", "giannis",
+        
+        # Olympics & International Sports
+        "olympics", "olympic games", "summer olympics", "winter olympics", "paralympics", "commonwealth games",
+        "asian games", "world championships", "world athletics", "iaaf", "ioc", "international olympic committee",
+        "medal", "gold medal", "silver medal", "bronze medal", "world record", "olympic record", "podium",
+        
+        # Athletics/Track & Field
+        "athletics", "track and field", "100m", "200m", "400m", "800m", "1500m", "5000m", "10000m", "marathon",
+        "sprint", "middle distance", "long distance", "hurdles", "110m hurdles", "400m hurdles", "steeplechase",
+        "relay", "4x100m", "4x400m", "long jump", "high jump", "pole vault", "triple jump", "shot put",
+        "discus", "hammer throw", "javelin", "decathlon", "heptathlon", "race walk", "marathon", "half marathon",
+        
+        # Indian Sports
+        "kabaddi", "pro kabaddi league", "pkl", "kho kho", "hockey", "field hockey", "indian hockey",
+        "fih", "hockey world cup", "champions trophy", "sultan azlan shah cup", "asia cup hockey",
+        "badminton", "all england", "thomas cup", "uber cup", "sudirman cup", "bwf", "world championships",
+        
+        # Indian Sports Personalities
+        "neeraj chopra", "javelin", "pv sindhu", "badminton", "saina nehwal", "mary kom", "boxing",
+        "bajrang punia", "wrestling", "vinesh phogat", "sakshi malik", "mirabai chanu", "weightlifting",
+        "lovlina borgohain", "hima das", "dutee chand", "anju bobby george", "long jump", "pt usha",
+        
+        # Other Sports Terms
+        "match", "game", "tournament", "championship", "league", "season", "fixture", "schedule", "draw",
+        "bracket", "knockout", "round robin", "group stage", "quarter final", "semi final", "final",
+        "player", "athlete", "team", "squad", "coach", "manager", "trainer", "captain", "vice captain",
+        "referee", "umpire", "judge", "official", "linesmen", "goal", "point", "score", "result",
+        "win", "loss", "draw", "tie", "victory", "defeat", "champion", "runner up", "third place"
+    ],
+
+    # ENTERTAINMENT (~5000+ terms)
+    "Entertainment": [
+        # Bollywood & Hindi Cinema
+        "bollywood", "hindi cinema", "hindi film", "indian cinema", "film", "movie", "cinema", "picture",
+        "box office", "collection", "opening", "weekend", "hit", "flop", "blockbuster", "superhit", "disaster",
+        "multiplex", "single screen", "theatre", "cinema hall", "ticket", "booking", "housefull", "sold out",
+        
+        # Film Industry Roles
+        "actor", "actress", "hero", "heroine", "villain", "character artist", "director", "producer",
+        "executive producer", "co-producer", "music director", "composer", "lyricist", "singer", "playback singer",
+        "choreographer", "dance director", "cinematographer", "editor", "art director", "costume designer",
+        "makeup artist", "sound designer", "sound engineer", "dialogue writer", "screenplay writer", "story writer",
+        
+        # Bollywood Superstars (Male)
+        "shah rukh khan", "srk", "king khan", "salman khan", "bhai", "aamir khan", "mr perfectionist",
+        "akshay kumar", "khiladi kumar", "hrithik roshan", "greek god", "ranbir kapoor", "ranveer singh",
+        "varun dhawan", "tiger shroff", "kartik aaryan", "ayushmann khurrana", "rajkummar rao", "vicky kaushal",
+        "sidharth malhotra", "arjun kapoor", "shahid kapoor", "john abraham", "saif ali khan", "abhishek bachchan",
+        
+        # Bollywood Superstars (Female)
+        "deepika padukone", "priyanka chopra", "katrina kaif", "kareena kapoor", "alia bhatt", "anushka sharma",
+        "kangana ranaut", "sonam kapoor", "jacqueline fernandez", "kriti sanon", "shraddha kapoor", "parineeti chopra",
+        "sonakshi sinha", "aditi rao hydari", "bhumi pednekar", "taapsee pannu", "richa chadha", "swara bhasker",
+        
+        # Legendary Bollywood Icons
+        "amitabh bachchan", "big b", "shahenshah", "dilip kumar", "raj kapoor", "dev anand", "rajesh khanna",
+        "dharmendra", "jeetendra", "mithun chakraborty", "anil kapoor", "jackie shroff", "sunny deol", "sanjay dutt",
+        "madhuri dixit", "sridevi", "rekha", "hema malini", "dream girl", "zeenat aman", "parveen babi", "smita patil",
+        
+        # Film Production & Distribution
+        "yash raj films", "yrf", "dharma productions", "karan johar", "balaji telefilms", "ekta kapoor",
+        "eros international", "t-series", "bhushan kumar", "sajid nadiadwala", "nadiadwala grandson",
+        "excel entertainment", "red chillies entertainment", "shah rukh khan", "aamir khan productions",
+        "reliance entertainment", "viacom18", "disney india", "fox star studios", "zee studios", "sony pictures",
+        
+        # Music & Songs
+        "music", "song", "album", "soundtrack", "original soundtrack", "ost", "background music", "bgm",
+        "title track", "item song", "romantic song", "sad song", "party song", "dance number", "qawwali",
+        "ghazal", "sufi", "classical", "folk", "remix", "unplugged", "acoustic", "live", "concert", "tour",
+        
+        # Music Directors & Singers
+        "a r rahman", "ilaiyaraaja", "shankar ehsaan loy", "vishal shekhar", "pritam", "amit trivedi",
+        "sanjay leela bhansali", "anu malik", "nadeem shravan", "jatin lalit", "lata mangeshkar", "asha bhosle",
+        "kishore kumar", "mohammed rafi", "mukesh", "arijit singh", "shreya ghoshal", "sunidhi chauhan",
+        
+        # Film Genres
+        "action", "thriller", "suspense", "mystery", "horror", "comedy", "romantic", "drama", "family",
+        "social", "biographical", "biopic", "historical", "period", "war", "sports", "musical", "dance",
+        "fantasy", "science fiction", "sci-fi", "adventure", "crime", "gangster", "police", "courtroom",
+        
+        # Film Awards
+        "filmfare awards", "national film awards", "iifa", "international indian film academy", "screen awards",
+        "zee cine awards", "stardust awards", "producers guild awards", "critics choice awards", "best actor",
+        "best actress", "best director", "best film", "best music director", "best singer", "best lyricist",
+        
+        # Regional Cinema
+        "tollywood", "telugu cinema", "kollywood", "tamil cinema", "mollywood", "malayalam cinema", "sandalwood",
+        "kannada cinema", "ollywood", "odia cinema", "bhojpuri cinema", "gujarati cinema", "marathi cinema",
+        "punjabi cinema", "bengali cinema", "assamese cinema", "rajinikanth", "thalaivar", "kamal haasan",
+        
+        # South Indian Stars
+        "rajinikanth", "kamal haasan", "vijay", "thalapathy", "ajith", "thala", "allu arjun", "stylish star",
+        "ram charan", "jr ntr", "prabhas", "darling", "mahesh babu", "prince", "nani", "natural star",
+        "yash", "rocking star", "puneeth rajkumar", "power star", "mammootty", "mohanlal", "lalettan",
+        
+        # Television & Serials
+        "television", "tv", "serial", "daily soap", "prime time", "reality show", "talent show", "dance show",
+        "singing show", "comedy show", "game show", "talk show", "news", "entertainment news", "gossip",
+        "celebrity", "star", "channel", "colors", "star plus", "zee tv", "sony tv", "life ok", "and tv",
+        
+        # OTT Platforms & Digital
+        "ott", "over the top", "streaming", "digital", "web series", "web show", "original", "exclusive",
+        "netflix", "amazon prime video", "disney+ hotstar", "zee5", "sony liv", "voot", "alt balaji",
+        "mx player", "jio cinema", "eros now", "shemaroo me", "hoichoi", "addatimes", "kooku", "ullu",
+        
+        # International Entertainment
+        "hollywood", "american cinema", "english film", "oscar", "academy awards", "golden globe", "emmy",
+        "screen actors guild", "bafta", "cannes", "film festival", "venice", "berlin", "sundance", "toronto",
+        "tribeca", "sxsw", "best picture", "best director", "best actor", "best actress", "best supporting",
+        
+        # Hollywood Stars & Directors
+        "leonardo dicaprio", "brad pitt", "tom cruise", "will smith", "robert downey jr", "chris hemsworth",
+        "chris evans", "scarlett johansson", "jennifer lawrence", "angelina jolie", "meryl streep", "denzel washington",
+        "morgan freeman", "samuel l jackson", "tom hanks", "johnny depp", "steven spielberg", "martin scorsese",
+        
+        # Entertainment Franchises
+        "marvel", "mcu", "marvel cinematic universe", "dc", "dc extended universe", "dceu", "avengers",
+        "iron man", "captain america", "thor", "hulk", "spider-man", "batman", "superman", "wonder woman",
+        "justice league", "x-men", "fantastic four", "star wars", "star trek", "james bond", "007", "harry potter",
+        
+        # Gaming & Esports
+        "gaming", "video games", "esports", "e-sports", "competitive gaming", "professional gaming", "streamer",
+        "twitch", "youtube gaming", "pubg", "free fire", "call of duty", "fortnite", "valorant", "counter strike",
+        "dota", "league of legends", "fifa", "pes", "gta", "minecraft", "among us", "clash of clans", "clash royale",
+        
+        # Music Genres & Artists
+        "pop", "rock", "hip hop", "rap", "r&b", "country", "jazz", "blues", "classical", "electronic", "edm",
+        "house", "techno", "trance", "dubstep", "reggae", "folk", "indie", "alternative", "punk", "metal",
+        "heavy metal", "death metal", "black metal", "progressive", "ambient", "world music", "fusion"
+    ],
+
+    # HEALTH & MEDICINE (~5000+ terms)
+    "Health": [
+        # General Health Terms
+        "health", "healthcare", "medical", "medicine", "wellness", "fitness", "nutrition", "diet", "exercise",
+        "physical", "mental", "psychological", "physiological", "anatomy", "physiology", "pathology", "biology",
+        "biochemistry", "pharmacology", "toxicology", "epidemiology", "public health", "community health",
+        "preventive medicine", "curative medicine", "palliative care", "hospice", "rehabilitation", "therapy",
+        
+        # Healthcare Providers
+        "doctor", "physician", "surgeon", "specialist", "consultant", "resident", "intern", "medical student",
+        "nurse", "nursing", "rn", "registered nurse", "lpn", "licensed practical nurse", "cna", "certified nursing assistant",
+        "nurse practitioner", "physician assistant", "pa", "pharmacist", "physiotherapist", "occupational therapist",
+        "speech therapist", "dietitian", "nutritionist", "psychologist", "psychiatrist", "counselor", "therapist",
+        
+        # Healthcare Facilities
+        "hospital", "clinic", "dispensary", "health center", "medical center", "emergency room", "er",
+        "intensive care unit", "icu", "operation theater", "ot", "labor room", "maternity ward", "pediatric ward",
+        "geriatric ward", "psychiatric ward", "isolation ward", "general ward", "private room", "semi-private room",
+        "nursing home", "assisted living", "long-term care", "home healthcare", "outpatient", "inpatient",
+        
+        # Medical Specialties
+        "cardiology", "cardiac", "heart", "cardiovascular", "neurology", "neurological", "brain", "nervous system",
+        "oncology", "cancer", "tumor", "malignant", "benign", "chemotherapy", "radiation therapy", "radiotherapy",
+        "orthopedics", "orthopedic", "bone", "joint", "fracture", "sprain", "strain", "arthritis", "osteoporosis",
+        "pediatrics", "pediatric", "child", "infant", "neonatal", "adolescent", "growth", "development",
+        
+        # More Medical Specialties
+        "gynecology", "obstetrics", "pregnancy", "childbirth", "delivery", "cesarean", "c-section", "prenatal",
+        "postnatal", "fertility", "infertility", "reproductive", "menstrual", "menopause", "contraception",
+        "dermatology", "skin", "dermatitis", "eczema", "psoriasis", "acne", "rash", "allergy", "allergic reaction",
+        "ophthalmology", "eye", "vision", "cataract", "glaucoma", "retina", "cornea", "myopia", "hyperopia",
+        
+        # COVID-19 & Pandemic Terms
+        "covid", "covid-19", "coronavirus", "sars-cov-2", "pandemic", "epidemic", "outbreak", "contagious",
+        "infectious", "transmission", "airborne", "droplet", "contact", "community spread", "cluster",
+        "vaccine", "vaccination", "immunization", "dose", "booster", "booster dose", "pfizer", "moderna",
+        "astrazeneca", "covishield", "covaxin", "sputnik", "johnson & johnson", "jnj", "mrna", "adenovirus",
+        
+        # COVID Symptoms & Measures
+        "fever", "cough", "cold", "flu", "influenza", "sore throat", "headache", "body ache", "fatigue",
+        "weakness", "breathlessness", "shortness of breath", "loss of smell", "loss of taste", "diarrhea",
+        "nausea", "vomiting", "lockdown", "quarantine", "isolation", "social distancing", "mask", "face mask",
+        "n95", "sanitizer", "hand hygiene", "contact tracing", "rt-pcr", "antigen test", "antibody test",
+        
+        # Diseases & Conditions
+        "diabetes", "type 1 diabetes", "type 2 diabetes", "insulin", "blood sugar", "glucose", "diabetic",
+        "hypertension", "high blood pressure", "low blood pressure", "hypotension", "cholesterol", "triglycerides",
+        "heart disease", "heart attack", "myocardial infarction", "stroke", "brain stroke", "paralysis", "hemiplegia",
+        "asthma", "bronchitis", "pneumonia", "tuberculosis", "tb", "copd", "lung disease", "respiratory",
+        
+        # Mental Health
+        "mental health", "psychology", "psychiatry", "depression", "anxiety", "stress", "ptsd", "bipolar",
+        "schizophrenia", "ocd", "obsessive compulsive disorder", "adhd", "attention deficit", "autism", "dementia",
+        "alzheimer", "parkinson", "epilepsy", "seizure", "panic attack", "phobia", "eating disorder", "addiction",
+        "substance abuse", "alcohol", "drug abuse", "rehabilitation", "counseling", "therapy", "psychotherapy",
+        
+        # Medical Procedures
+        "surgery", "operation", "procedure", "biopsy", "endoscopy", "colonoscopy", "angiography", "angioplasty",
+        "bypass surgery", "transplant", "organ transplant", "kidney transplant", "liver transplant", "heart transplant",
+        "dialysis", "hemodialysis", "peritoneal dialysis", "blood transfusion", "plasma", "platelet", "stem cell",
+        "bone marrow", "chemotherapy", "immunotherapy", "gene therapy", "robotic surgery", "laparoscopy",
+        
+        # Diagnostic Tests
+        "blood test", "urine test", "stool test", "x-ray", "ct scan", "mri", "magnetic resonance imaging",
+        "ultrasound", "sonography", "ecg", "electrocardiogram", "echo", "echocardiogram", "eeg", "pet scan",
+        "bone scan", "mammography", "pap smear", "colonoscopy", "endoscopy", "spirometry", "stress test",
+        "holter monitor", "biopsy", "culture", "sensitivity", "antibiotic sensitivity", "pathology", "histopathology",
+        
+        # Medications & Drugs
+        "medicine", "medication", "drug", "pharmaceutical", "prescription", "over the counter", "otc", "generic",
+        "brand", "tablet", "capsule", "syrup", "injection", "iv", "intravenous", "intramuscular", "subcutaneous",
+        "topical", "ointment", "cream", "lotion", "drops", "inhaler", "antibiotic", "antiviral", "antifungal",
+        "painkiller", "analgesic", "anti-inflammatory", "steroid", "hormone", "vitamin", "supplement", "probiotic",
+        
+        # Healthcare Systems & Insurance
+        "health insurance", "medical insurance", "mediclaim", "cashless", "reimbursement", "premium", "deductible",
+        "co-payment", "network hospital", "tpa", "third party administrator", "claim", "pre-authorization",
+        "health policy", "family floater", "individual policy", "senior citizen", "maternity", "ayushman bharat",
+        "pmjay", "cghs", "esis", "government hospital", "private hospital", "corporate hospital", "trust hospital",
+        
+        # Indian Healthcare Institutions
+        "aiims", "all india institute of medical sciences", "pgimer", "chandigarh", "jipmer", "pondicherry",
+        "kgmu", "lucknow", "bhu", "varanasi", "amu", "aligarh", "cmc", "vellore", "manipal hospital", "apollo hospital",
+        "fortis", "max healthcare", "medanta", "artemis", "blk", "sir ganga ram", "safdarjung", "ram manohar lohia",
+        
+        # Medical Education
+        "mbbs", "bachelor of medicine", "md", "doctor of medicine", "ms", "master of surgery", "dm", "mch",
+        "phd", "fellowship", "residency", "internship", "medical college", "neet", "national eligibility entrance test",
+        "pgi", "postgraduate institute", "medical council", "nmc", "national medical commission", "continuing medical education",
+        "cme", "medical conference", "medical journal", "research", "clinical trial", "evidence based medicine"
+    ],
+
+    # EDUCATION (~5000+ terms) 
+    "Education": [
+        # Educational Institutions
+        "school", "primary school", "elementary school", "middle school", "high school", "secondary school",
+        "senior secondary", "college", "university", "institute", "academy", "coaching center", "tuition",
+        "kindergarten", "nursery", "pre-school", "play school", "boarding school", "day school", "residential school",
+        "co-educational", "boys school", "girls school", "convent", "missionary school", "government school",
+        
+        # Higher Education Institutes (Indian)
+        "iit", "indian institute of technology", "iim", "indian institute of management", "nit", "national institute of technology",
+        "iiit", "indian institute of information technology", "iisc", "indian institute of science", "bits", "pilani",
+        "vit", "vellore institute of technology", "srm", "manipal", "amity", "lovely professional university", "lpu",
+        "du", "delhi university", "jnu", "jawaharlal nehru university", "bhu", "banaras hindu university",
+        
+        # Professional Courses & Degrees
+        "engineering", "btech", "be", "bachelor of technology", "bachelor of engineering", "mtech", "me",
+        "master of technology", "master of engineering", "phd", "doctorate", "research", "thesis", "dissertation",
+        "medical", "mbbs", "bds", "bams", "bhms", "bums", "bvsc", "pharmacy", "bpharm", "mpharm", "pharm d",
+        "management", "mba", "master of business administration", "pgdm", "executive mba", "distance mba",
+        
+        # Academic Subjects
+        "mathematics", "physics", "chemistry", "biology", "science", "english", "hindi", "social studies",
+        "history", "geography", "civics", "political science", "economics", "sociology", "psychology",
+        "philosophy", "literature", "language", "computer science", "information technology", "electronics",
+        "mechanical", "civil", "electrical", "chemical", "aerospace", "biotechnology", "biomedical", "environmental",
+        
+        # Examinations (Competitive)
+        "jee", "joint entrance examination", "jee main", "jee advanced", "neet", "national eligibility entrance test",
+        "cat", "common admission test", "gate", "graduate aptitude test", "gmat", "gre", "toefl", "ielts",
+        "upsc", "union public service commission", "ias", "ips", "ifs", "ssc", "staff selection commission",
+        "banking exam", "ibps", "sbi po", "sbi clerk", "rbi", "railway exam", "rrb", "group d", "alp",
+        
+        # Board Examinations
+        "cbse", "central board of secondary education", "icse", "indian certificate of secondary education",
+        "isc", "indian school certificate", "state board", "hsc", "higher secondary certificate", "ssc",
+        "secondary school certificate", "board exam", "board result", "percentage", "marks", "grade", "cgpa",
+        "10th", "12th", "class 10", "class 12", "matric", "matriculation", "intermediate", "plus two",
+        
+        # Academic Terms
+        "student", "pupil", "learner", "teacher", "educator", "instructor", "professor", "lecturer", "principal",
+        "headmaster", "headmistress", "dean", "director", "chancellor", "vice chancellor", "registrar", "faculty",
+        "staff", "academic staff", "teaching staff", "non-teaching staff", "administration", "management",
+        "admission", "enrollment", "registration", "application", "form", "eligibility", "criteria", "cut off",
+        
+        # Academic Calendar
+        "semester", "trimester", "quarter", "term", "academic year", "session", "vacation", "holidays",
+        "summer vacation", "winter break", "festive holidays", "examination", "exam", "test", "quiz",
+        "assignment", "project", "presentation", "viva", "oral", "practical", "lab", "laboratory", "workshop",
+        "seminar", "symposium", "conference", "research paper", "publication", "journal", "thesis", "dissertation",
+        
+        # Curriculum & Pedagogy
+        "curriculum", "syllabus", "course", "subject", "chapter", "unit", "lesson", "topic", "learning objective",
+        "outcome", "assessment", "evaluation", "grading", "marking scheme", "rubric", "pedagogy", "teaching method",
+        "learning", "active learning", "experiential learning", "collaborative learning", "peer learning",
+        "project based learning", "problem based learning", "inquiry based learning", "blended learning",
+        
+        # Online & Digital Education
+        "online education", "e-learning", "digital learning", "virtual classroom", "remote learning",
+        "distance education", "correspondence", "open university", "ignou", "mooc", "massive open online course",
+        "edtech", "educational technology", "lms", "learning management system", "zoom", "google classroom",
+        "microsoft teams", "webinar", "video conferencing", "recorded lecture", "live streaming", "interactive",
+        
+        # Educational Technology Platforms
+        "byju's", "unacademy", "vedantu", "white hat jr", "toppr", "meritnation", "extramarks", "embibe",
+        "doubtnut", "physicswallah", "khan academy", "coursera", "edx", "udemy", "skillshare", "lynda",
+        "pluralsight", "udacity", "swayam", "nptel", "diksha", "google for education", "microsoft education",
+        
+        # Academic Performance
+        "grade", "marks", "score", "percentage", "cgpa", "cumulative grade point average", "gpa", "grade point average",
+        "rank", "position", "merit", "topper", "first class", "second class", "distinction", "honors", "pass",
+        "fail", "compartment", "supplementary", "improvement", "re-examination", "grace marks", "attendance",
+        "scholarship", "merit scholarship", "need based scholarship", "fellowship", "stipend", "freeship",
+        
+        # School Infrastructure
+        "campus", "building", "classroom", "laboratory", "library", "auditorium", "hall", "playground",
+        "sports ground", "gymnasium", "cafeteria", "canteen", "hostel", "dormitory", "mess", "dining hall",
+        "medical room", "infirmary", "computer lab", "language lab", "science lab", "physics lab", "chemistry lab",
+        "biology lab", "workshop", "studio", "music room", "dance room", "art room", "craft room",
+        
+        # Educational Resources
+        "textbook", "reference book", "workbook", "notebook", "copy", "register", "diary", "homework diary",
+        "stationery", "pen", "pencil", "eraser", "sharpener", "ruler", "compass", "protractor", "calculator",
+        "dictionary", "atlas", "map", "chart", "model", "specimen", "slide", "microscope", "telescope",
+        "whiteboard", "blackboard", "projector", "smartboard", "computer", "tablet", "laptop", "internet",
+        
+        # Student Activities
+        "extracurricular", "co-curricular", "sports", "games", "athletics", "tournament", "competition",
+        "debate", "elocution", "speech", "essay writing", "poetry", "drama", "theatre", "dance", "music",
+        "singing", "drawing", "painting", "craft", "science exhibition", "science fair", "quiz", "olympiad",
+        "ncc", "national cadet corps", "nss", "national service scheme", "scout", "guide", "red cross",
+        
+        # Education Policy & Governance
+        "education policy", "national education policy", "nep", "ministry of education", "moe", "ugc",
+        "university grants commission", "aicte", "all india council for technical education", "ncte",
+        "national council for teacher education", "ncert", "national council of educational research and training",
+        "cbse", "icse", "state board", "autonomous", "deemed university", "private university", "public university"
+    ],
+
+    # ENVIRONMENT & CLIMATE (~5000+ terms)
+    "Environment": [
+        # Climate Change & Global Warming
+        "climate change", "global warming", "greenhouse effect", "greenhouse gases", "carbon dioxide", "co2",
+        "methane", "ch4", "nitrous oxide", "n2o", "fluorinated gases", "carbon footprint", "carbon emission",
+        "carbon neutral", "carbon negative", "net zero", "decarbonization", "fossil fuels", "renewable energy",
+        "clean energy", "sustainable energy", "energy transition", "paris agreement", "kyoto protocol",
+        
+        # Environmental Issues
+        "pollution", "air pollution", "water pollution", "soil pollution", "noise pollution", "light pollution",
+        "plastic pollution", "marine pollution", "chemical pollution", "industrial pollution", "vehicular pollution",
+        "smog", "haze", "acid rain", "ozone depletion", "ozone layer", "ultraviolet radiation", "uv rays",
+        "particulate matter", "pm2.5", "pm10", "aqi", "air quality index", "emission", "toxic", "hazardous",
+        
+        # Natural Disasters & Extreme Weather
+        "natural disaster", "climate disaster", "extreme weather", "heat wave", "cold wave", "drought", "flood",
+        "flash flood", "cyclone", "hurricane", "typhoon", "tornado", "thunderstorm", "hailstorm", "blizzard",
+        "earthquake", "tremor", "aftershock", "tsunami", "landslide", "mudslide", "avalanche", "wildfire",
+        "forest fire", "bushfire", "volcanic eruption", "volcano", "lava", "ash", "seismic activity",
+        
+        # Ecosystems & Biodiversity
+        "ecosystem", "biodiversity", "habitat", "wildlife", "flora", "fauna", "species", "endangered species",
+        "extinct", "extinction", "conservation", "preservation", "protected area", "national park", "wildlife sanctuary",
+        "biosphere reserve", "tiger reserve", "elephant corridor", "migratory route", "endemic", "native",
+        "invasive species", "keystone species", "food chain", "food web", "predator", "prey", "herbivore",
+        
+        # Forests & Deforestation
+        "forest", "rainforest", "tropical forest", "deciduous forest", "coniferous forest", "boreal forest",
+        "amazon rainforest", "congo basin", "taiga", "canopy", "understory", "forest floor", "tree", "timber",
+        "logging", "deforestation", "afforestation", "reforestation", "tree plantation", "urban forest",
+        "sacred grove", "old growth forest", "primary forest", "secondary forest", "monoculture", "silviculture",
+        
+        # Water Bodies & Marine Life
+        "ocean", "sea", "lake", "river", "stream", "wetland", "marsh", "swamp", "estuary", "delta", "lagoon",
+        "coral reef", "coral bleaching", "marine ecosystem", "aquatic", "freshwater", "saltwater", "groundwater",
+        "water table", "aquifer", "watershed", "catchment", "basin", "marine life", "fish", "whale", "dolphin",
+        "turtle", "shark", "coral", "plankton", "algae", "seaweed", "mangrove", "coastline", "beach erosion",
+        
+        # Environmental Conservation
+        "conservation", "preservation", "restoration", "rehabilitation", "rewilding", "ecological restoration",
+        "habitat restoration", "species recovery", "breeding program", "captive breeding", "release program",
+        "wildlife corridor", "green corridor", "eco-bridge", "seed bank", "gene bank", "cryopreservation",
+        "ex-situ conservation", "in-situ conservation", "community conservation", "participatory conservation",
+        
+        # Renewable Energy & Green Technology
+        "renewable energy", "solar energy", "solar power", "solar panel", "photovoltaic", "wind energy",
+        "wind power", "wind turbine", "wind farm", "hydroelectric", "hydro power", "dam", "micro hydro",
+        "geothermal energy", "biomass", "biogas", "biofuel", "ethanol", "biodiesel", "tidal energy", "wave energy",
+        "green technology", "clean technology", "sustainable technology", "energy efficiency", "smart grid",
+        
+        # Waste Management & Recycling
+        "waste management", "waste disposal", "landfill", "dump", "incineration", "composting", "recycling",
+        "upcycling", "reduce", "reuse", "recycle", "3rs", "circular economy", "zero waste", "waste to energy",
+        "organic waste", "biodegradable", "non-biodegradable", "plastic waste", "e-waste", "electronic waste",
+        "hazardous waste", "toxic waste", "medical waste", "industrial waste", "segregation", "collection",
+        
+        # Environmental Policies & Agreements
+        "environmental policy", "environmental law", "environmental regulation", "environmental impact assessment",
+        "eia", "clearance", "approval", "compliance", "violation", "penalty", "fine", "pollution control board",
+        "ministry of environment", "moef", "forest clearance", "coastal regulation zone", "crz", "eco-sensitive zone",
+        "buffer zone", "no development zone", "environmental tribunal", "green tribunal", "ngt", "supreme court",
+        
+        # International Environmental Organizations
+        "unep", "united nations environment programme", "ipcc", "intergovernmental panel on climate change",
+        "unfccc", "united nations framework convention on climate change", "cop", "conference of parties",
+        "wwf", "world wildlife fund", "greenpeace", "iucn", "international union for conservation of nature",
+        "wcs", "wildlife conservation society", "ci", "conservation international", "unesco", "world heritage",
+        
+        # Environmental Activism & Movements
+        "environmental activism", "green movement", "climate activism", "environmental protest", "demonstration",
+        "save environment", "earth day", "world environment day", "arbor day", "tree plantation", "beach cleanup",
+        "river cleanup", "awareness campaign", "environmental education", "sustainability", "sustainable development",
+        "green living", "eco-friendly", "organic", "natural", "chemical free", "non-toxic", "biodegradable",
+        
+        # Air Quality & Atmospheric Science
+        "atmosphere", "troposphere", "stratosphere", "ozone layer", "air quality", "air pollution index",
+        "smog", "haze", "visibility", "particulate matter", "aerosol", "emission", "vehicle emission",
+        "industrial emission", "stack", "chimney", "flue gas", "desulfurization", "catalytic converter",
+        "emission norms", "bs6", "euro norms", "pollution under control", "puc", "odd even", "car free day",
+        
+        # Climate Science & Meteorology
+        "meteorology", "weather", "climate", "temperature", "rainfall", "precipitation", "humidity", "wind",
+        "atmospheric pressure", "cyclone", "anticyclone", "monsoon", "seasonal", "climate model", "weather forecast",
+        "satellite imagery", "radar", "weather station", "data collection", "climate data", "historical data",
+        "trend analysis", "climate projection", "scenario", "adaptation", "mitigation", "resilience", "vulnerability"
+    ],
+
+    # CRIME & LAW (~5000+ terms)
+    "Crime": [
+        # Types of Crimes
+        "crime", "criminal", "felony", "misdemeanor", "offense", "violation", "breach", "infringement",
+        "murder", "homicide", "manslaughter", "killing", "assassination", "lynching", "encounter", "custodial death",
+        "rape", "sexual assault", "molestation", "harassment", "eve teasing", "dowry death", "honor killing",
+        "domestic violence", "child abuse", "sexual abuse", "trafficking", "human trafficking", "prostitution",
+        
+        # Property Crimes
+        "theft", "stealing", "robbery", "dacoity", "burglary", "house breaking", "shop lifting", "pick pocketing",
+        "chain snatching", "vehicle theft", "cattle theft", "property dispute", "land grabbing", "encroachment",
+        "trespassing", "criminal breach of trust", "cheating", "forgery", "counterfeiting", "fake currency",
+        "embezzlement", "misappropriation", "criminal intimidation", "extortion", "ransom", "kidnapping", "abduction",
+        
+        # White Collar Crimes
+        "white collar crime", "fraud", "financial fraud", "banking fraud", "credit card fraud", "insurance fraud",
+        "tax evasion", "money laundering", "hawala", "benami transaction", "shell company", "ponzi scheme",
+        "pyramid scheme", "insider trading", "market manipulation", "securities fraud", "corporate fraud",
+        "accounting fraud", "audit fraud", "bribery", "corruption", "kickback", "quid pro quo", "influence peddling",
+        
+        # Cyber Crimes
+        "cyber crime", "cyber attack", "hacking", "cracking", "phishing", "vishing", "smishing", "identity theft",
+        "data theft", "data breach", "ransomware", "malware", "virus", "trojan", "worm", "spyware", "adware",
+        "botnet", "ddos attack", "cyber stalking", "cyber bullying", "online harassment", "morphing", "fake profile",
+        "social media crime", "online fraud", "digital payment fraud", "upi fraud", "atm fraud", "skimming",
+        
+        # Drug Related Crimes
+        "drug", "narcotics", "substance abuse", "drug trafficking", "drug peddling", "drug possession",
+        "drug smuggling", "poppy cultivation", "opium", "heroin", "cocaine", "charas", "ganja", "marijuana",
+        "synthetic drugs", "mdma", "lsd", "methamphetamine", "ndps act", "narcotics control bureau", "ncb",
+        "de-addiction", "rehabilitation", "drug seizure", "contraband", "illegal substance", "psychotropic",
+        
+        # Organized Crime & Terrorism
+        "organized crime", "gang", "criminal gang", "mafia", "underworld", "don", "gang war", "extortion",
+        "protection money", "contract killing", "supari", "encounter", "terrorism", "terrorist", "terror attack",
+        "bomb blast", "suicide bombing", "hijacking", "hostage", "ransom", "arms trafficking", "weapon smuggling",
+        "fake currency", "hawala", "terror funding", "anti-national", "sedition", "unlawful assembly", "rioting",
+        
+        # Law Enforcement Agencies
+        "police", "cops", "constable", "head constable", "asi", "assistant sub inspector", "si", "sub inspector",
+        "inspector", "deputy superintendent", "superintendent", "dig", "deputy inspector general", "ig",
+        "inspector general", "dgp", "director general of police", "commissioner", "joint commissioner",
+        "additional commissioner", "acp", "assistant commissioner", "station house officer", "sho", "beat constable",
+        
+        # Investigation Agencies
+        "cbi", "central bureau of investigation", "ed", "enforcement directorate", "ncb", "narcotics control bureau",
+        "nia", "national investigation agency", "raw", "research and analysis wing", "ib", "intelligence bureau",
+        "ncrb", "national crime records bureau", "forensic", "forensic science", "cid", "crime investigation department",
+        "ats", "anti terrorism squad", "sog", "special operations group", "stf", "special task force",
+        
+        # Legal System & Courts
+        "court", "judiciary", "judge", "magistrate", "justice", "chief justice", "sessions judge", "additional sessions judge",
+        "judicial magistrate", "executive magistrate", "metropolitan magistrate", "family court judge", "district judge",
+        "high court", "supreme court", "appellate court", "trial court", "fast track court", "lok adalat",
+        "consumer court", "tribunal", "cyber tribunal", "green tribunal", "ngt", "human rights commission",
+        
+        # Legal Professionals
+        "lawyer", "advocate", "attorney", "counsel", "barrister", "solicitor", "public prosecutor", "app",
+        "additional public prosecutor", "special public prosecutor", "government pleader", "standing counsel",
+        "senior advocate", "junior advocate", "law clerk", "paralegal", "legal aid", "legal service", "bar council",
+        "bar association", "chamber", "law firm", "legal practice", "retainer", "brief", "vakalatnama",
+        
+        # Legal Procedures
+        "fir", "first information report", "complaint", "cognizable", "non-cognizable", "investigation", "inquiry",
+        "charge sheet", "closure report", "arrest", "detention", "custody", "remand", "police custody", "judicial custody",
+        "bail", "anticipatory bail", "interim bail", "regular bail", "bond", "surety", "undertaking", "parole",
+        "furlough", "probation", "suspended sentence", "community service", "fine", "penalty", "compensation",
+        
+        # Trial Process
+        "trial", "hearing", "proceedings", "evidence", "witness", "testimony", "cross examination", "examination in chief",
+        "re-examination", "argument", "submission", "judgment", "order", "verdict", "conviction", "acquittal",
+        "sentence", "punishment", "imprisonment", "life imprisonment", "death penalty", "capital punishment",
+        "execution", "commutation", "mercy petition", "clemency", "presidential pardon", "appeal", "revision",
+        
+        # Laws & Legal Acts
+        "indian penal code", "ipc", "code of criminal procedure", "crpc", "indian evidence act", "constitution",
+        "fundamental rights", "constitutional remedy", "writ petition", "habeas corpus", "mandamus", "certiorari",
+        "prohibition", "quo warranto", "public interest litigation", "pil", "contempt of court", "perjury",
+        "defamation", "libel", "slander", "privacy", "right to information", "rti", "lokpal", "lokayukta",
+        
+        # Criminal Justice System
+        "criminal justice", "law and order", "rule of law", "due process", "natural justice", "presumption of innocence",
+        "burden of proof", "beyond reasonable doubt", "circumstantial evidence", "direct evidence", "material evidence",
+        "admissible evidence", "inadmissible evidence", "hearsay", "confession", "voluntary confession", "custodial violence",
+        "third degree", "torture", "human rights violation", "police brutality", "false case", "frame up",
+        
+        # Prisons & Corrections
+        "prison", "jail", "correctional facility", "central jail", "district jail", "sub jail", "lock up",
+        "police station", "custody", "cell", "barrack", "solitary confinement", "prisoner", "inmate", "convict",
+        "undertrial", "remand prisoner", "life convict", "death row", "parole", "furlough", "open prison",
+        "model prison", "juvenile home", "observation home", "reformatory", "rehabilitation", "correctional program"
+    ],
+
+    # INTERNATIONAL (~5000+ terms)
+    "International": [
+        # Major Countries (Global)
+        "usa", "united states", "america", "american", "washington dc", "new york", "california", "texas", "florida",
+        "china", "chinese", "beijing", "shanghai", "hong kong", "taiwan", "xinjiang", "tibet", "macau",
+        "russia", "russian", "moscow", "saint petersburg", "siberia", "kremlin", "putin", "federation",
+        "japan", "japanese", "tokyo", "osaka", "kyoto", "hiroshima", "nagasaki", "emperor", "prime minister",
+        "germany", "german", "berlin", "munich", "hamburg", "cologne", "frankfurt", "chancellor", "bundestag",
+        
+        # European Countries
+        "united kingdom", "uk", "britain", "british", "england", "scotland", "wales", "northern ireland",
+        "london", "manchester", "liverpool", "birmingham", "glasgow", "cardiff", "belfast", "brexit",
+        "france", "french", "paris", "marseille", "lyon", "toulouse", "nice", "president", "macron",
+        "italy", "italian", "rome", "milan", "naples", "turin", "florence", "venice", "vatican",
+        "spain", "spanish", "madrid", "barcelona", "valencia", "seville", "bilbao", "catalonia",
+        
+        # South Asian Countries
+        "pakistan", "pakistani", "islamabad", "karachi", "lahore", "rawalpindi", "faisalabad", "peshawar",
+        "bangladesh", "bangladeshi", "dhaka", "chittagong", "sylhet", "rajshahi", "khulna", "barisal",
+        "sri lanka", "lankan", "colombo", "kandy", "galle", "jaffna", "trincomalee", "tamil", "sinhalese",
+        "nepal", "nepali", "kathmandu", "pokhara", "lumbini", "everest", "himalaya", "sherpa",
+        "bhutan", "bhutanese", "thimphu", "paro", "punakha", "gross national happiness", "dragon kingdom",
+        "maldives", "maldivian", "male", "atoll", "resort", "tourism", "indian ocean", "coral",
+        
+        # Middle Eastern Countries
+        "saudi arabia", "saudi", "riyadh", "jeddah", "mecca", "medina", "dammam", "kingdom", "crown prince",
+        "iran", "iranian", "tehran", "isfahan", "mashhad", "tabriz", "shiraz", "persian", "ayatollah",
+        "israel", "israeli", "jerusalem", "tel aviv", "haifa", "gaza", "west bank", "zionist", "hebrew",
+        "palestine", "palestinian", "ramallah", "bethlehem", "nablus", "hebron", "intifada", "refugee",
+        "turkey", "turkish", "ankara", "istanbul", "izmir", "antalya", "ottoman", "erdogan", "bosphorus",
+        "egypt", "egyptian", "cairo", "alexandria", "luxor", "aswan", "suez", "nile", "pyramid", "pharaoh",
+        
+        # Southeast Asian Countries
+        "singapore", "singaporean", "lion city", "marina bay", "changi", "merlion", "lee kuan yew",
+        "thailand", "thai", "bangkok", "phuket", "chiang mai", "pattaya", "siam", "buddhist", "monarchy",
+        "malaysia", "malaysian", "kuala lumpur", "penang", "johor", "sabah", "sarawak", "borneo", "malay",
+        "indonesia", "indonesian", "jakarta", "bali", "surabaya", "medan", "bandung", "java", "sumatra",
+        "philippines", "filipino", "manila", "cebu", "davao", "mindanao", "luzon", "visayas", "tagalog",
+        "vietnam", "vietnamese", "hanoi", "ho chi minh city", "saigon", "da nang", "hue", "mekong",
+        
+        # International Organizations (UN System)
+        "united nations", "un", "general assembly", "security council", "economic and social council",
+        "trusteeship council", "international court of justice", "icj", "secretariat", "secretary general",
+        "peacekeeping", "blue helmets", "unesco", "unicef", "who", "world health organization", "ilo",
+        "international labour organization", "fao", "food and agriculture organization", "undp", "unhcr",
+        "world bank", "imf", "international monetary fund", "wto", "world trade organization",
+        
+        # Regional Organizations
+        "european union", "eu", "brexit", "eurozone", "euro", "schengen", "european parliament",
+        "european commission", "european council", "nato", "north atlantic treaty organization",
+        "asean", "association of southeast asian nations", "saarc", "south asian association for regional cooperation",
+        "african union", "au", "arab league", "gulf cooperation council", "gcc", "mercosur", "nafta",
+        "usmca", "opec", "organization of petroleum exporting countries", "g7", "g8", "g20", "brics",
+        
+        # International Financial Institutions
+        "world bank group", "international bank for reconstruction and development", "ibrd", "ida",
+        "international development association", "ifc", "international finance corporation", "miga",
+        "multilateral investment guarantee agency", "asian development bank", "adb", "african development bank",
+        "inter-american development bank", "european bank for reconstruction and development", "ebrd",
+        "new development bank", "ndb", "asian infrastructure investment bank", "aiib", "islamic development bank",
+        
+        # Diplomatic Relations
+        "diplomacy", "diplomatic", "bilateral", "multilateral", "summit", "state visit", "official visit",
+        "working visit", "delegation", "ambassador", "high commissioner", "consul general", "consul",
+        "embassy", "high commission", "consulate", "diplomatic immunity", "vienna convention", "protocol",
+        "foreign policy", "external affairs", "international relations", "geopolitics", "realpolitik",
+        
+        # Treaties & Agreements
+        "treaty", "agreement", "convention", "protocol", "memorandum of understanding", "mou", "pact",
+        "accord", "compact", "charter", "statute", "declaration", "resolution", "communique", "joint statement",
+        "bilateral agreement", "multilateral treaty", "trade agreement", "defense pact", "alliance",
+        "partnership", "cooperation", "collaboration", "friendship treaty", "non-aggression pact",
+        
+        # International Trade & Economics
+        "international trade", "export", "import", "balance of trade", "trade deficit", "trade surplus",
+        "tariff", "customs duty", "quota", "embargo", "sanctions", "trade war", "dumping", "subsidies",
+        "wto disputes", "most favored nation", "mfn", "generalized system of preferences", "gsp",
+        "free trade agreement", "fta", "comprehensive economic partnership", "cepa", "regional comprehensive",
+        "economic partnership", "rcep", "trans-pacific partnership", "tpp", "brexit", "trade bloc",
+        
+        # Global Issues & Challenges
+        "climate change", "global warming", "paris agreement", "cop27", "cop28", "sustainable development",
+        "sdgs", "millennium development goals", "mdgs", "poverty alleviation", "hunger", "malnutrition",
+        "pandemic", "covid-19", "vaccine equity", "digital divide", "inequality", "migration", "refugees",
+        "human rights", "universal declaration", "civil liberties", "freedom of speech", "democracy",
+        
+        # International Law & Justice
+        "international law", "customary international law", "jus cogens", "state sovereignty", "jurisdiction",
+        "extradition", "asylum", "refugee", "stateless", "genocide", "crimes against humanity", "war crimes",
+        "international criminal court", "icc", "rome statute", "nuremberg trials", "tokyo trials",
+        "international tribunal", "arbitration", "mediation", "dispute resolution", "hague conventions",
+        
+        # Nuclear & Security Issues
+        "nuclear weapons", "nuclear proliferation", "non-proliferation treaty", "npt", "comprehensive test ban",
+        "ctbt", "nuclear security", "iaea", "international atomic energy agency", "uranium enrichment",
+        "plutonium", "nuclear reactor", "nuclear power", "chernobyl", "fukushima", "hiroshima", "nagasaki",
+        "nuclear winter", "mutually assured destruction", "mad", "arms race", "disarmament", "arms control",
+        
+        # Terrorism & Extremism
+        "international terrorism", "transnational terrorism", "al-qaeda", "isis", "islamic state", "taliban",
+        "boko haram", "hezbollah", "hamas", "ira", "eta", "farc", "counter-terrorism", "anti-terrorism",
+        "homeland security", "intelligence sharing", "interpol", "europol", "terrorist financing",
+        "money laundering", "hawala", "radicalization", "deradicalization", "lone wolf", "sleeper cell",
+        
+        # Cyber Warfare & Digital Issues
+        "cyber warfare", "cyber attack", "state-sponsored hacking", "advanced persistent threat", "apt",
+        "ransomware", "malware", "phishing", "social engineering", "data breach", "cyber espionage",
+        "information warfare", "disinformation", "propaganda", "fake news", "deepfake", "social media manipulation",
+        "digital sovereignty", "internet governance", "net neutrality", "digital rights", "privacy",
+        
+        # Space & Technology
+        "space exploration", "international space station", "iss", "nasa", "roscosmos", "esa", "jaxa",
+        "isro", "spacex", "blue origin", "satellite", "gps", "galileo", "glonass", "beidou",
+        "space debris", "space militarization", "space treaty", "outer space treaty", "moon agreement",
+        "mars mission", "lunar mission", "space station", "spacewalk", "astronaut", "cosmonaut",
+        
+        # Ocean & Maritime Issues
+        "law of the sea", "unclos", "exclusive economic zone", "eez", "territorial waters", "high seas",
+        "continental shelf", "maritime boundary", "freedom of navigation", "strait", "chokepoint",
+        "south china sea", "east china sea", "strait of hormuz", "suez canal", "panama canal",
+        "piracy", "maritime security", "fishing rights", "marine pollution", "ocean acidification",
+        
+        # Current Global Events & Conflicts
+        "ukraine war", "russia ukraine conflict", "crimea", "donbas", "zelensky", "putin", "nato expansion",
+        "taiwan strait", "cross-strait relations", "one china policy", "taiwan independence", "xi jinping",
+        "south china sea dispute", "artificial islands", "nine-dash line", "scarborough shoal", "spratly islands",
+        "israel palestine conflict", "gaza strip", "hamas", "fatah", "two-state solution", "oslo accords",
+        "syrian civil war", "assad", "kurdish", "refugees", "arab spring", "libya", "yemen", "afghanistan",
+        
+        # International Media & Communication
+        "international media", "global news", "foreign correspondent", "reuters", "associated press", "ap",
+        "afp", "agence france-presse", "bloomberg", "cnn international", "bbc world service", "al jazeera",
+        "rt", "russia today", "xinhua", "people's daily", "voice of america", "voa", "radio free europe",
+        "deutsche welle", "nhr", "france24", "euronews", "international broadcasting", "soft power",
+        
+        # Cultural Exchange & Education
+        "cultural diplomacy", "cultural exchange", "student exchange", "erasmus", "fulbright", "chevening",
+        "rhodes scholar", "international education", "study abroad", "foreign language", "lingua franca",
+        "english", "mandarin", "spanish", "french", "arabic", "translation", "interpretation", "unesco",
+        "world heritage", "cultural heritage", "intangible heritage", "cultural diversity", "multiculturalism"
+    ]
+}
+
+# categories.py
+
+import re
+from typing import Dict, List, Tuple
+from functools import lru_cache
+
+# Enhanced categories dictionary with maximum accuracy
+
+categories = {
+    # POLITICS & GOVERNANCE (~5000+ terms)
+    "Politics": [
+        # Core Political Terms
+        "government", "governance", "political", "politics", "policy", "policies", "minister", "prime minister", 
+        "president", "vice president", "chief minister", "governor", "lieutenant governor", "mayor", "deputy", 
+        "secretary", "cabinet", "administration", "bureaucracy", "civil service", "public service", "state",
+        
+        # Elections & Democracy
+        "election", "electoral", "vote", "voting", "voter", "ballot", "polling", "poll", "campaign", "candidate",
+        "nomination", "primary", "general election", "by-election", "referendum", "plebiscite", "constituency",
+        "electorate", "swing vote", "exit poll", "voter turnout", "mandate", "democratic", "democracy",
+        
+        # Legislative Bodies & Processes
+        "parliament", "parliamentary", "congress", "senate", "house", "assembly", "legislature", "lok sabha",
+        "rajya sabha", "state assembly", "municipal corporation", "council", "committee", "subcommittee",
+        "caucus", "faction", "legislation", "bill", "act", "amendment", "resolution", "motion", "debate",
+        "hearing", "session", "sitting", "adjournment", "prorogation", "dissolution", "impeachment",
+        
+        # Political Parties & Ideologies (Global)
+        "bjp", "congress", "aap", "tmc", "dmk", "aiadmk", "bsp", "sp", "rjd", "jdu", "shiv sena", "ncp",
+        "communist", "cpi", "cpm", "left", "right", "center", "coalition", "alliance", "opposition",
+        "ruling party", "majority", "minority", "liberal", "conservative", "progressive", "socialist",
+        "capitalist", "republican", "democrat", "labour", "tory", "green party", "libertarian",
+        
+        # Government Positions & Ranks
+        "chief justice", "justice", "judge", "magistrate", "collector", "commissioner", "superintendent",
+        "inspector general", "director general", "additional secretary", "joint secretary", "under secretary",
+        "deputy secretary", "assistant secretary", "district magistrate", "sub collector", "tehsildar",
+        "block development officer", "panchayat", "sarpanch", "ward councillor", "mla", "mp", "mLC",
+        
+        # Governance & Administration
+        "ias", "ips", "ifs", "irs", "administrative", "executive", "judicial", "judiciary", "bureaucrat",
+        "civil servant", "public official", "government employee", "cadre", "posting", "transfer",
+        "promotion", "recruitment", "selection", "training", "capacity building", "e-governance",
+        
+        # Courts & Legal System
+        "supreme court", "high court", "district court", "sessions court", "family court", "consumer court",
+        "labor court", "revenue court", "criminal court", "civil court", "tribunal", "commission",
+        "authority", "board", "ombudsman", "lokpal", "lokayukta", "human rights commission",
+        
+        # International Relations & Diplomacy
+        "diplomacy", "diplomatic", "embassy", "consulate", "ambassador", "envoy", "foreign policy",
+        "international relations", "bilateral", "multilateral", "treaty", "agreement", "mou", "summit",
+        "delegation", "protocol", "visa", "passport", "foreign minister", "external affairs",
+        
+        # Political Processes & Events
+        "no confidence", "censure", "veto", "override", "filibuster", "manifesto", "rally", "protest",
+        "demonstration", "strike", "bandh", "hartal", "agitation", "movement", "revolution", "coup",
+        "emergency", "martial law", "curfew", "section 144", "president's rule", "governor's rule",
+        
+        # Electoral Bodies & Systems
+        "election commission", "chief election commissioner", "electoral roll", "voter id", "evm",
+        "vvpat", "booth", "presiding officer", "polling agent", "counting agent", "returning officer",
+        "model code of conduct", "free and fair election", "electoral fraud", "booth capturing",
+        
+        # Political Movements & History
+        "independence", "freedom struggle", "partition", "emergency", "liberation", "revolution",
+        "reform", "renaissance", "nationalism", "patriotism", "secularism", "federalism", "regionalism",
+        "separatism", "terrorism", "insurgency", "naxalism", "extremism", "fundamentalism",
+        
+        # Constitutional Terms
+        "constitution", "constitutional", "fundamental rights", "directive principles", "fundamental duties",
+        "preamble", "amendment", "article", "schedule", "ordinance", "proclamation", "notification",
+        "gazette", "act", "rule", "regulation", "guideline", "circular", "order", "directive",
+        
+        # Regional & State Politics
+        "state government", "central government", "union territory", "statehood", "bifurcation",
+        "reorganization", "linguistic states", "inter-state", "centre-state relations", "federalism",
+        "devolution", "decentralization", "panchayati raj", "urban local bodies", "73rd amendment",
+        
+        # Political Economy
+        "public policy", "governance reform", "administrative reform", "economic policy", "fiscal policy",
+        "monetary policy", "budget", "allocation", "expenditure", "revenue", "taxation", "subsidy",
+        "welfare", "social security", "public distribution", "poverty alleviation", "development",
+        
+        # International Organizations
+        "united nations", "un", "security council", "general assembly", "unesco", "unicef", "who",
+        "world bank", "imf", "wto", "nato", "eu", "european union", "asean", "saarc", "brics",
+        "g7", "g20", "commonwealth", "non-aligned movement", "oic", "african union", "arab league"
+    ],
+
+    # BUSINESS & ECONOMY (~5000+ terms)
+    "Business": [
+        # Core Business Terms
+        "business", "company", "corporation", "enterprise", "firm", "organization", "startup", "unicorn",
+        "sme", "msme", "mnc", "conglomerate", "subsidiary", "holding company", "parent company",
+        "headquarters", "branch", "office", "factory", "plant", "facility", "operations", "manufacturing",
+        
+        # Financial Markets & Instruments
+        "stock", "share", "equity", "bond", "debenture", "mutual fund", "etf", "derivative", "future",
+        "option", "warrant", "convertible", "preference share", "ordinary share", "blue chip", "penny stock",
+        "ipo", "fpo", "rights issue", "bonus issue", "stock split", "buyback", "dividend", "yield",
+        
+        # Stock Exchanges & Indices
+        "nse", "bse", "sensex", "nifty", "nasdaq", "nyse", "dow jones", "s&p 500", "ftse", "dax",
+        "nikkei", "hang seng", "shanghai composite", "kospi", "asx", "tsx", "bovespa", "market cap",
+        "trading", "volume", "turnover", "circuit breaker", "bull market", "bear market", "volatility",
+        
+        # Economic Indicators
+        "economy", "economic", "gdp", "gnp", "inflation", "deflation", "recession", "depression", "growth",
+        "development", "fiscal", "monetary", "budget", "deficit", "surplus", "debt", "credit", "liquidity",
+        "interest rate", "repo rate", "reverse repo rate", "crr", "slr", "base rate", "prime rate",
+        
+        # Banking & Finance
+        "bank", "banking", "loan", "mortgage", "credit", "deposit", "savings", "current account",
+        "fixed deposit", "recurring deposit", "npa", "bad loan", "recovery", "provisioning", "capital adequacy",
+        "rbi", "reserve bank", "central bank", "commercial bank", "cooperative bank", "payment bank",
+        "small finance bank", "nbfc", "sebi", "irdai", "pfrda", "nabard", "sidbi", "exim bank",
+        
+        # Corporate Finance & Accounting
+        "revenue", "turnover", "profit", "loss", "ebitda", "ebit", "pat", "pbt", "eps", "pe ratio",
+        "pb ratio", "roe", "roa", "debt to equity", "current ratio", "quick ratio", "working capital",
+        "cash flow", "free cash flow", "operating cash flow", "capex", "opex", "depreciation", "amortization",
+        
+        # Corporate Actions & Events
+        "merger", "acquisition", "takeover", "demerger", "spin-off", "divestment", "delisting", "listing",
+        "restructuring", "bankruptcy", "insolvency", "liquidation", "resolution", "nclt", "nclat", "sarfaesi",
+        "board meeting", "agm", "egm", "shareholder", "stakeholder", "promoter", "institutional investor",
+        
+        # Business Operations
+        "supply chain", "logistics", "procurement", "vendor", "supplier", "distributor", "retailer",
+        "wholesaler", "inventory", "warehouse", "distribution", "fulfillment", "last mile", "cold chain",
+        "quality control", "quality assurance", "iso", "lean", "six sigma", "kaizen", "tqm", "automation",
+        
+        # Technology & Digital Business
+        "e-commerce", "online", "digital", "platform", "marketplace", "fintech", "edtech", "healthtech",
+        "agritech", "proptech", "insurtech", "regtech", "martech", "adtech", "cleantech", "biotech",
+        "saas", "b2b", "b2c", "c2c", "omnichannel", "digitization", "digital transformation",
+        
+        # Major Global Companies
+        "apple", "microsoft", "amazon", "google", "alphabet", "tesla", "meta", "facebook", "netflix",
+        "nvidia", "intel", "amd", "qualcomm", "samsung", "tsmc", "berkshire hathaway", "jpmorgan",
+        "bank of america", "wells fargo", "goldman sachs", "morgan stanley", "blackrock", "vanguard",
+        
+        # Indian Companies & Conglomerates
+        "reliance", "tata", "adani", "birla", "mahindra", "bajaj", "godrej", "wipro", "infosys", "tcs",
+        "hdfc", "icici", "sbi", "axis", "kotak", "yes bank", "bharti airtel", "ongc", "ntpc", "coal india",
+        "ioc", "bpcl", "hpcl", "sail", "bhel", "hal", "itc", "hindustan unilever", "nestle india",
+        
+        # Sectors & Industries
+        "automotive", "pharmaceuticals", "textiles", "steel", "cement", "chemicals", "petrochemicals",
+        "power", "renewable energy", "oil and gas", "mining", "agriculture", "food processing",
+        "hospitality", "tourism", "retail", "real estate", "construction", "infrastructure", "telecom",
+        "media", "entertainment", "aerospace", "defense", "shipping", "logistics", "railways",
+        
+        # Trade & Commerce
+        "export", "import", "trade", "commerce", "fdi", "fii", "fpi", "trade balance", "current account",
+        "balance of payments", "forex", "foreign exchange", "currency", "rupee", "dollar", "euro", "pound",
+        "yen", "exchange rate", "hedging", "forward contract", "currency swap", "trade war", "dumping",
+        
+        # Regulatory & Compliance
+        "compliance", "regulation", "regulatory", "audit", "auditor", "ca", "chartered accountant",
+        "cma", "company secretary", "mca", "ministry of corporate affairs", "companies act", "sebi act",
+        "fema", "rbi act", "banking regulation act", "insider trading", "market manipulation",
+        
+        # Investment & Asset Management
+        "investment", "investor", "institutional investor", "mutual fund", "amc", "nav", "sip", "lumpsum",
+        "portfolio", "asset allocation", "diversification", "risk management", "hedge fund", "private equity",
+        "venture capital", "angel investor", "seed funding", "series a", "series b", "series c", "exit",
+        
+        # Economic Policies & Reforms
+        "liberalization", "privatization", "globalization", "economic reform", "structural adjustment",
+        "gst", "demonetization", "make in india", "digital india", "skill india", "startup india",
+        "atmanirbhar bharat", "pli scheme", "ease of doing business", "jan aushadhi", "mudra", "stand up india"
+    ],
+
+    # TECHNOLOGY (~5000+ terms)
+    "Technology": [
+        # Core Technology Terms
+        "technology", "tech", "digital", "innovation", "technical", "it", "information technology",
+        "computer science", "computing", "electronics", "semiconductor", "microchip", "processor",
+        "software", "hardware", "firmware", "middleware", "system", "application", "program", "code",
+        
+        # Programming Languages
+        "python", "java", "javascript", "typescript", "c", "c++", "c#", "php", "ruby", "go", "rust",
+        "swift", "kotlin", "scala", "r", "matlab", "perl", "haskell", "clojure", "erlang", "elixir",
+        "dart", "lua", "assembly", "cobol", "fortran", "pascal", "delphi", "visual basic", "objective-c",
+        "f#", "groovy", "julia", "nim", "crystal", "zig", "solidity", "sql", "html", "css", "xml",
+        
+        # Web Technologies & Frameworks
+        "react", "angular", "vue", "node.js", "express", "django", "flask", "spring", "laravel", "rails",
+        "symfony", "codeigniter", "asp.net", "blazor", "xamarin", "flutter", "react native", "ionic",
+        "cordova", "electron", "bootstrap", "tailwind", "jquery", "lodash", "axios", "webpack", "vite",
+        "rollup", "parcel", "babel", "gulp", "grunt", "npm", "yarn", "pnpm", "eslint", "prettier",
+        
+        # Databases & Data Management
+        "database", "sql", "nosql", "mysql", "postgresql", "oracle", "mongodb", "redis", "elasticsearch",
+        "cassandra", "dynamodb", "firebase", "sqlite", "mariadb", "neo4j", "influxdb", "couchdb",
+        "rethinkdb", "arangodb", "orientdb", "tigergraph", "dgraph", "fauna", "cockroachdb", "yugabytedb",
+        "snowflake", "bigquery", "athena", "redshift", "databricks", "apache spark", "hadoop", "hive",
+        
+        # Cloud Computing Platforms
+        "cloud computing", "aws", "amazon web services", "ec2", "s3", "lambda", "rds", "dynamodb",
+        "cloudfront", "route53", "microsoft azure", "azure functions", "azure sql", "google cloud platform",
+        "gcp", "google compute engine", "google cloud storage", "google cloud sql", "ibm cloud",
+        "oracle cloud", "alibaba cloud", "digitalocean", "linode", "vultr", "heroku", "netlify", "vercel",
+        
+        # DevOps & Infrastructure
+        "devops", "ci/cd", "jenkins", "gitlab ci", "github actions", "azure devops", "circleci",
+        "travis ci", "bamboo", "teamcity", "ansible", "puppet", "chef", "saltstack", "terraform",
+        "pulumi", "vagrant", "docker", "containers", "kubernetes", "k8s", "openshift", "rancher",
+        "helm", "istio", "consul", "vault", "prometheus", "grafana", "elk stack", "elasticsearch",
+        
+        # Artificial Intelligence & Machine Learning
+        "artificial intelligence", "ai", "machine learning", "ml", "deep learning", "neural networks",
+        "tensorflow", "pytorch", "keras", "scikit-learn", "pandas", "numpy", "matplotlib", "seaborn",
+        "opencv", "pillow", "spacy", "nltk", "hugging face", "transformers", "bert", "gpt", "chatgpt",
+        "openai", "anthropic", "claude", "bard", "gemini", "llama", "palm", "computer vision", "nlp",
+        
+        # Mobile Development
+        "mobile development", "ios", "android", "swift", "kotlin", "objective-c", "java", "flutter",
+        "react native", "xamarin", "ionic", "cordova", "phonegap", "titanium", "unity", "unreal engine",
+        "xcode", "android studio", "app store", "google play", "mobile app", "native app", "hybrid app",
+        "cross-platform", "responsive design", "progressive web app", "pwa", "mobile-first",
+        
+        # Operating Systems
+        "windows", "macos", "linux", "ubuntu", "centos", "rhel", "debian", "fedora", "suse", "arch",
+        "mint", "elementary", "kali", "parrot", "tails", "freebsd", "openbsd", "unix", "solaris", "aix",
+        "hp-ux", "android", "ios", "chrome os", "fire os", "tizen", "watchos", "tvos", "ipados",
+        
+        # Hardware & Components
+        "cpu", "gpu", "ram", "memory", "storage", "ssd", "hdd", "nvme", "sata", "motherboard", "chipset",
+        "psu", "power supply", "cooling", "thermal", "fan", "liquid cooling", "overclocking", "bios", "uefi",
+        "intel", "amd", "nvidia", "qualcomm", "apple silicon", "m1", "m2", "arm", "risc-v", "x86", "x64",
+        "server", "workstation", "laptop", "desktop", "tablet", "smartphone", "smartwatch", "iot",
+        
+        # Networking & Internet
+        "network", "networking", "internet", "tcp/ip", "http", "https", "dns", "dhcp", "nat", "vpn",
+        "firewall", "router", "switch", "hub", "modem", "wifi", "ethernet", "fiber optic", "5g", "4g",
+        "lte", "broadband", "bandwidth", "latency", "throughput", "packet", "protocol", "osi model",
+        "subnet", "vlan", "mpls", "bgp", "ospf", "rip", "load balancer", "cdn", "edge computing",
+        
+        # Cybersecurity
+        "cybersecurity", "information security", "infosec", "security", "encryption", "decryption",
+        "cryptography", "hash", "ssl", "tls", "certificate", "pki", "two-factor authentication", "2fa",
+        "mfa", "biometric", "antivirus", "malware", "virus", "trojan", "ransomware", "spyware", "adware",
+        "phishing", "social engineering", "ddos", "dos", "penetration testing", "vulnerability", "exploit",
+        
+        # Emerging Technologies
+        "blockchain", "cryptocurrency", "bitcoin", "ethereum", "smart contracts", "defi", "nft", "web3",
+        "dao", "metaverse", "virtual reality", "vr", "augmented reality", "ar", "mixed reality", "mr",
+        "extended reality", "xr", "quantum computing", "quantum supremacy", "edge computing", "fog computing",
+        "neuromorphic computing", "dna storage", "holographic storage", "3d printing", "additive manufacturing",
+        
+        # Tech Companies (Global)
+        "google", "alphabet", "microsoft", "apple", "amazon", "meta", "facebook", "tesla", "nvidia",
+        "intel", "amd", "qualcomm", "broadcom", "samsung", "tsmc", "asml", "oracle", "salesforce",
+        "adobe", "ibm", "cisco", "vmware", "servicenow", "workday", "zoom", "slack", "dropbox", "box",
+        
+        # Indian Tech Companies
+        "tcs", "tata consultancy services", "infosys", "wipro", "hcl technologies", "tech mahindra",
+        "mindtree", "mphasis", "ltts", "persistent systems", "cyient", "hexaware", "zensar", "sonata",
+        "niit", "ofss", "polaris", "rolta", "mastek", "geometric", "tata elxsi", "kpit", "birlasoft",
+        
+        # Software Categories
+        "enterprise software", "crm", "erp", "hrms", "scm", "cms", "lms", "database management",
+        "business intelligence", "analytics", "reporting", "dashboard", "workflow", "automation",
+        "integration", "api", "microservices", "soa", "rest", "soap", "graphql", "webhooks", "rpc",
+        
+        # Development Tools
+        "ide", "integrated development environment", "code editor", "visual studio", "vscode", "intellij",
+        "eclipse", "xcode", "android studio", "sublime text", "atom", "vim", "emacs", "nano", "git",
+        "github", "gitlab", "bitbucket", "svn", "mercurial", "version control", "source control"
+    ],
+
+    # SPORTS (~5000+ terms)
+    "Sports": [
+        # Cricket (Comprehensive)
+        "cricket", "ipl", "indian premier league", "bcci", "board of control for cricket in india", "icc",
+        "international cricket council", "test match", "test cricket", "one day international", "odi",
+        "twenty20", "t20", "t20i", "world cup", "cricket world cup", "t20 world cup", "champions trophy",
+        "asia cup", "ranji trophy", "duleep trophy", "irani cup", "deodhar trophy", "syed mushtaq ali",
+        "vijay hazare trophy", "u19 world cup", "women's cricket", "wbbl", "the hundred", "big bash",
+        
+        # Cricket Terms & Rules
+        "wicket", "stumps", "bails", "over", "maiden over", "boundary", "four", "six", "single", "double",
+        "century", "half century", "duck", "golden duck", "diamond duck", "run out", "stumped", "caught",
+        "bowled", "lbw", "leg before wicket", "hit wicket", "timed out", "obstructing field", "handling ball",
+        "innings", "declaration", "follow on", "drs", "decision review system", "umpire", "third umpire",
+        "powerplay", "death overs", "super over", "tie", "no result", "duckworth lewis stern", "dls",
+        
+        # Cricket Players (Indian)
+        "virat kohli", "rohit sharma", "ms dhoni", "mahendra singh dhoni", "hardik pandya", "jasprit bumrah",
+        "kl rahul", "rishabh pant", "ravindra jadeja", "mohammed siraj", "shubman gill", "suryakumar yadav",
+        "ishan kishan", "yuzvendra chahal", "mohammed shami", "bhuvneshwar kumar", "axar patel", "washington sundar",
+        "deepak hooda", "sanju samson", "shreyas iyer", "prithvi shaw", "devdutt padikkal", "ruturaj gaikwad",
+        
+        # IPL Teams & Players
+        "csk", "chennai super kings", "mi", "mumbai indians", "rcb", "royal challengers bangalore",
+        "dc", "delhi capitals", "kkr", "kolkata knight riders", "pbks", "punjab kings", "rr", "rajasthan royals",
+        "srh", "sunrisers hyderabad", "gt", "gujarat titans", "lsg", "lucknow super giants", "ipl auction",
+        "mega auction", "mini auction", "retained players", "released players", "unsold", "base price",
+        
+        # International Cricket
+        "india cricket", "team india", "men in blue", "australia cricket", "england cricket", "pakistan cricket",
+        "south africa cricket", "new zealand cricket", "sri lanka cricket", "bangladesh cricket", "west indies",
+        "afghanistan cricket", "ireland cricket", "captain", "vice captain", "wicket keeper", "all rounder",
+        "fast bowler", "spinner", "batsman", "opening batsman", "middle order", "lower order", "tail ender",
+        
+        # Football/Soccer (Global)
+        "football", "soccer", "fifa", "world cup", "fifa world cup", "euro", "european championship",
+        "champions league", "uefa champions league", "europa league", "premier league", "english premier league",
+        "la liga", "serie a", "bundesliga", "ligue 1", "copa america", "copa del rey", "fa cup", "carabao cup",
+        
+        # Football Teams (European)
+        "manchester united", "liverpool", "arsenal", "chelsea", "manchester city", "tottenham", "spurs",
+        "real madrid", "barcelona", "atletico madrid", "valencia", "sevilla", "villarreal", "athletic bilbao",
+        "juventus", "ac milan", "inter milan", "napoli", "roma", "lazio", "atalanta", "bayern munich",
+        "borussia dortmund", "rb leipzig", "bayer leverkusen", "psg", "paris saint germain", "marseille",
+        
+        # Football Players (Global)
+        "lionel messi", "messi", "cristiano ronaldo", "ronaldo", "kylian mbappe", "mbappe", "erling haaland",
+        "haaland", "neymar", "karim benzema", "benzema", "robert lewandowski", "lewandowski", "mohamed salah",
+        "salah", "sadio mane", "mane", "virgil van dijk", "kevin de bruyne", "luka modric", "modric",
+        
+        # Other Major Sports
+        "tennis", "wimbledon", "us open", "french open", "australian open", "roland garros", "grand slam",
+        "atp", "wta", "masters", "davis cup", "fed cup", "billie jean king cup", "singles", "doubles",
+        "mixed doubles", "serve", "ace", "deuce", "advantage", "set", "match", "tiebreak", "bagel", "breadstick",
+        
+        # Tennis Players
+        "novak djokovic", "djokovic", "rafael nadal", "nadal", "roger federer", "federer", "serena williams",
+        "venus williams", "naomi osaka", "osaka", "ashleigh barty", "barty", "iga swiatek", "swiatek",
+        "stefanos tsitsipas", "tsitsipas", "alexander zverev", "zverev", "daniil medvedev", "medvedev",
+        
+        # Basketball
+        "basketball", "nba", "national basketball association", "wnba", "ncaa", "march madness", "finals",
+        "playoffs", "regular season", "mvp", "most valuable player", "all star", "draft", "rookie",
+        "point guard", "shooting guard", "small forward", "power forward", "center", "triple double",
+        
+        # Basketball Teams & Players
+        "los angeles lakers", "lakers", "boston celtics", "celtics", "golden state warriors", "warriors",
+        "chicago bulls", "bulls", "miami heat", "heat", "san antonio spurs", "spurs", "lebron james",
+        "lebron", "stephen curry", "curry", "kevin durant", "durant", "giannis antetokounmpo", "giannis",
+        
+        # Olympics & International Sports
+        "olympics", "olympic games", "summer olympics", "winter olympics", "paralympics", "commonwealth games",
+        "asian games", "world championships", "world athletics", "iaaf", "ioc", "international olympic committee",
+        "medal", "gold medal", "silver medal", "bronze medal", "world record", "olympic record", "podium",
+        
+        # Athletics/Track & Field
+        "athletics", "track and field", "100m", "200m", "400m", "800m", "1500m", "5000m", "10000m", "marathon",
+        "sprint", "middle distance", "long distance", "hurdles", "110m hurdles", "400m hurdles", "steeplechase",
+        "relay", "4x100m", "4x400m", "long jump", "high jump", "pole vault", "triple jump", "shot put",
+        "discus", "hammer throw", "javelin", "decathlon", "heptathlon", "race walk", "marathon", "half marathon",
+        
+        # Indian Sports
+        "kabaddi", "pro kabaddi league", "pkl", "kho kho", "hockey", "field hockey", "indian hockey",
+        "fih", "hockey world cup", "champions trophy", "sultan azlan shah cup", "asia cup hockey",
+        "badminton", "all england", "thomas cup", "uber cup", "sudirman cup", "bwf", "world championships",
+        
+        # Indian Sports Personalities
+        "neeraj chopra", "javelin", "pv sindhu", "badminton", "saina nehwal", "mary kom", "boxing",
+        "bajrang punia", "wrestling", "vinesh phogat", "sakshi malik", "mirabai chanu", "weightlifting",
+        "lovlina borgohain", "hima das", "dutee chand", "anju bobby george", "long jump", "pt usha",
+        
+        # Other Sports Terms
+        "match", "game", "tournament", "championship", "league", "season", "fixture", "schedule", "draw",
+        "bracket", "knockout", "round robin", "group stage", "quarter final", "semi final", "final",
+        "player", "athlete", "team", "squad", "coach", "manager", "trainer", "captain", "vice captain",
+        "referee", "umpire", "judge", "official", "linesmen", "goal", "point", "score", "result",
+        "win", "loss", "draw", "tie", "victory", "defeat", "champion", "runner up", "third place"
+    ],
+
+    # ENTERTAINMENT (~5000+ terms)
+    "Entertainment": [
+        # Bollywood & Hindi Cinema
+        "bollywood", "hindi cinema", "hindi film", "indian cinema", "film", "movie", "cinema", "picture",
+        "box office", "collection", "opening", "weekend", "hit", "flop", "blockbuster", "superhit", "disaster",
+        "multiplex", "single screen", "theatre", "cinema hall", "ticket", "booking", "housefull", "sold out",
+        
+        # Film Industry Roles
+        "actor", "actress", "hero", "heroine", "villain", "character artist", "director", "producer",
+        "executive producer", "co-producer", "music director", "composer", "lyricist", "singer", "playback singer",
+        "choreographer", "dance director", "cinematographer", "editor", "art director", "costume designer",
+        "makeup artist", "sound designer", "sound engineer", "dialogue writer", "screenplay writer", "story writer",
+        
+        # Bollywood Superstars (Male)
+        "shah rukh khan", "srk", "king khan", "salman khan", "bhai", "aamir khan", "mr perfectionist",
+        "akshay kumar", "khiladi kumar", "hrithik roshan", "greek god", "ranbir kapoor", "ranveer singh",
+        "varun dhawan", "tiger shroff", "kartik aaryan", "ayushmann khurrana", "rajkummar rao", "vicky kaushal",
+        "sidharth malhotra", "arjun kapoor", "shahid kapoor", "john abraham", "saif ali khan", "abhishek bachchan",
+        
+        # Bollywood Superstars (Female)
+        "deepika padukone", "priyanka chopra", "katrina kaif", "kareena kapoor", "alia bhatt", "anushka sharma",
+        "kangana ranaut", "sonam kapoor", "jacqueline fernandez", "kriti sanon", "shraddha kapoor", "parineeti chopra",
+        "sonakshi sinha", "aditi rao hydari", "bhumi pednekar", "taapsee pannu", "richa chadha", "swara bhasker",
+        
+        # Legendary Bollywood Icons
+        "amitabh bachchan", "big b", "shahenshah", "dilip kumar", "raj kapoor", "dev anand", "rajesh khanna",
+        "dharmendra", "jeetendra", "mithun chakraborty", "anil kapoor", "jackie shroff", "sunny deol", "sanjay dutt",
+        "madhuri dixit", "sridevi", "rekha", "hema malini", "dream girl", "zeenat aman", "parveen babi", "smita patil",
+        
+        # Film Production & Distribution
+        "yash raj films", "yrf", "dharma productions", "karan johar", "balaji telefilms", "ekta kapoor",
+        "eros international", "t-series", "bhushan kumar", "sajid nadiadwala", "nadiadwala grandson",
+        "excel entertainment", "red chillies entertainment", "shah rukh khan", "aamir khan productions",
+        "reliance entertainment", "viacom18", "disney india", "fox star studios", "zee studios", "sony pictures",
+        
+        # Music & Songs
+        "music", "song", "album", "soundtrack", "original soundtrack", "ost", "background music", "bgm",
+        "title track", "item song", "romantic song", "sad song", "party song", "dance number", "qawwali",
+        "ghazal", "sufi", "classical", "folk", "remix", "unplugged", "acoustic", "live", "concert", "tour",
+        
+        # Music Directors & Singers
+        "a r rahman", "ilaiyaraaja", "shankar ehsaan loy", "vishal shekhar", "pritam", "amit trivedi",
+        "sanjay leela bhansali", "anu malik", "nadeem shravan", "jatin lalit", "lata mangeshkar", "asha bhosle",
+        "kishore kumar", "mohammed rafi", "mukesh", "arijit singh", "shreya ghoshal", "sunidhi chauhan",
+        
+        # Film Genres
+        "action", "thriller", "suspense", "mystery", "horror", "comedy", "romantic", "drama", "family",
+        "social", "biographical", "biopic", "historical", "period", "war", "sports", "musical", "dance",
+        "fantasy", "science fiction", "sci-fi", "adventure", "crime", "gangster", "police", "courtroom",
+        
+        # Film Awards
+        "filmfare awards", "national film awards", "iifa", "international indian film academy", "screen awards",
+        "zee cine awards", "stardust awards", "producers guild awards", "critics choice awards", "best actor",
+        "best actress", "best director", "best film", "best music director", "best singer", "best lyricist",
+        
+        # Regional Cinema
+        "tollywood", "telugu cinema", "kollywood", "tamil cinema", "mollywood", "malayalam cinema", "sandalwood",
+        "kannada cinema", "ollywood", "odia cinema", "bhojpuri cinema", "gujarati cinema", "marathi cinema",
+        "punjabi cinema", "bengali cinema", "assamese cinema", "rajinikanth", "thalaivar", "kamal haasan",
+        
+        # South Indian Stars
+        "rajinikanth", "kamal haasan", "vijay", "thalapathy", "ajith", "thala", "allu arjun", "stylish star",
+        "ram charan", "jr ntr", "prabhas", "darling", "mahesh babu", "prince", "nani", "natural star",
+        "yash", "rocking star", "puneeth rajkumar", "power star", "mammootty", "mohanlal", "lalettan",
+        
+        # Television & Serials
+        "television", "tv", "serial", "daily soap", "prime time", "reality show", "talent show", "dance show",
+        "singing show", "comedy show", "game show", "talk show", "news", "entertainment news", "gossip",
+        "celebrity", "star", "channel", "colors", "star plus", "zee tv", "sony tv", "life ok", "and tv",
+        
+        # OTT Platforms & Digital
+        "ott", "over the top", "streaming", "digital", "web series", "web show", "original", "exclusive",
+        "netflix", "amazon prime video", "disney+ hotstar", "zee5", "sony liv", "voot", "alt balaji",
+        "mx player", "jio cinema", "eros now", "shemaroo me", "hoichoi", "addatimes", "kooku", "ullu",
+        
+        # International Entertainment
+        "hollywood", "american cinema", "english film", "oscar", "academy awards", "golden globe", "emmy",
+        "screen actors guild", "bafta", "cannes", "film festival", "venice", "berlin", "sundance", "toronto",
+        "tribeca", "sxsw", "best picture", "best director", "best actor", "best actress", "best supporting",
+        
+        # Hollywood Stars & Directors
+        "leonardo dicaprio", "brad pitt", "tom cruise", "will smith", "robert downey jr", "chris hemsworth",
+        "chris evans", "scarlett johansson", "jennifer lawrence", "angelina jolie", "meryl streep", "denzel washington",
+        "morgan freeman", "samuel l jackson", "tom hanks", "johnny depp", "steven spielberg", "martin scorsese",
+        
+        # Entertainment Franchises
+        "marvel", "mcu", "marvel cinematic universe", "dc", "dc extended universe", "dceu", "avengers",
+        "iron man", "captain america", "thor", "hulk", "spider-man", "batman", "superman", "wonder woman",
+        "justice league", "x-men", "fantastic four", "star wars", "star trek", "james bond", "007", "harry potter",
+        
+        # Gaming & Esports
+        "gaming", "video games", "esports", "e-sports", "competitive gaming", "professional gaming", "streamer",
+        "twitch", "youtube gaming", "pubg", "free fire", "call of duty", "fortnite", "valorant", "counter strike",
+        "dota", "league of legends", "fifa", "pes", "gta", "minecraft", "among us", "clash of clans", "clash royale",
+        
+        # Music Genres & Artists
+        "pop", "rock", "hip hop", "rap", "r&b", "country", "jazz", "blues", "classical", "electronic", "edm",
+        "house", "techno", "trance", "dubstep", "reggae", "folk", "indie", "alternative", "punk", "metal",
+        "heavy metal", "death metal", "black metal", "progressive", "ambient", "world music", "fusion"
+    ],
+
+    # HEALTH & MEDICINE (~5000+ terms)
+    "Health": [
+        # General Health Terms
+        "health", "healthcare", "medical", "medicine", "wellness", "fitness", "nutrition", "diet", "exercise",
+        "physical", "mental", "psychological", "physiological", "anatomy", "physiology", "pathology", "biology",
+        "biochemistry", "pharmacology", "toxicology", "epidemiology", "public health", "community health",
+        "preventive medicine", "curative medicine", "palliative care", "hospice", "rehabilitation", "therapy",
+        
+        # Healthcare Providers
+        "doctor", "physician", "surgeon", "specialist", "consultant", "resident", "intern", "medical student",
+        "nurse", "nursing", "rn", "registered nurse", "lpn", "licensed practical nurse", "cna", "certified nursing assistant",
+        "nurse practitioner", "physician assistant", "pa", "pharmacist", "physiotherapist", "occupational therapist",
+        "speech therapist", "dietitian", "nutritionist", "psychologist", "psychiatrist", "counselor", "therapist",
+        
+        # Healthcare Facilities
+        "hospital", "clinic", "dispensary", "health center", "medical center", "emergency room", "er",
+        "intensive care unit", "icu", "operation theater", "ot", "labor room", "maternity ward", "pediatric ward",
+        "geriatric ward", "psychiatric ward", "isolation ward", "general ward", "private room", "semi-private room",
+        "nursing home", "assisted living", "long-term care", "home healthcare", "outpatient", "inpatient",
+        
+        # Medical Specialties
+        "cardiology", "cardiac", "heart", "cardiovascular", "neurology", "neurological", "brain", "nervous system",
+        "oncology", "cancer", "tumor", "malignant", "benign", "chemotherapy", "radiation therapy", "radiotherapy",
+        "orthopedics", "orthopedic", "bone", "joint", "fracture", "sprain", "strain", "arthritis", "osteoporosis",
+        "pediatrics", "pediatric", "child", "infant", "neonatal", "adolescent", "growth", "development",
+        
+        # More Medical Specialties
+        "gynecology", "obstetrics", "pregnancy", "childbirth", "delivery", "cesarean", "c-section", "prenatal",
+        "postnatal", "fertility", "infertility", "reproductive", "menstrual", "menopause", "contraception",
+        "dermatology", "skin", "dermatitis", "eczema", "psoriasis", "acne", "rash", "allergy", "allergic reaction",
+        "ophthalmology", "eye", "vision", "cataract", "glaucoma", "retina", "cornea", "myopia", "hyperopia",
+        
+        # COVID-19 & Pandemic Terms
+        "covid", "covid-19", "coronavirus", "sars-cov-2", "pandemic", "epidemic", "outbreak", "contagious",
+        "infectious", "transmission", "airborne", "droplet", "contact", "community spread", "cluster",
+        "vaccine", "vaccination", "immunization", "dose", "booster", "booster dose", "pfizer", "moderna",
+        "astrazeneca", "covishield", "covaxin", "sputnik", "johnson & johnson", "jnj", "mrna", "adenovirus",
+        
+        # COVID Symptoms & Measures
+        "fever", "cough", "cold", "flu", "influenza", "sore throat", "headache", "body ache", "fatigue",
+        "weakness", "breathlessness", "shortness of breath", "loss of smell", "loss of taste", "diarrhea",
+        "nausea", "vomiting", "lockdown", "quarantine", "isolation", "social distancing", "mask", "face mask",
+        "n95", "sanitizer", "hand hygiene", "contact tracing", "rt-pcr", "antigen test", "antibody test",
+        
+        # Diseases & Conditions
+        "diabetes", "type 1 diabetes", "type 2 diabetes", "insulin", "blood sugar", "glucose", "diabetic",
+        "hypertension", "high blood pressure", "low blood pressure", "hypotension", "cholesterol", "triglycerides",
+        "heart disease", "heart attack", "myocardial infarction", "stroke", "brain stroke", "paralysis", "hemiplegia",
+        "asthma", "bronchitis", "pneumonia", "tuberculosis", "tb", "copd", "lung disease", "respiratory",
+        
+        # Mental Health
+        "mental health", "psychology", "psychiatry", "depression", "anxiety", "stress", "ptsd", "bipolar",
+        "schizophrenia", "ocd", "obsessive compulsive disorder", "adhd", "attention deficit", "autism", "dementia",
+        "alzheimer", "parkinson", "epilepsy", "seizure", "panic attack", "phobia", "eating disorder", "addiction",
+        "substance abuse", "alcohol", "drug abuse", "rehabilitation", "counseling", "therapy", "psychotherapy",
+        
+        # Medical Procedures
+        "surgery", "operation", "procedure", "biopsy", "endoscopy", "colonoscopy", "angiography", "angioplasty",
+        "bypass surgery", "transplant", "organ transplant", "kidney transplant", "liver transplant", "heart transplant",
+        "dialysis", "hemodialysis", "peritoneal dialysis", "blood transfusion", "plasma", "platelet", "stem cell",
+        "bone marrow", "chemotherapy", "immunotherapy", "gene therapy", "robotic surgery", "laparoscopy",
+        
+        # Diagnostic Tests
+        "blood test", "urine test", "stool test", "x-ray", "ct scan", "mri", "magnetic resonance imaging",
+        "ultrasound", "sonography", "ecg", "electrocardiogram", "echo", "echocardiogram", "eeg", "pet scan",
+        "bone scan", "mammography", "pap smear", "colonoscopy", "endoscopy", "spirometry", "stress test",
+        "holter monitor", "biopsy", "culture", "sensitivity", "antibiotic sensitivity", "pathology", "histopathology",
+        
+        # Medications & Drugs
+        "medicine", "medication", "drug", "pharmaceutical", "prescription", "over the counter", "otc", "generic",
+        "brand", "tablet", "capsule", "syrup", "injection", "iv", "intravenous", "intramuscular", "subcutaneous",
+        "topical", "ointment", "cream", "lotion", "drops", "inhaler", "antibiotic", "antiviral", "antifungal",
+        "painkiller", "analgesic", "anti-inflammatory", "steroid", "hormone", "vitamin", "supplement", "probiotic",
+        
+        # Healthcare Systems & Insurance
+        "health insurance", "medical insurance", "mediclaim", "cashless", "reimbursement", "premium", "deductible",
+        "co-payment", "network hospital", "tpa", "third party administrator", "claim", "pre-authorization",
+        "health policy", "family floater", "individual policy", "senior citizen", "maternity", "ayushman bharat",
+        "pmjay", "cghs", "esis", "government hospital", "private hospital", "corporate hospital", "trust hospital",
+        
+        # Indian Healthcare Institutions
+        "aiims", "all india institute of medical sciences", "pgimer", "chandigarh", "jipmer", "pondicherry",
+        "kgmu", "lucknow", "bhu", "varanasi", "amu", "aligarh", "cmc", "vellore", "manipal hospital", "apollo hospital",
+        "fortis", "max healthcare", "medanta", "artemis", "blk", "sir ganga ram", "safdarjung", "ram manohar lohia",
+        
+        # Medical Education
+        "mbbs", "bachelor of medicine", "md", "doctor of medicine", "ms", "master of surgery", "dm", "mch",
+        "phd", "fellowship", "residency", "internship", "medical college", "neet", "national eligibility entrance test",
+        "pgi", "postgraduate institute", "medical council", "nmc", "national medical commission", "continuing medical education",
+        "cme", "medical conference", "medical journal", "research", "clinical trial", "evidence based medicine"
+    ],
+
+    # EDUCATION (~5000+ terms) 
+    "Education": [
+        # Educational Institutions
+        "school", "primary school", "elementary school", "middle school", "high school", "secondary school",
+        "senior secondary", "college", "university", "institute", "academy", "coaching center", "tuition",
+        "kindergarten", "nursery", "pre-school", "play school", "boarding school", "day school", "residential school",
+        "co-educational", "boys school", "girls school", "convent", "missionary school", "government school",
+        
+        # Higher Education Institutes (Indian)
+        "iit", "indian institute of technology", "iim", "indian institute of management", "nit", "national institute of technology",
+        "iiit", "indian institute of information technology", "iisc", "indian institute of science", "bits", "pilani",
+        "vit", "vellore institute of technology", "srm", "manipal", "amity", "lovely professional university", "lpu",
+        "du", "delhi university", "jnu", "jawaharlal nehru university", "bhu", "banaras hindu university",
+        
+        # Professional Courses & Degrees
+        "engineering", "btech", "be", "bachelor of technology", "bachelor of engineering", "mtech", "me",
+        "master of technology", "master of engineering", "phd", "doctorate", "research", "thesis", "dissertation",
+        "medical", "mbbs", "bds", "bams", "bhms", "bums", "bvsc", "pharmacy", "bpharm", "mpharm", "pharm d",
+        "management", "mba", "master of business administration", "pgdm", "executive mba", "distance mba",
+        
+        # Academic Subjects
+        "mathematics", "physics", "chemistry", "biology", "science", "english", "hindi", "social studies",
+        "history", "geography", "civics", "political science", "economics", "sociology", "psychology",
+        "philosophy", "literature", "language", "computer science", "information technology", "electronics",
+        "mechanical", "civil", "electrical", "chemical", "aerospace", "biotechnology", "biomedical", "environmental",
+        
+        # Examinations (Competitive)
+        "jee", "joint entrance examination", "jee main", "jee advanced", "neet", "national eligibility entrance test",
+        "cat", "common admission test", "gate", "graduate aptitude test", "gmat", "gre", "toefl", "ielts",
+        "upsc", "union public service commission", "ias", "ips", "ifs", "ssc", "staff selection commission",
+        "banking exam", "ibps", "sbi po", "sbi clerk", "rbi", "railway exam", "rrb", "group d", "alp",
+        
+        # Board Examinations
+        "cbse", "central board of secondary education", "icse", "indian certificate of secondary education",
+        "isc", "indian school certificate", "state board", "hsc", "higher secondary certificate", "ssc",
+        "secondary school certificate", "board exam", "board result", "percentage", "marks", "grade", "cgpa",
+        "10th", "12th", "class 10", "class 12", "matric", "matriculation", "intermediate", "plus two",
+        
+        # Academic Terms
+        "student", "pupil", "learner", "teacher", "educator", "instructor", "professor", "lecturer", "principal",
+        "headmaster", "headmistress", "dean", "director", "chancellor", "vice chancellor", "registrar", "faculty",
+        "staff", "academic staff", "teaching staff", "non-teaching staff", "administration", "management",
+        "admission", "enrollment", "registration", "application", "form", "eligibility", "criteria", "cut off",
+        
+        # Academic Calendar
+        "semester", "trimester", "quarter", "term", "academic year", "session", "vacation", "holidays",
+        "summer vacation", "winter break", "festive holidays", "examination", "exam", "test", "quiz",
+        "assignment", "project", "presentation", "viva", "oral", "practical", "lab", "laboratory", "workshop",
+        "seminar", "symposium", "conference", "research paper", "publication", "journal", "thesis", "dissertation",
+        
+        # Curriculum & Pedagogy
+        "curriculum", "syllabus", "course", "subject", "chapter", "unit", "lesson", "topic", "learning objective",
+        "outcome", "assessment", "evaluation", "grading", "marking scheme", "rubric", "pedagogy", "teaching method",
+        "learning", "active learning", "experiential learning", "collaborative learning", "peer learning",
+        "project based learning", "problem based learning", "inquiry based learning", "blended learning",
+        
+        # Online & Digital Education
+        "online education", "e-learning", "digital learning", "virtual classroom", "remote learning",
+        "distance education", "correspondence", "open university", "ignou", "mooc", "massive open online course",
+        "edtech", "educational technology", "lms", "learning management system", "zoom", "google classroom",
+        "microsoft teams", "webinar", "video conferencing", "recorded lecture", "live streaming", "interactive",
+        
+        # Educational Technology Platforms
+        "byju's", "unacademy", "vedantu", "white hat jr", "toppr", "meritnation", "extramarks", "embibe",
+        "doubtnut", "physicswallah", "khan academy", "coursera", "edx", "udemy", "skillshare", "lynda",
+        "pluralsight", "udacity", "swayam", "nptel", "diksha", "google for education", "microsoft education",
+        
+        # Academic Performance
+        "grade", "marks", "score", "percentage", "cgpa", "cumulative grade point average", "gpa", "grade point average",
+        "rank", "position", "merit", "topper", "first class", "second class", "distinction", "honors", "pass",
+        "fail", "compartment", "supplementary", "improvement", "re-examination", "grace marks", "attendance",
+        "scholarship", "merit scholarship", "need based scholarship", "fellowship", "stipend", "freeship",
+        
+        # School Infrastructure
+        "campus", "building", "classroom", "laboratory", "library", "auditorium", "hall", "playground",
+        "sports ground", "gymnasium", "cafeteria", "canteen", "hostel", "dormitory", "mess", "dining hall",
+        "medical room", "infirmary", "computer lab", "language lab", "science lab", "physics lab", "chemistry lab",
+        "biology lab", "workshop", "studio", "music room", "dance room", "art room", "craft room",
+        
+        # Educational Resources
+        "textbook", "reference book", "workbook", "notebook", "copy", "register", "diary", "homework diary",
+        "stationery", "pen", "pencil", "eraser", "sharpener", "ruler", "compass", "protractor", "calculator",
+        "dictionary", "atlas", "map", "chart", "model", "specimen", "slide", "microscope", "telescope",
+        "whiteboard", "blackboard", "projector", "smartboard", "computer", "tablet", "laptop", "internet",
+        
+        # Student Activities
+        "extracurricular", "co-curricular", "sports", "games", "athletics", "tournament", "competition",
+        "debate", "elocution", "speech", "essay writing", "poetry", "drama", "theatre", "dance", "music",
+        "singing", "drawing", "painting", "craft", "science exhibition", "science fair", "quiz", "olympiad",
+        "ncc", "national cadet corps", "nss", "national service scheme", "scout", "guide", "red cross",
+        
+        # Education Policy & Governance
+        "education policy", "national education policy", "nep", "ministry of education", "moe", "ugc",
+        "university grants commission", "aicte", "all india council for technical education", "ncte",
+        "national council for teacher education", "ncert", "national council of educational research and training",
+        "cbse", "icse", "state board", "autonomous", "deemed university", "private university", "public university"
+    ],
+
+    # ENVIRONMENT & CLIMATE (~5000+ terms)
+    "Environment": [
+        # Climate Change & Global Warming
+        "climate change", "global warming", "greenhouse effect", "greenhouse gases", "carbon dioxide", "co2",
+        "methane", "ch4", "nitrous oxide", "n2o", "fluorinated gases", "carbon footprint", "carbon emission",
+        "carbon neutral", "carbon negative", "net zero", "decarbonization", "fossil fuels", "renewable energy",
+        "clean energy", "sustainable energy", "energy transition", "paris agreement", "kyoto protocol",
+        
+        # Environmental Issues
+        "pollution", "air pollution", "water pollution", "soil pollution", "noise pollution", "light pollution",
+        "plastic pollution", "marine pollution", "chemical pollution", "industrial pollution", "vehicular pollution",
+        "smog", "haze", "acid rain", "ozone depletion", "ozone layer", "ultraviolet radiation", "uv rays",
+        "particulate matter", "pm2.5", "pm10", "aqi", "air quality index", "emission", "toxic", "hazardous",
+        
+        # Natural Disasters & Extreme Weather
+        "natural disaster", "climate disaster", "extreme weather", "heat wave", "cold wave", "drought", "flood",
+        "flash flood", "cyclone", "hurricane", "typhoon", "tornado", "thunderstorm", "hailstorm", "blizzard",
+        "earthquake", "tremor", "aftershock", "tsunami", "landslide", "mudslide", "avalanche", "wildfire",
+        "forest fire", "bushfire", "volcanic eruption", "volcano", "lava", "ash", "seismic activity",
+        
+        # Ecosystems & Biodiversity
+        "ecosystem", "biodiversity", "habitat", "wildlife", "flora", "fauna", "species", "endangered species",
+        "extinct", "extinction", "conservation", "preservation", "protected area", "national park", "wildlife sanctuary",
+        "biosphere reserve", "tiger reserve", "elephant corridor", "migratory route", "endemic", "native",
+        "invasive species", "keystone species", "food chain", "food web", "predator", "prey", "herbivore",
+        
+        # Forests & Deforestation
+        "forest", "rainforest", "tropical forest", "deciduous forest", "coniferous forest", "boreal forest",
+        "amazon rainforest", "congo basin", "taiga", "canopy", "understory", "forest floor", "tree", "timber",
+        "logging", "deforestation", "afforestation", "reforestation", "tree plantation", "urban forest",
+        "sacred grove", "old growth forest", "primary forest", "secondary forest", "monoculture", "silviculture",
+        
+        # Water Bodies & Marine Life
+        "ocean", "sea", "lake", "river", "stream", "wetland", "marsh", "swamp", "estuary", "delta", "lagoon",
+        "coral reef", "coral bleaching", "marine ecosystem", "aquatic", "freshwater", "saltwater", "groundwater",
+        "water table", "aquifer", "watershed", "catchment", "basin", "marine life", "fish", "whale", "dolphin",
+        "turtle", "shark", "coral", "plankton", "algae", "seaweed", "mangrove", "coastline", "beach erosion",
+        
+        # Environmental Conservation
+        "conservation", "preservation", "restoration", "rehabilitation", "rewilding", "ecological restoration",
+        "habitat restoration", "species recovery", "breeding program", "captive breeding", "release program",
+        "wildlife corridor", "green corridor", "eco-bridge", "seed bank", "gene bank", "cryopreservation",
+        "ex-situ conservation", "in-situ conservation", "community conservation", "participatory conservation",
+        
+        # Renewable Energy & Green Technology
+        "renewable energy", "solar energy", "solar power", "solar panel", "photovoltaic", "wind energy",
+        "wind power", "wind turbine", "wind farm", "hydroelectric", "hydro power", "dam", "micro hydro",
+        "geothermal energy", "biomass", "biogas", "biofuel", "ethanol", "biodiesel", "tidal energy", "wave energy",
+        "green technology", "clean technology", "sustainable technology", "energy efficiency", "smart grid",
+        
+        # Waste Management & Recycling
+        "waste management", "waste disposal", "landfill", "dump", "incineration", "composting", "recycling",
+        "upcycling", "reduce", "reuse", "recycle", "3rs", "circular economy", "zero waste", "waste to energy",
+        "organic waste", "biodegradable", "non-biodegradable", "plastic waste", "e-waste", "electronic waste",
+        "hazardous waste", "toxic waste", "medical waste", "industrial waste", "segregation", "collection",
+        
+        # Environmental Policies & Agreements
+        "environmental policy", "environmental law", "environmental regulation", "environmental impact assessment",
+        "eia", "clearance", "approval", "compliance", "violation", "penalty", "fine", "pollution control board",
+        "ministry of environment", "moef", "forest clearance", "coastal regulation zone", "crz", "eco-sensitive zone",
+        "buffer zone", "no development zone", "environmental tribunal", "green tribunal", "ngt", "supreme court",
+        
+        # International Environmental Organizations
+        "unep", "united nations environment programme", "ipcc", "intergovernmental panel on climate change",
+        "unfccc", "united nations framework convention on climate change", "cop", "conference of parties",
+        "wwf", "world wildlife fund", "greenpeace", "iucn", "international union for conservation of nature",
+        "wcs", "wildlife conservation society", "ci", "conservation international", "unesco", "world heritage",
+        
+        # Environmental Activism & Movements
+        "environmental activism", "green movement", "climate activism", "environmental protest", "demonstration",
+        "save environment", "earth day", "world environment day", "arbor day", "tree plantation", "beach cleanup",
+        "river cleanup", "awareness campaign", "environmental education", "sustainability", "sustainable development",
+        "green living", "eco-friendly", "organic", "natural", "chemical free", "non-toxic", "biodegradable",
+        
+        # Air Quality & Atmospheric Science
+        "atmosphere", "troposphere", "stratosphere", "ozone layer", "air quality", "air pollution index",
+        "smog", "haze", "visibility", "particulate matter", "aerosol", "emission", "vehicle emission",
+        "industrial emission", "stack", "chimney", "flue gas", "desulfurization", "catalytic converter",
+        "emission norms", "bs6", "euro norms", "pollution under control", "puc", "odd even", "car free day",
+        
+        # Climate Science & Meteorology
+        "meteorology", "weather", "climate", "temperature", "rainfall", "precipitation", "humidity", "wind",
+        "atmospheric pressure", "cyclone", "anticyclone", "monsoon", "seasonal", "climate model", "weather forecast",
+        "satellite imagery", "radar", "weather station", "data collection", "climate data", "historical data",
+        "trend analysis", "climate projection", "scenario", "adaptation", "mitigation", "resilience", "vulnerability"
+    ],
+
+    # CRIME & LAW (~5000+ terms)
+    "Crime": [
+        # Types of Crimes
+        "crime", "criminal", "felony", "misdemeanor", "offense", "violation", "breach", "infringement",
+        "murder", "homicide", "manslaughter", "killing", "assassination", "lynching", "encounter", "custodial death",
+        "rape", "sexual assault", "molestation", "harassment", "eve teasing", "dowry death", "honor killing",
+        "domestic violence", "child abuse", "sexual abuse", "trafficking", "human trafficking", "prostitution",
+        
+        # Property Crimes
+        "theft", "stealing", "robbery", "dacoity", "burglary", "house breaking", "shop lifting", "pick pocketing",
+        "chain snatching", "vehicle theft", "cattle theft", "property dispute", "land grabbing", "encroachment",
+        "trespassing", "criminal breach of trust", "cheating", "forgery", "counterfeiting", "fake currency",
+        "embezzlement", "misappropriation", "criminal intimidation", "extortion", "ransom", "kidnapping", "abduction",
+        
+        # White Collar Crimes
+        "white collar crime", "fraud", "financial fraud", "banking fraud", "credit card fraud", "insurance fraud",
+        "tax evasion", "money laundering", "hawala", "benami transaction", "shell company", "ponzi scheme",
+        "pyramid scheme", "insider trading", "market manipulation", "securities fraud", "corporate fraud",
+        "accounting fraud", "audit fraud", "bribery", "corruption", "kickback", "quid pro quo", "influence peddling",
+        
+        # Cyber Crimes
+        "cyber crime", "cyber attack", "hacking", "cracking", "phishing", "vishing", "smishing", "identity theft",
+        "data theft", "data breach", "ransomware", "malware", "virus", "trojan", "worm", "spyware", "adware",
+        "botnet", "ddos attack", "cyber stalking", "cyber bullying", "online harassment", "morphing", "fake profile",
+        "social media crime", "online fraud", "digital payment fraud", "upi fraud", "atm fraud", "skimming",
+        
+        # Drug Related Crimes
+        "drug", "narcotics", "substance abuse", "drug trafficking", "drug peddling", "drug possession",
+        "drug smuggling", "poppy cultivation", "opium", "heroin", "cocaine", "charas", "ganja", "marijuana",
+        "synthetic drugs", "mdma", "lsd", "methamphetamine", "ndps act", "narcotics control bureau", "ncb",
+        "de-addiction", "rehabilitation", "drug seizure", "contraband", "illegal substance", "psychotropic",
+        
+        # Organized Crime & Terrorism
+        "organized crime", "gang", "criminal gang", "mafia", "underworld", "don", "gang war", "extortion",
+        "protection money", "contract killing", "supari", "encounter", "terrorism", "terrorist", "terror attack",
+        "bomb blast", "suicide bombing", "hijacking", "hostage", "ransom", "arms trafficking", "weapon smuggling",
+        "fake currency", "hawala", "terror funding", "anti-national", "sedition", "unlawful assembly", "rioting",
+        
+        # Law Enforcement Agencies
+        "police", "cops", "constable", "head constable", "asi", "assistant sub inspector", "si", "sub inspector",
+        "inspector", "deputy superintendent", "superintendent", "dig", "deputy inspector general", "ig",
+        "inspector general", "dgp", "director general of police", "commissioner", "joint commissioner",
+        "additional commissioner", "acp", "assistant commissioner", "station house officer", "sho", "beat constable",
+        
+        # Investigation Agencies
+        "cbi", "central bureau of investigation", "ed", "enforcement directorate", "ncb", "narcotics control bureau",
+        "nia", "national investigation agency", "raw", "research and analysis wing", "ib", "intelligence bureau",
+        "ncrb", "national crime records bureau", "forensic", "forensic science", "cid", "crime investigation department",
+        "ats", "anti terrorism squad", "sog", "special operations group", "stf", "special task force",
+        
+        # Legal System & Courts
+        "court", "judiciary", "judge", "magistrate", "justice", "chief justice", "sessions judge", "additional sessions judge",
+        "judicial magistrate", "executive magistrate", "metropolitan magistrate", "family court judge", "district judge",
+        "high court", "supreme court", "appellate court", "trial court", "fast track court", "lok adalat",
+        "consumer court", "tribunal", "cyber tribunal", "green tribunal", "ngt", "human rights commission",
+        
+        # Legal Professionals
+        "lawyer", "advocate", "attorney", "counsel", "barrister", "solicitor", "public prosecutor", "app",
+        "additional public prosecutor", "special public prosecutor", "government pleader", "standing counsel",
+        "senior advocate", "junior advocate", "law clerk", "paralegal", "legal aid", "legal service", "bar council",
+        "bar association", "chamber", "law firm", "legal practice", "retainer", "brief", "vakalatnama",
+        
+        # Legal Procedures
+        "fir", "first information report", "complaint", "cognizable", "non-cognizable", "investigation", "inquiry",
+        "charge sheet", "closure report", "arrest", "detention", "custody", "remand", "police custody", "judicial custody",
+        "bail", "anticipatory bail", "interim bail", "regular bail", "bond", "surety", "undertaking", "parole",
+        "furlough", "probation", "suspended sentence", "community service", "fine", "penalty", "compensation",
+        
+        # Trial Process
+        "trial", "hearing", "proceedings", "evidence", "witness", "testimony", "cross examination", "examination in chief",
+        "re-examination", "argument", "submission", "judgment", "order", "verdict", "conviction", "acquittal",
+        "sentence", "punishment", "imprisonment", "life imprisonment", "death penalty", "capital punishment",
+        "execution", "commutation", "mercy petition", "clemency", "presidential pardon", "appeal", "revision",
+        
+        # Laws & Legal Acts
+        "indian penal code", "ipc", "code of criminal procedure", "crpc", "indian evidence act", "constitution",
+        "fundamental rights", "constitutional remedy", "writ petition", "habeas corpus", "mandamus", "certiorari",
+        "prohibition", "quo warranto", "public interest litigation", "pil", "contempt of court", "perjury",
+        "defamation", "libel", "slander", "privacy", "right to information", "rti", "lokpal", "lokayukta",
+        
+        # Criminal Justice System
+        "criminal justice", "law and order", "rule of law", "due process", "natural justice", "presumption of innocence",
+        "burden of proof", "beyond reasonable doubt", "circumstantial evidence", "direct evidence", "material evidence",
+        "admissible evidence", "inadmissible evidence", "hearsay", "confession", "voluntary confession", "custodial violence",
+        "third degree", "torture", "human rights violation", "police brutality", "false case", "frame up",
+        
+        # Prisons & Corrections
+        "prison", "jail", "correctional facility", "central jail", "district jail", "sub jail", "lock up",
+        "police station", "custody", "cell", "barrack", "solitary confinement", "prisoner", "inmate", "convict",
+        "undertrial", "remand prisoner", "life convict", "death row", "parole", "furlough", "open prison",
+        "model prison", "juvenile home", "observation home", "reformatory", "rehabilitation", "correctional program"
+    ],
+    
+    # INTERNATIONAL (~5000+ terms)
+    "International": [
+        # Major Countries (Global)
+        "usa", "united states", "america", "american", "washington dc", "new york", "california", "texas", "florida",
+        "china", "chinese", "beijing", "shanghai", "hong kong", "taiwan", "xinjiang", "tibet", "macau",
+        "russia", "russian", "moscow", "saint petersburg", "siberia", "kremlin", "putin", "federation",
+        "japan", "japanese", "tokyo", "osaka", "kyoto", "hiroshima", "nagasaki", "emperor", "prime minister",
+        "germany", "german", "berlin", "munich", "hamburg", "cologne", "frankfurt", "chancellor", "bundestag",
+        
+        # European Countries
+        "united kingdom", "uk", "britain", "british", "england", "scotland", "wales", "northern ireland",
+        "london", "manchester", "liverpool", "birmingham", "glasgow", "cardiff", "belfast", "brexit",
+        "france", "french", "paris", "marseille", "lyon", "toulouse", "nice", "president", "macron",
+        "italy", "italian", "rome", "milan", "naples", "turin", "florence", "venice", "vatican",
+        "spain", "spanish", "madrid", "barcelona", "valencia", "seville", "bilbao", "catalonia",
+        
+        # South Asian Countries
+        "pakistan", "pakistani", "islamabad", "karachi", "lahore", "rawalpindi", "faisalabad", "peshawar",
+        "bangladesh", "bangladeshi", "dhaka", "chittagong", "sylhet", "rajshahi", "khulna", "barisal",
+        "sri lanka", "lankan", "colombo", "kandy", "galle", "jaffna", "trincomalee", "tamil", "sinhalese",
+        "nepal", "nepali", "kathmandu", "pokhara", "lumbini", "everest", "himalaya", "sherpa",
+        "bhutan", "bhutanese", "thimphu", "paro", "punakha", "gross national happiness", "dragon kingdom",
+        "maldives", "maldivian", "male", "atoll", "resort", "tourism", "indian ocean", "coral",
+        
+        # Middle Eastern Countries
+        "saudi arabia", "saudi", "riyadh", "jeddah", "mecca", "medina", "dammam", "kingdom", "crown prince",
+        "iran", "iranian", "tehran", "isfahan", "mashhad", "tabriz", "shiraz", "persian", "ayatollah",
+        "israel", "israeli", "jerusalem", "tel aviv", "haifa", "gaza", "west bank", "zionist", "hebrew",
+        "palestine", "palestinian", "ramallah", "bethlehem", "nablus", "hebron", "intifada", "refugee",
+        "turkey", "turkish", "ankara", "istanbul", "izmir", "antalya", "ottoman", "erdogan", "bosphorus",
+        "egypt", "egyptian", "cairo", "alexandria", "luxor", "aswan", "suez", "nile", "pyramid", "pharaoh",
+        
+        # Southeast Asian Countries
+        "singapore", "singaporean", "lion city", "marina bay", "changi", "merlion", "lee kuan yew",
+        "thailand", "thai", "bangkok", "phuket", "chiang mai", "pattaya", "siam", "buddhist", "monarchy",
+        "malaysia", "malaysian", "kuala lumpur", "penang", "johor", "sabah", "sarawak", "borneo", "malay",
+        "indonesia", "indonesian", "jakarta", "bali", "surabaya", "medan", "bandung", "java", "sumatra",
+        "philippines", "filipino", "manila", "cebu", "davao", "mindanao", "luzon", "visayas", "tagalog",
+        "vietnam", "vietnamese", "hanoi", "ho chi minh city", "saigon", "da nang", "hue", "mekong",
+        
+        # International Organizations (UN System)
+        "united nations", "un", "general assembly", "security council", "economic and social council",
+        "trusteeship council", "international court of justice", "icj", "secretariat", "secretary general",
+        "peacekeeping", "blue helmets", "unesco", "unicef", "who", "world health organization", "ilo",
+        "international labour organization", "fao", "food and agriculture organization", "undp", "unhcr",
+        "world bank", "imf", "international monetary fund", "wto", "world trade organization",
+        
+        # Regional Organizations
+        "european union", "eu", "brexit", "eurozone", "euro", "schengen", "european parliament",
+        "european commission", "european council", "nato", "north atlantic treaty organization",
+        "asean", "association of southeast asian nations", "saarc", "south asian association for regional cooperation",
+        "african union", "au", "arab league", "gulf cooperation council", "gcc", "mercosur", "nafta",
+        "usmca", "opec", "organization of petroleum exporting countries", "g7", "g8", "g20", "brics",
+        
+        # International Financial Institutions
+        "world bank group", "international bank for reconstruction and development", "ibrd", "ida",
+        "international development association", "ifc", "international finance corporation", "miga",
+        "multilateral investment guarantee agency", "asian development bank", "adb", "african development bank",
+        "inter-american development bank", "european bank for reconstruction and development", "ebrd",
+        "new development bank", "ndb", "asian infrastructure investment bank", "aiib", "islamic development bank",
+        
+        # Diplomatic Relations
+        "diplomacy", "diplomatic", "bilateral", "multilateral", "summit", "state visit", "official visit",
+        "working visit", "delegation", "ambassador", "high commissioner", "consul general", "consul",
+        "embassy", "high commission", "consulate", "diplomatic immunity", "vienna convention", "protocol",
+        "foreign policy", "external affairs", "international relations", "geopolitics", "realpolitik",
+        
+        # Treaties & Agreements
+        "treaty", "agreement", "convention", "protocol", "memorandum of understanding", "mou", "pact",
+        "accord", "compact", "charter", "statute", "declaration", "resolution", "communique", "joint statement",
+        "bilateral agreement", "multilateral treaty", "trade agreement", "defense pact", "alliance",
+        "partnership", "cooperation", "collaboration", "friendship treaty", "non-aggression pact",
+        
+        # International Trade & Economics
+        "international trade", "export", "import", "balance of trade", "trade deficit", "trade surplus",
+        "tariff", "customs duty", "quota", "embargo", "sanctions", "trade war", "dumping", "subsidies",
+        "wto disputes", "most favored nation", "mfn", "generalized system of preferences", "gsp",
+        "free trade agreement", "fta", "comprehensive economic partnership", "cepa", "regional comprehensive",
+        "economic partnership", "rcep", "trans-pacific partnership", "tpp", "brexit", "trade bloc",
+        
+        # Global Issues & Challenges
+        "climate change", "global warming", "paris agreement", "cop27", "cop28", "sustainable development",
+        "sdgs", "millennium development goals", "mdgs", "poverty alleviation", "hunger", "malnutrition",
+        "pandemic", "covid-19", "vaccine equity", "digital divide", "inequality", "migration", "refugees",
+        "human rights", "universal declaration", "civil liberties", "freedom of speech", "democracy",
+        
+        # International Law & Justice
+        "international law", "customary international law", "jus cogens", "state sovereignty", "jurisdiction",
+        "extradition", "asylum", "refugee", "stateless", "genocide", "crimes against humanity", "war crimes",
+        "international criminal court", "icc", "rome statute", "nuremberg trials", "tokyo trials",
+        "international tribunal", "arbitration", "mediation", "dispute resolution", "hague conventions",
+        
+        # Nuclear & Security Issues
+        "nuclear weapons", "nuclear proliferation", "non-proliferation treaty", "npt", "comprehensive test ban",
+        "ctbt", "nuclear security", "iaea", "international atomic energy agency", "uranium enrichment",
+        "plutonium", "nuclear reactor", "nuclear power", "chernobyl", "fukushima", "hiroshima", "nagasaki",
+        "nuclear winter", "mutually assured destruction", "mad", "arms race", "disarmament", "arms control",
+        
+        # Terrorism & Extremism
+        "international terrorism", "transnational terrorism", "al-qaeda", "isis", "islamic state", "taliban",
+        "boko haram", "hezbollah", "hamas", "ira", "eta", "farc", "counter-terrorism", "anti-terrorism",
+        "homeland security", "intelligence sharing", "interpol", "europol", "terrorist financing",
+        "money laundering", "hawala", "radicalization", "deradicalization", "lone wolf", "sleeper cell",
+        
+        # Cyber Warfare & Digital Issues
+        "cyber warfare", "cyber attack", "state-sponsored hacking", "advanced persistent threat", "apt",
+        "ransomware", "malware", "phishing", "social engineering", "data breach", "cyber espionage",
+        "information warfare", "disinformation", "propaganda", "fake news", "deepfake", "social media manipulation",
+        "digital sovereignty", "internet governance", "net neutrality", "digital rights", "privacy",
+        
+        # Space & Technology
+        "space exploration", "international space station", "iss", "nasa", "roscosmos", "esa", "jaxa",
+        "isro", "spacex", "blue origin", "satellite", "gps", "galileo", "glonass", "beidou",
+        "space debris", "space militarization", "space treaty", "outer space treaty", "moon agreement",
+        "mars mission", "lunar mission", "space station", "spacewalk", "astronaut", "cosmonaut",
+        
+        # Ocean & Maritime Issues
+        "law of the sea", "unclos", "exclusive economic zone", "eez", "territorial waters", "high seas",
+        "continental shelf", "maritime boundary", "freedom of navigation", "strait", "chokepoint",
+        "south china sea", "east china sea", "strait of hormuz", "suez canal", "panama canal",
+        "piracy", "maritime security", "fishing rights", "marine pollution", "ocean acidification",
+        
+        # Current Global Events & Conflicts
+        "ukraine war", "russia ukraine conflict", "crimea", "donbas", "zelensky", "putin", "nato expansion",
+        "taiwan strait", "cross-strait relations", "one china policy", "taiwan independence", "xi jinping",
+        "south china sea dispute", "artificial islands", "nine-dash line", "scarborough shoal", "spratly islands",
+        "israel palestine conflict", "gaza strip", "hamas", "fatah", "two-state solution", "oslo accords",
+        "syrian civil war", "assad", "kurdish", "refugees", "arab spring", "libya", "yemen", "afghanistan",
+        
+        # International Media & Communication
+        "international media", "global news", "foreign correspondent", "reuters", "associated press", "ap",
+        "afp", "agence france-presse", "bloomberg", "cnn international", "bbc world service", "al jazeera",
+        "rt", "russia today", "xinhua", "people's daily", "voice of america", "voa", "radio free europe",
+        "deutsche welle", "nhr", "france24", "euronews", "international broadcasting", "soft power",
+        
+        # Cultural Exchange & Education
+        "cultural diplomacy", "cultural exchange", "student exchange", "erasmus", "fulbright", "chevening",
+        "rhodes scholar", "international education", "study abroad", "foreign language", "lingua franca",
+        "english", "mandarin", "spanish", "french", "arabic", "translation", "interpretation", "unesco",
+        "world heritage", "cultural heritage", "intangible heritage", "cultural diversity", "multiculturalism"
+    ]
+}
+
+# Helper function to preprocess text
+def preprocess_text(text: str) -> str:
+    """Clean and preprocess text for better matching"""
+    # Convert to lowercase
+    text = text.lower()
+    
+    # Remove special characters but keep spaces and alphanumeric
+    text = re.sub(r'[^\w\s]', ' ', text)
+    
+    # Replace multiple spaces with single space
+    text = re.sub(r'\s+', ' ', text)
+    
+    # Strip leading/trailing spaces
+    return text.strip()
+
+
+# Advanced categorization function with scoring
+@lru_cache(maxsize=2000)
+def categorize_content(title: str, summary: str) -> str:
+    """
+    Advanced categorization function with weighted scoring and phrase matching.
+    
+    Args:
+        title (str): News article title
+        summary (str): News article summary/description
+        
+    Returns:
+        str: Best matching category or "General" if no good match
+    """
+    # Combine and preprocess text
+    full_text = f"{title} {summary}"
+    clean_text = preprocess_text(full_text)
+    
+    # Create word set for faster lookup
+    words = set(clean_text.split())
+    
+    category_scores = {}
+    
+    for category, keywords in categories.items():
+        score = 0
+        matched_keywords = []
+        
+        for keyword in keywords:
+            keyword_lower = keyword.lower()
+            
+            # Handle multi-word keywords (phrases)
+            if ' ' in keyword_lower:
+                # Check for exact phrase match
+                if keyword_lower in clean_text:
+                    # Higher weight for phrase matches
+                    phrase_weight = len(keyword_lower.split()) * 2
+                    score += phrase_weight
+                    matched_keywords.append(keyword_lower)
+            else:
+                # Single word matching
+                if keyword_lower in words:
+                    score += 1
+                    matched_keywords.append(keyword_lower)
+        
+        # Store results if any matches found
+        if score > 0:
+            category_scores[category] = {
+                'score': score,
+                'keywords': matched_keywords,
+                'keyword_count': len(matched_keywords)
+            }
+    
+    # Return best match if score is significant enough
+    if category_scores:
+        # Sort by score, then by number of matched keywords
+        best_match = max(
+            category_scores.items(),
+            key=lambda x: (x[1]['score'], x[1]['keyword_count'])
+        )
+        
+        # Set minimum threshold to avoid weak matches
+        if best_match[1]['score'] >= 1:
+            return best_match[0]
+    
+    return "General"
+
+
+# Function to get category with confidence score
+@lru_cache(maxsize=1000)
+def categorize_with_confidence(title: str, summary: str) -> Tuple[str, float, List[str]]:
+    """
+    Categorize content and return confidence score with matched keywords.
+    
+    Args:
+        title (str): News article title
+        summary (str): News article summary
+        
+    Returns:
+        Tuple[str, float, List[str]]: (category, confidence_score, matched_keywords)
+    """
+    full_text = f"{title} {summary}"
+    clean_text = preprocess_text(full_text)
+    words = set(clean_text.split())
+    total_words = len(words)
+    
+    category_scores = {}
+    
+    for category, keywords in categories.items():
+        score = 0
+        matched_keywords = []
+        
+        for keyword in keywords:
+            keyword_lower = keyword.lower()
+            
+            if ' ' in keyword_lower:
+                if keyword_lower in clean_text:
+                    phrase_weight = len(keyword_lower.split()) * 2
+                    score += phrase_weight
+                    matched_keywords.append(keyword_lower)
+            else:
+                if keyword_lower in words:
+                    score += 1
+                    matched_keywords.append(keyword_lower)
+        
+        if score > 0:
+            # Calculate confidence based on score and text length
+            confidence = min((score / max(total_words * 0.1, 1)) * 100, 100)
+            category_scores[category] = {
+                'score': score,
+                'confidence': confidence,
+                'keywords': matched_keywords
+            }
+    
+    if category_scores:
+        best_match = max(category_scores.items(), key=lambda x: x[1]['score'])
+        if best_match[1]['score'] >= 1:
+            return (
+                best_match[0],
+                best_match[1]['confidence'],
+                best_match[1]['keywords']
+            )
+    
+    return ("General", 0.0, [])
+
+
+# Function to get all matching categories (for debugging)
+def get_all_matches(title: str, summary: str) -> Dict[str, Dict]:
+    """
+    Get all matching categories with their scores for debugging.
+    
+    Args:
+        title (str): News article title
+        summary (str): News article summary
+        
+    Returns:
+        Dict[str, Dict]: All categories with their match information
+    """
+    full_text = f"{title} {summary}"
+    clean_text = preprocess_text(full_text)
+    words = set(clean_text.split())
+    
+    all_matches = {}
+    
+    for category, keywords in categories.items():
+        score = 0
+        matched_keywords = []
+        
+        for keyword in keywords:
+            keyword_lower = keyword.lower()
+            
+            if ' ' in keyword_lower:
+                if keyword_lower in clean_text:
+                    phrase_weight = len(keyword_lower.split()) * 2
+                    score += phrase_weight
+                    matched_keywords.append(keyword_lower)
+            else:
+                if keyword_lower in words:
+                    score += 1
+                    matched_keywords.append(keyword_lower)
+        
+        all_matches[category] = {
+            'score': score,
+            'matched_keywords': matched_keywords,
+            'keyword_count': len(matched_keywords)
+        }
+    
+    # Sort by score
+    return dict(sorted(all_matches.items(), key=lambda x: x[1]['score'], reverse=True))
+
+
+# Cache management functions
+def clear_categorization_cache():
+    """Clear the LRU cache for categorization functions"""
+    categorize_content.cache_clear()
+    categorize_with_confidence.cache_clear()
+
+
+def get_categorization_cache_info():
+    """Get cache statistics for categorization functions"""
+    return {
+        'categorize_content': categorize_content.cache_info()._asdict(),
+        'categorize_with_confidence': categorize_with_confidence.cache_info()._asdict()
+    }

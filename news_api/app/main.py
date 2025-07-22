@@ -90,55 +90,18 @@ def advanced_categorize_content(title: str, summary: str) -> Tuple[str, float]:
     best_category_name = best_category[0]
     best_score = best_category[1]
     
-    # -------- IMPROVED CONFIDENCE CALCULATION (ONLY THIS PART CHANGED) --------
-    # Base confidence from score normalization (improved method)
-    total_content_words = title_data['text_length'] + summary_data['text_length']
-    base_confidence = min(best_score / max(total_content_words * 0.4, 1.0), 1.0)
+    # Calculate confidence
+    max_possible_score = len(categories[best_category_name]) * 2.0
+    confidence = min(best_score / max_possible_score, 1.0)
     
-    # Factor 1: Score gap between first and second place (enhanced)
+    # Boost confidence for clear winners
     sorted_scores = sorted(category_scores.values(), reverse=True)
     if len(sorted_scores) > 1:
         score_gap = sorted_scores[0] - sorted_scores[1]
-        gap_boost = min(score_gap * 0.15, 0.35)  # Increased boost
-        base_confidence += gap_boost
-    else:
-        # Single category match gets bonus
-        base_confidence += 0.2
+        if score_gap > 2.0:
+            confidence = min(confidence * 1.2, 1.0)
     
-    # Factor 2: Multiple keyword matches bonus
-    estimated_matches = min(best_score // 1.5, 10)
-    keyword_density_bonus = min(estimated_matches * 0.08, 0.25)
-    base_confidence += keyword_density_bonus
-    
-    # Factor 3: High-value keyword bonus
-    high_value_boost = 0.0
-    if best_score > 8.0:  # Very strong match
-        high_value_boost = 0.25
-    elif best_score > 5.0:  # Strong match
-        high_value_boost = 0.15
-    elif best_score > 3.0:  # Medium match
-        high_value_boost = 0.1
-    
-    # Factor 4: Category-specific confidence multipliers
-    category_confidence_multipliers = {
-        'Sports': 1.15,     # Sports terms are usually very specific
-        'Health': 1.12,     # Medical terms are distinctive
-        'Crime': 1.18,      # Legal/crime terms are specific
-        'Technology': 1.08, # Tech terms can be broad
-        'Politics': 1.1,    # Political terms are fairly specific
-        'Business': 1.05    # Business terms can overlap
-    }
-    
-    category_multiplier = category_confidence_multipliers.get(best_category_name, 1.0)
-    
-    # Calculate final confidence
-    final_confidence = min(
-        (base_confidence + high_value_boost) * category_multiplier, 
-        1.0
-    )
-    # -------- END OF IMPROVED CONFIDENCE CALCULATION --------
-    
-    return best_category_name, round(final_confidence, 3)
+    return best_category_name, round(confidence, 3)
 
 # -------- SERVICES --------
 def build_url(query: Optional[str] = None) -> str:
@@ -148,12 +111,44 @@ def build_url(query: Optional[str] = None) -> str:
     else:
         return f"{RSS_BASE}?hl={LANGUAGE}-{COUNTRY}&gl={COUNTRY}&ceid={CEID}"
 
+# def fetch_fresh_news(query: Optional[str] = None) -> List[Dict]:
+#     """Fetch fresh news - always updated, no cache"""
+#     url = build_url(query)
+#     feed = feedparser.parse(url)
+#     items = []
+    
+#     for entry in feed.entries:
+#         category, confidence = advanced_categorize_content(entry.title, entry.summary)
+#         label = generate_smart_label(entry.title)
+        
+#         items.append({
+#             "category": category,
+#             "label": label,
+#             "title": entry.title,
+#             "link": entry.link,
+#             "published": entry.published,
+#             "summary": entry.summary,
+#             "confidence_score": confidence
+#         })
+    
+#     return items
+
 from datetime import datetime
 
-def fetch_fresh_news(query: Optional[str] = None) -> List[Dict]:
+def fetch_fresh_news(query: Optional[str] = None, 
+                    limit: int = 15, 
+                    min_confidence: float = 0.050) -> List[Dict]:
     """
     Fetch fresh news - always updated, sorted by publish time descending,
-    return only the top 15 most recent items.
+    filter by confidence score, return only the top N most recent high-confidence items.
+    
+    Args:
+        query: Search query (optional)
+        limit: Maximum number of items to return (default: 15)
+        min_confidence: Minimum confidence score threshold (default: 0.050)
+    
+    Returns:
+        List of news items with confidence_score > min_confidence, sorted by publish time
     """
     url = build_url(query)
     feed = feedparser.parse(url)
@@ -184,6 +179,22 @@ def fetch_fresh_news(query: Optional[str] = None) -> List[Dict]:
             "_published_dt": published_dt,  # temporary for sorting
         })
 
+    # sort by datetime descending (latest first)
+    temp.sort(key=lambda x: x["_published_dt"], reverse=True)
+    
+    # filter by confidence score
+    high_confidence_items = [item for item in temp if item["confidence_score"] > min_confidence]
+    
+    # pick top N high-confidence items
+    top_filtered = high_confidence_items[:limit]
+
+    # strip out the helper field before returning
+    for item in top_filtered:
+        del item["_published_dt"]
+
+    return top_filtered
+
+
     # sort by datetime descending and pick top 15
     temp.sort(key=lambda x: x["_published_dt"], reverse=True)
     top15 = temp[:15]
@@ -193,6 +204,8 @@ def fetch_fresh_news(query: Optional[str] = None) -> List[Dict]:
         del item["_published_dt"]
 
     return top15
+
+
 
 # -------- APP --------
 app = FastAPI(title="Advanced News API - Always Fresh")
@@ -214,7 +227,7 @@ def home():
         "features": [
             "Advanced categorization",
             "Smart label generation", 
-            "Enhanced confidence scoring",  # Updated this line
+            "Confidence scoring",
             "No caching - always fresh",
             "CORS enabled"
         ],
@@ -223,14 +236,22 @@ def home():
     }
 
 @app.get("/today", response_model=List[NewsItem])
-def get_today_news():
-    """Get today's fresh news"""
-    return fetch_fresh_news()
+def get_today_news(
+    limit: int = Query(15, ge=1, le=50, description="Maximum number of news items to return"),
+    min_confidence: float = Query(0.080, ge=0.0, le=1.0, description="Minimum confidence score threshold")
+):
+    """Get today's fresh news with confidence filtering"""
+    return fetch_fresh_news(limit=limit, min_confidence=min_confidence)
 
 @app.get("/search", response_model=List[NewsItem])
-def search_news(q: str = Query(..., description="Search topic")):
-    """Search fresh news"""
-    return fetch_fresh_news(query=q)
+def search_news(
+    q: str = Query(..., description="Search topic"),
+    limit: int = Query(15, ge=1, le=50, description="Maximum number of news items to return"),
+    min_confidence: float = Query(0.050, ge=0.0, le=1.0, description="Minimum confidence score threshold")
+):
+    """Search fresh news with confidence filtering"""
+    return fetch_fresh_news(query=q, limit=limit, min_confidence=min_confidence)
+
 
 @app.get("/categories", response_class=JSONResponse)
 def get_categories():
@@ -246,6 +267,5 @@ def health_check():
     return {
         "status": "healthy",
         "categories_loaded": len(categories),
-        "cache_status": "disabled - always fresh",
-        "confidence_system": "enhanced"  # Added this line
+        "cache_status": "disabled - always fresh"
     }
